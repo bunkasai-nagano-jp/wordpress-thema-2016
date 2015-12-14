@@ -248,172 +248,185 @@ function getCustomFieldWrap($attr) {
 }
 add_shortcode ('getData' , 'getCustomFieldWrap');
 
-if(function_exists("register_field_group"))
-{
-    register_field_group(array (
-        'id' => 'acf-41',
-        'title' => 'GoogleMap埋め込み',
-        'fields' => array (
-            array (
-                'key' => 'field_566ac455c9407',
-                'label' => 'width',
-                'name' => 'width',
-                'type' => 'number',
-                'required' => 1,
-                'default_value' => 580,
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'min' => '',
-                'max' => '',
-                'step' => '',
-            ),
-            array (
-                'key' => 'field_566ac479c9408',
-                'label' => 'height',
-                'name' => 'height',
-                'type' => 'number',
-                'required' => 1,
-                'default_value' => 450,
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'min' => '',
-                'max' => '',
-                'step' => '',
-            ),
-        ),
-        'location' => array (
-            array (
-                array (
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'post',
-                    'order_no' => 0,
-                    'group_no' => 0,
-                ),
-            ),
-        ),
-        'options' => array (
-            'position' => 'normal',
-            'layout' => 'no_box',
-            'hide_on_screen' => array (
-            ),
-        ),
-        'menu_order' => 0,
-    ));
-    register_field_group(array (
-        'id' => 'acf-48',
-        'title' => '基本情報',
-        'fields' => array (
-            array (
-                'key' => 'field_566bc9b27093a',
-                'label' => '文化祭名',
-                'name' => 'name',
-                'type' => 'text',
-                'required' => 1,
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-            array (
-                'key' => 'field_566bcbc170942',
-                'label' => '区分',
-                'name' => 'class',
-                'type' => 'select',
-                'required' => 1,
-                'choices' => array (
-                    'public' => '公立',
-                    'private' => '私立',
-                ),
-                'default_value' => '',
-                'allow_null' => 0,
-                'multiple' => 0,
-            ),
-            array (
-                'key' => 'field_566bc9d07093b',
-                'label' => '学校名',
-                'name' => 'schoolName',
-                'type' => 'text',
-                'required' => 1,
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-            array (
-                'key' => 'field_566bcb7370941',
-                'label' => '公式サイトURL',
-                'name' => 'url',
-                'type' => 'text',
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'formatting' => 'html',
-                'maxlength' => '',
-            ),
-            array (
-                'key' => 'field_566bca0f7093c',
-                'label' => '開始日',
-                'name' => 'startDate',
-                'type' => 'date_picker',
-                'required' => 1,
-                'date_format' => 'yymmdd',
-                'display_format' => 'yy-mm-dd',
-                'first_day' => 1,
-            ),
-            array (
-                'key' => 'field_566bcae67093d',
-                'label' => '終了日',
-                'name' => 'endDate',
-                'type' => 'date_picker',
-                'required' => 1,
-                'date_format' => 'yymmdd',
-                'display_format' => 'yy-mm-dd',
-                'first_day' => 1,
-            ),
-            array (
-                'key' => 'field_566bcb287093f',
-                'label' => '一般公開開始日',
-                'name' => 'publicStartDate',
-                'type' => 'date_picker',
-                'date_format' => 'yymmdd',
-                'display_format' => 'yy-mm-dd',
-                'first_day' => 1,
-            ),
-            array (
-                'key' => 'field_566bcb5170940',
-                'label' => '一般公開終了日',
-                'name' => 'publicEndDate',
-                'type' => 'date_picker',
-                'date_format' => 'yymmdd',
-                'display_format' => 'yy-mm-dd',
-                'first_day' => 1,
-            ),
-        ),
-        'location' => array (
-            array (
-                array (
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'post',
-                    'order_no' => 0,
-                    'group_no' => 0,
-                ),
-            ),
-        ),
-        'options' => array (
-            'position' => 'normal',
-            'layout' => 'no_box',
-            'hide_on_screen' => array (
-            ),
-        ),
-        'menu_order' => 0,
-    ));
+// if(function_exists("register_field_group"))
+// {
+//     register_field_group(array (
+//         'id' => 'acf-41',
+//         'title' => 'GoogleMap埋め込み',
+//         'fields' => array (
+//             array (
+//                 'key' => 'field_566ac455c9407',
+//                 'label' => 'width',
+//                 'name' => 'width',
+//                 'type' => 'number',
+//                 'required' => 1,
+//                 'default_value' => 580,
+//                 'placeholder' => '',
+//                 'prepend' => '',
+//                 'append' => '',
+//                 'min' => '',
+//                 'max' => '',
+//                 'step' => '',
+//             ),
+//             array (
+//                 'key' => 'field_566ac479c9408',
+//                 'label' => 'height',
+//                 'name' => 'height',
+//                 'type' => 'number',
+//                 'required' => 1,
+//                 'default_value' => 450,
+//                 'placeholder' => '',
+//                 'prepend' => '',
+//                 'append' => '',
+//                 'min' => '',
+//                 'max' => '',
+//                 'step' => '',
+//             ),
+//         ),
+//         'location' => array (
+//             array (
+//                 array (
+//                     'param' => 'post_type',
+//                     'operator' => '==',
+//                     'value' => 'post',
+//                     'order_no' => 0,
+//                     'group_no' => 0,
+//                 ),
+//             ),
+//         ),
+//         'options' => array (
+//             'position' => 'normal',
+//             'layout' => 'no_box',
+//             'hide_on_screen' => array (
+//             ),
+//         ),
+//         'menu_order' => 0,
+//     ));
+//     register_field_group(array (
+//         'id' => 'acf-48',
+//         'title' => '基本情報',
+//         'fields' => array (
+//             array (
+//                 'key' => 'field_566bc9b27093a',
+//                 'label' => '文化祭名',
+//                 'name' => 'name',
+//                 'type' => 'text',
+//                 'required' => 1,
+//                 'default_value' => '',
+//                 'placeholder' => '',
+//                 'prepend' => '',
+//                 'append' => '',
+//                 'formatting' => 'html',
+//                 'maxlength' => '',
+//             ),
+//             array (
+//                 'key' => 'field_566bcbc170942',
+//                 'label' => '区分',
+//                 'name' => 'class',
+//                 'type' => 'select',
+//                 'required' => 1,
+//                 'choices' => array (
+//                     'public' => '公立',
+//                     'private' => '私立',
+//                 ),
+//                 'default_value' => '',
+//                 'allow_null' => 0,
+//                 'multiple' => 0,
+//             ),
+//             array (
+//                 'key' => 'field_566bc9d07093b',
+//                 'label' => '学校名',
+//                 'name' => 'schoolName',
+//                 'type' => 'text',
+//                 'required' => 1,
+//                 'default_value' => '',
+//                 'placeholder' => '',
+//                 'prepend' => '',
+//                 'append' => '',
+//                 'formatting' => 'html',
+//                 'maxlength' => '',
+//             ),
+//             array (
+//                 'key' => 'field_566bcb7370941',
+//                 'label' => '公式サイトURL',
+//                 'name' => 'url',
+//                 'type' => 'text',
+//                 'default_value' => '',
+//                 'placeholder' => '',
+//                 'prepend' => '',
+//                 'append' => '',
+//                 'formatting' => 'html',
+//                 'maxlength' => '',
+//             ),
+//             array (
+//                 'key' => 'field_566bca0f7093c',
+//                 'label' => '開始日',
+//                 'name' => 'startDate',
+//                 'type' => 'date_picker',
+//                 'required' => 1,
+//                 'date_format' => 'yymmdd',
+//                 'display_format' => 'yy-mm-dd',
+//                 'first_day' => 1,
+//             ),
+//             array (
+//                 'key' => 'field_566bcae67093d',
+//                 'label' => '終了日',
+//                 'name' => 'endDate',
+//                 'type' => 'date_picker',
+//                 'required' => 1,
+//                 'date_format' => 'yymmdd',
+//                 'display_format' => 'yy-mm-dd',
+//                 'first_day' => 1,
+//             ),
+//             array (
+//                 'key' => 'field_566bcb287093f',
+//                 'label' => '一般公開開始日',
+//                 'name' => 'publicStartDate',
+//                 'type' => 'date_picker',
+//                 'date_format' => 'yymmdd',
+//                 'display_format' => 'yy-mm-dd',
+//                 'first_day' => 1,
+//             ),
+//             array (
+//                 'key' => 'field_566bcb5170940',
+//                 'label' => '一般公開終了日',
+//                 'name' => 'publicEndDate',
+//                 'type' => 'date_picker',
+//                 'date_format' => 'yymmdd',
+//                 'display_format' => 'yy-mm-dd',
+//                 'first_day' => 1,
+//             ),
+//         ),
+//         'location' => array (
+//             array (
+//                 array (
+//                     'param' => 'post_type',
+//                     'operator' => '==',
+//                     'value' => 'post',
+//                     'order_no' => 0,
+//                     'group_no' => 0,
+//                 ),
+//             ),
+//         ),
+//         'options' => array (
+//             'position' => 'normal',
+//             'layout' => 'no_box',
+//             'hide_on_screen' => array (
+//             ),
+//         ),
+//         'menu_order' => 0,
+//     ));
+// }
+function getGoogleStreetViewImage($attr) {
+    $base = 'https://maps.googleapis.com/maps/api/streetview?';
+    $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
+    $width = '150';
+    $height = '150';
+    $location = $attr[0];
+    if (!empty($location)) {
+        $url = $base . 'size=' . $width . 'x' . $height .'&location=' . $location . '&fov=120' .'&key=' . $googleApiKey;
+        return '<img height="150px" width="150px" src='. '"' . $url . '"'. '></img>';
+    }
 }
+add_shortcode ('getGSV' , 'getGoogleStreetViewImage');
+// <img src="https://maps.googleapis.com/maps/api/streetview?size=580x400&amp;location=36.6688044,138.1992637&amp;fov=120&amp;heading=0&amp;key=AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE" width="580px" height="400px">
