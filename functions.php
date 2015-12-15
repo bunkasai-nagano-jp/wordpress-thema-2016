@@ -253,7 +253,7 @@ function getGoogleStreetViewImage($attr) {
     $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
     $width = '150';
     $height = '150';
-    $location = $attr[0];1
+    $location = $attr[0];
     if (!empty($location)) {
         $url = $base . 'size=' . $width . 'x' . $height .'&location=' . $location . '&fov=120' .'&key=' . $googleApiKey;
         return '<img height="150px" width="150px" src='. '"' . $url . '"'. '></img>';
