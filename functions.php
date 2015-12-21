@@ -218,7 +218,7 @@ function get_mtime($format) {
 }
 
 //GoogleMap埋め込み
-function getGoogleMapEmbeddedCode() {
+function get_gmap_url() {
     $gmap = [
         'schoolName' => get_field('schoolName'),
         'width' => get_field('width'),
@@ -232,23 +232,23 @@ function getGoogleMapEmbeddedCode() {
     return '<iframe width="' . $width .'" height="' . $height . '" frameborder="0" style="border:0" ' . 'src="https://www.google.com/maps/embed/v1/place?key=' . $googleApiKey . '&q=' . urlencode($schoolName) . '" allowfullscreen></iframe>';
     }
 };
-add_shortcode ('gmap' , 'getGoogleMapEmbeddedCode'); //ショートコード登録
+add_shortcode ('gmap' , 'get_gmap_url');
 
-function getCustomField($fieldName) {
+function get_custom_field($fieldName) {
     $data = get_field($fieldName);
     return $data;
 }
-function getCustomFieldWrap($attr) {
+function get_custom_field_wrap($attr) {
     if (empty($attr[0])) {
         return '引数を指定してください';
     }
     else {
-        return getCustomField($attr[0]);
+        return get_custom_field($attr[0]);
     }
 }
-add_shortcode ('getData' , 'getCustomFieldWrap');
+add_shortcode ('get_data' , 'get_custom_field_wrap');
 
-function getGoogleStreetViewImage($attr) {
+function get_gmap_sv_url($attr) {
     $base = 'https://maps.googleapis.com/maps/api/streetview?';
     $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
     $width = '150';
@@ -259,5 +259,5 @@ function getGoogleStreetViewImage($attr) {
         return '<img height="150px" width="150px" src='. '"' . $url . '"'. '></img>';
     }
 }
-add_shortcode ('getGSV' , 'getGoogleStreetViewImage');
+add_shortcode ( 'getGSV' , 'get_gmap_sv_url');
 // <img src="https://maps.googleapis.com/maps/api/streetview?size=580x400&amp;location=36.6688044,138.1992637&amp;fov=120&amp;heading=0&amp;key=AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE" width="580px" height="400px">
