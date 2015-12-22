@@ -75,7 +75,7 @@ img.size-full, img.size-large {
     margin: 0 auto;
 }
 /* スマートフォンは表示しない */
-.smanone {
+.sp-none {
     display: none;
 }
 /* clearfix */
@@ -1078,7 +1078,7 @@ main {
 /*media Queries PCサイズ
 ----------------------------------------------------*/
 @media only screen and (min-width: 780px) {
-.smanone {
+.sp-none {
     display: block;
 }
 .pcnone {
