@@ -140,25 +140,6 @@ header .sitename a:hover {
     -moz-opacity: 0.8;
     opacity: 0.8;
 }
-/*ブログ名の下のキャプション */
-
-header h1 {
-    font-size: 12px;
-    color: #666;
-    font-weight: normal;
-}
-header a {
-    color: #FFF;
-    text-decoration: none;
-}
-header .descr {
-    font-size: 12px;
-    color: #666;
-    font-weight: normal;
-    margin-bottom: 0;
-    line-height: 20px;
-    padding-bottom: 10px;
-}
 /* 記事タイトル */
 
 .entry-title {
@@ -674,27 +655,6 @@ nav li {
     border-left-color: #CCC;
     padding-top: 5px;
     padding-bottom: 5px;
-}
-nav li li {
-    float: left;
-    font-size: 13px;
-    padding-left: 10px;
-    display: inline;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: none;
-}
-nav li a {
-    float: left;
-    color: #333;
-    text-decoration: none;
-}
-.menu-navigation-container {
-    overflow: hidden;
-}
-nav li a:hover {
-    text-decoration: underline;
 }
 nav li li {
     float: left;
