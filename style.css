@@ -739,9 +739,7 @@ div#breadcrumb div {
 /*--------------------------------
 SNS
 ---------------------------------*/
-
-#socialbox {  }
-a.social_item {
+a.social-item {
     display: block;
     position: relative;
     float: left;
@@ -753,13 +751,13 @@ a.social_item {
     color: #666;
     text-decoration: none;
 }
-a.social_item:hover {
+a.social-item:hover {
     color: #fff;
 }
-.mm-facebook:hover {
+.social-facebook:hover {
     background: #3b5998;
 }
-.mm-twitter:hover {
+.social-twitter:hover {
     background: #00aced;
 }
 
