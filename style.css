@@ -303,10 +303,6 @@ footer h4 a {
   border-left-style: solid;
   border-left-color: #CCC;
 }
-#footer h3 {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
 #footer .copy {
   font-size: 12px;
   color: #999;
@@ -321,6 +317,9 @@ footer h4 a {
   font-size: 20px;
   line-height: 30px;
   margin-bottom: 5px;
+}
+#topnews dd h3 a {
+  text-decoration: none;
 }
 #topnews dt {
   float: left;
