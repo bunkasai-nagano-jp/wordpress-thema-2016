@@ -82,7 +82,7 @@
                     </div>
                 <!-- /アコーディオン -->
                 <!--メニュー-->
-                    <nav class="smanone clearfix">
+                    <nav class="sp-none clearfix">
                         <?php
                             $defaults = array(
                             'theme_location'  => 'navbar',
