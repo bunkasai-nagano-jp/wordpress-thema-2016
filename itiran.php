@@ -16,7 +16,7 @@
 						<?php the_title(); ?>
 					</a>
 				</h3>
-				<div class="blog_info">
+				<div class="blog-info">
 					<p><i class="fa fa-clock-o"></i>&nbsp;
 						<?php the_time('Y/m/d') ?>&nbsp;
 						<span class="pcone"><i class="fa fa-tags"></i>&nbsp;

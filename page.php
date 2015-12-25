@@ -14,7 +14,7 @@
 						<?php the_content(); ?>
 				</article>
 						<?php wp_link_pages(); ?>
-						<div class="blog_info contentsbox">
+						<div class="blog-info contentsbox">
 							<p>公開日：
 								<time class="entry-date" datetime="<?php the_time('c') ;?>">
 									<?php the_time('Y/m/d') ;?>
