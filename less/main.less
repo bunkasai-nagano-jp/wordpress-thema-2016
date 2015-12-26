@@ -1,9 +1,10 @@
 @charset "UTF-8";
 
 //== Colors
-@bg-white: #f2f2f2;
+@body-bg-white: #f2f2f2;
+@bg-white: #f3f3f3;
 @link-color: #4682b4;
-@link-hover-color: #b22222;
+@link-hover-color: #6AACB8;
 @black: #333;
 
 //== Typography
@@ -36,7 +37,7 @@ summary {
 
 body {
 	min-width: 320px;
-	background-color: @bg-white;
+	background-color: @body-bg-white;
 	.mceContentBody {
 		background-color:#fff;
 	}
@@ -66,8 +67,8 @@ object {
 	display: block;
 }
 
-img.size-full,
-img.size-large {
+.size-full,
+.size-large {
 		margin-bottom: 10px;
 		height: auto;
 		max-width: 100%;
@@ -77,6 +78,15 @@ img.size-large {
 	height: auto;
 	max-width: 100%;
 	text-align: center;
+}
+
+.wp-caption-text {
+	font-size:12px;
+	color:#ccc;
+	a {
+		font-size:12px;
+		color:#ccc;
+	}
 }
 
 .sitename {
@@ -167,7 +177,7 @@ header {
 
 h2 {
 	position: relative;
-	background-color: #f3f3f3;
+	background-color: @bg-white;
 	color: #1a1a1a;
 	font-size: @font-size-h2;
 	line-height: 27px;
@@ -206,15 +216,14 @@ h2 {
 	h4 {
 		padding:10px;
 		margin-bottom:10px;
-		background-color:#f3f3f3;
+		background-color:@bg-white;
 	}
 	h5 {
 		margin-bottom:10px;
 		font-size:16px;
 	}
 	blockquote {
-		/* 引用 */
-		background-color: #f3f3f3;
+		background-color: @bg-white;
 		background-image: url(images/quote.png);
 		background-repeat: no-repeat;
 		background-position: left top;
@@ -231,7 +240,7 @@ h2 {
 		width:100%;
 		tr {
 			&:nth-child(even) {
-				background-color:#f3f3f3;
+				background-color:@bg-white;
 			}
 			td {
 				p {
@@ -258,15 +267,6 @@ h2 {
 			font-size: 17px;
 			line-height: 27px;
 		}
-	}
-}
-
-.wp-caption-text {
-	font-size:12px;
-	color:#ccc;
-	a {
-		font-size:12px;
-		color:#ccc;
 	}
 }
 
@@ -324,7 +324,7 @@ footer {
 }
 
 .inyoumodoki {
-	background-color: #f3f3f3;
+	background-color: @bg-white;
 	background-image: url(images/quote.png);
 	background-repeat: no-repeat;
 	background-position: left top;
@@ -335,14 +335,12 @@ footer {
 	border-left-color: #CCC;
 }
 
-#footer {
-	.copy {
-		font-size: 12px;
-		color: #999;
-		line-height: 15px;
-		-moz-opacity: 0.5;
-		opacity: 0.5;
-	}
+.copy {
+	font-size: 12px;
+	color: #999;
+	line-height: 15px;
+	-moz-opacity: 0.5;
+	opacity: 0.5;
 }
 
 #topnews {
@@ -353,7 +351,11 @@ footer {
 			line-height: 30px;
 			margin-bottom: 5px;
 			a {
+				color: @black;
 				text-decoration: none;
+				&:hover {
+					color: @link-hover-color;
+				}
 			}
 		}
 	}
@@ -396,17 +398,13 @@ footer {
 				color: #666;
 				line-height: 24px;
 			}
-			.blog_info {
-				p {
-					font-size: 12px;
-				}
-			}
 		}
 	}
 }
 
-.blog_info {
+.blog-info {
 	p {
+		font-size: 12px;
 		a {
 			color: #666;
 			text-decoration: none;
@@ -455,7 +453,7 @@ footer {
 					color: @black;
 					text-decoration: none;
 					&:hover {
-						color: #b22222;
+						color: @link-hover-color;
 					}
 				}
 			}
@@ -579,7 +577,7 @@ img {
 }
 
 .s-navi {
-	isplay: inline;
+	display: inline;
 	float: right;
 	p {
 		margin: 0;
@@ -588,26 +586,23 @@ img {
 		margin: 0 10px;
 	}
 	.trigger {
+		text-align: right;
+		cursor: pointer;
+		margin: 1.5px 0;
 		.op {
 			font-size: 14px;
 			color: @black;
 			padding: 0px 10px;
 		}
 	}
-	.acordion_tree {
+	.acordion-tree {
 		padding: 0px 10px;
 		display:none;
 		overflow: hidden;
 	}
 }
 
-.trigger {
-	text-align: right;
-	cursor: pointer;
-	margin: 1.5px 0;
-}
-
-.acordion_tree {
+.acordion-tree {
 	li {
 		float: left;
 		font-size: 13px;
@@ -809,7 +804,7 @@ div {
 				font-size: 14px;
 				padding: 3px;
 				text-align: center;
-				background-color: #f3f3f3;
+				background-color: @bg-white;
 			}
 		}
 	}
@@ -854,7 +849,7 @@ div {
 	font-size: 14px;
 	line-height: 20px;
 	color: @black;
-	background-color: #f3f3f3;
+	background-color: @bg-white;
 	padding: 10px 20px 10px 20px;
 	margin-bottom: 20px;
 	border-left-width: 1px;
@@ -908,7 +903,7 @@ div {
 	#commentform {
 		.tags {
 			padding: 10px;
-			background-color: #f3f3f3;
+			background-color: @bg-white;
 			font-size: 13px;
 		}
 	}
@@ -1164,7 +1159,7 @@ section {
 	}
 	h2 {
 		position: relative;
-		background-color: #f3f3f3;
+		background-color: @bg-white;
 		color: #1a1a1a;
 		font-size: @font-size-h2;
 		line-height: 30px;
@@ -1173,7 +1168,7 @@ section {
 		&::after {
 			content: '';
 			position: absolute;
-			border-top: 10px solid #f3f3f3;
+			border-top: 10px solid @bg-white;
 			border-right: 10px solid transparent;
 			border-left: 10px solid transparent;
 			bottom: -10px;
@@ -1182,7 +1177,7 @@ section {
 		&::before {
 			content: '';
 			position: absolute;
-			border-top: 10px solid #f3f3f3;
+			border-top: 10px solid @bg-white;
 			border-right: 10px solid transparent;
 			border-left: 10px solid transparent;
 			bottom: -10px;
