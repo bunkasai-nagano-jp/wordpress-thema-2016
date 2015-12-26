@@ -72,7 +72,7 @@
                     <div class="clearfix"></div>
                     <div class="s-navi pcnone">
                         <div class="acordion">
-                            <div class="acordion_tree">
+                            <div class="acordion-tree">
                                 <ul>
                                     <?php wp_nav_menu(array('theme_location' => 'navbar'));?>
                                 </ul>
