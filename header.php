@@ -65,28 +65,15 @@
                     <p class="sitename"><a href="<?php echo home_url(); ?>/">
                     <?php bloginfo( 'name' ); ?>
                     </a></p>
-                <!-- アコーディオン -->
-                    <div class="s-navi pcnone trigger">
-                        <p><span class="op"><i class="fa fa-bars"></i>&nbsp; MENU</span></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="s-navi pcnone">
-                        <div class="acordion">
-                            <div class="acordion-tree">
-                                <ul>
-                                    <?php wp_nav_menu(array('theme_location' => 'navbar'));?>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- /アコーディオン -->
                 <!--メニュー-->
-                    <nav class="sp-none clearfix">
+                    <nav class="clearfix">
+												<a class="pc-none" id="toggler" href="#">MENU</a>
                         <?php
                             $defaults = array(
-                            'theme_location'  => 'navbar',
-                            );
+							                            'theme_location'  => 'navbar',
+																					'container' => false ,
+																					'items_wrap' => '<ul id="menu">%3$s</ul>'
+						                            );
                             wp_nav_menu( $defaults );
                         ?>
                     </nav>
