@@ -91,32 +91,21 @@ jQuery(function() {
   });
 
 /*---------------------------
-ｱｺｰﾃﾞｨｵﾝ
-------------------------------*/
-
-jQuery(document).ready(function(){
-  jQuery(".acordion-tree").css("display","none");
-  jQuery(".trigger").click(function(){
-    if(jQuery(".acordion-tree").css("display")=="none"){
-         jQuery(this).addClass("active");
-         jQuery(".acordion-tree").slideDown("normal");
-  }else{
-    jQuery(this).removeClass("active");
-    jQuery(".acordion-tree").slideUp("normal");
-  }
-  });
-});
-
-/*---------------------------
 ドロップダウン
 ------------------------------*/
+$(function() {
+	if ($('#toggler').is(":hidden")) {
+		$(".menu-item-has-children").mouseover(function(){
+			  $(this).children(".sub-menu").show();
+		});
+		$(".menu-item-has-children").mouseout(function(){
+			$('.sub-menu').hide();
+		});
+	}
+});
 
-jQuery(document).ready(function(){
-    jQuery(".menu ul.children").hide();
-    jQuery("li.page_item").hover(function() {
-        jQuery("ul.children",this).slideDown("slow");
-    },
-    function() {
-        jQuery("ul.children",this).slideUp("slow");
-    });
+$(function() {
+	$("#toggler").click(function(){
+		$('#menu').slideToggle();
+	});
 });
