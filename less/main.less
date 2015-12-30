@@ -636,6 +636,13 @@ nav {
 			float: left;
 	    border-right: 1px solid #999;
 	    position: relative;
+			&.menu-item-has-children > a {
+				&::after {
+					content: "\f0d7";
+					font-family: FontAwesome;
+					margin-left: 5px;
+				}
+			}
 		}
 		ul {
 			position: absolute;
@@ -1020,7 +1027,7 @@ section {
 	nav {
 		#toggler {
 			width: 100%;
-			background-color: #ccc;
+			background-color: darken(#ccc, 20%) ;
 			text-decoration: none;
 			display: inline-block;
 			text-align: center;
