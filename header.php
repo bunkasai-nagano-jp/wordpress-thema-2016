@@ -13,7 +13,7 @@
     <!--<![endif]-->
     <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
     <?php if(is_category()): ?>
     <?php elseif(is_archive()): ?>
@@ -61,11 +61,9 @@
     <body <?php body_class(); ?>>
         <div id="wrapper">
             <header>
-                <!-- ブログ名 -->
                     <p class="sitename"><a href="<?php echo home_url(); ?>/">
                     <?php bloginfo( 'name' ); ?>
                     </a></p>
-                <!--メニュー-->
                     <nav class="clearfix">
 												<a class="pc-none" id="toggler" href="#">MENU</a>
                         <?php
