@@ -67,7 +67,7 @@
                   </a>
                 </p>
                 <nav class="clearfix">
-                    <a class="pc-none" id="toggler" href="#">MENU</a>
+                    <a class="pc-none" id="toggler" href="#"><i class="fa fa-fw fa-bars"></i>MENU</a>
                     <?php
                         $defaults = array(
                                       'theme_location'  => 'navbar',
