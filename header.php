@@ -61,18 +61,20 @@
     <body <?php body_class(); ?>>
         <div id="wrapper">
             <header>
-                    <p class="sitename"><a href="<?php echo home_url(); ?>/">
+                <p class="sitename">
+                  <a href="<?php echo home_url(); ?>/">
                     <?php bloginfo( 'name' ); ?>
-                    </a></p>
-                    <nav class="clearfix">
-												<a class="pc-none" id="toggler" href="#">MENU</a>
-                        <?php
-                            $defaults = array(
-							                            'theme_location'  => 'navbar',
-																					'container' => false ,
-																					'items_wrap' => '<ul id="menu">%3$s</ul>'
-						                            );
-                            wp_nav_menu( $defaults );
-                        ?>
-                    </nav>
+                  </a>
+                </p>
+                <nav class="clearfix">
+                    <a class="pc-none" id="toggler" href="#">MENU</a>
+                    <?php
+                        $defaults = array(
+                                      'theme_location'  => 'navbar',
+                                      'container' => false ,
+                                      'items_wrap' => '<ul id="menu">%3$s</ul>'
+                                    );
+                        wp_nav_menu( $defaults );
+                    ?>
+                </nav>
             </header>
