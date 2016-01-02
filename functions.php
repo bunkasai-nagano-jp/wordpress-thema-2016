@@ -1,4 +1,12 @@
 <?php
+function vc_remove_wp_ver_css_js( $src ) {
+    if ( strpos( $src, 'ver=' ) )
+        $src = remove_query_arg( 'ver', $src );
+    return $src;
+}
+add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
+add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
+
 function register_jq_script() {
     if (!is_admin()) {
         $script_dir = get_template_directory_uri();
@@ -9,17 +17,17 @@ function register_jq_script() {
 add_action('wp_enqueue_scripts','register_jq_script');
 
 function register_fa_style() {
-    wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+    wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',array(), false, false);
 }
 add_action( 'wp_enqueue_scripts', 'register_fa_style' );
 
 function register_open_sans_style() {
-    wp_enqueue_style( 'open_sans', '//fonts.googleapis.com/css?family=Open+Sans');
+    wp_enqueue_style( 'open_sans', '//fonts.googleapis.com/css?family=Open+Sans',array(), false, false);
 }
 add_action( 'wp_enqueue_scripts', 'register_open_sans_style' );
 
 function register_ionicons_style() {
-    wp_enqueue_style( 'ionicons', 'http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css');
+    wp_enqueue_style( 'ionicons', 'http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css',array(), false, false);
 }
 add_action( 'wp_enqueue_scripts', 'register_ionicons_style' );
 
@@ -248,16 +256,18 @@ function get_custom_field_wrap($attr) {
 }
 add_shortcode ('get_data' , 'get_custom_field_wrap');
 
-function get_gmap_sv_url($attr) {
+function get_gmap_sv_url() {
     $base = 'https://maps.googleapis.com/maps/api/streetview?';
     $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-    $width = '150';
-    $height = '150';
-    $location = $attr[0];
+    $width = '580';
+    $height = '300';
+    $location = get_field('streetviewLocation');
+		$fov = get_field('streetviewFov');
+		$pitch = get_field('streetviewPitch');
+		$heading = get_field('heading');
     if (!empty($location)) {
-        $url = $base . 'size=' . $width . 'x' . $height .'&location=' . $location . '&fov=120' .'&key=' . $googleApiKey;
-        return '<img height="150px" width="150px" src='. '"' . $url . '"'. '></img>';
+        $url = $base . 'size=' . $width . 'x' . $height  .'&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading .'&key=' . $googleApiKey;
+				return $url;
     }
 }
 add_shortcode ( 'getGSV' , 'get_gmap_sv_url');
-// <img src="https://maps.googleapis.com/maps/api/streetview?size=580x400&amp;location=36.6688044,138.1992637&amp;fov=120&amp;heading=0&amp;key=AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE" width="580px" height="400px">
