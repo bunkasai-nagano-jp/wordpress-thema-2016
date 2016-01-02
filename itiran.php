@@ -1,33 +1,52 @@
 <div id="topnews">
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<dl class="clearfix">
-			<dt>
-				<a href="<?php the_permalink() ?>" >
-					<?php if ( has_post_thumbnail() ): ?>
-						<?php the_post_thumbnail( 'thumb150' ); ?>
-					<?php else: ?>
-						<img src="<?php echo get_template_directory_uri(); ?>/images/no-img.png" alt="no image" title="no image" width="100" height="100" />
-					<?php endif; ?>
-				</a>
-			</dt>
 			<dd>
-				<h3>
+				<h1>
 					<a href="<?php the_permalink(); ?>">
 						<?php the_title(); ?>
 					</a>
-				</h3>
+				</h1>
 				<div class="blog-info">
-					<p><i class="fa fa-clock-o"></i>&nbsp;
-						<?php the_time('Y/m/d') ?>&nbsp;
+					<p>
 						<span class="pcone"><i class="fa fa-tags"></i>&nbsp;
 							<?php the_category(', ') ?>
-							<?php the_tags('', ', '); ?>
 						</span>
 					</p>
 				</div>
-				<div class="sp-none">
-					<?php the_excerpt(); ?>
+				<div class="info">
+					<img class="info-img" src="<?php echo get_gmap_sv_url(); ?>" alt="" />
+					<p class="info-name">
+						<span class="info-desc">文化祭名</span>
+						<span><?php echo get_custom_field('name') ?></span>
+					</p>
+					<p class="info-school-name">
+						<span class="info-desc">学校名</span>
+						<span class="info-class"><?php echo get_custom_field('class') ?></span>
+						<span class="info-school-name"><?php echo get_custom_field('schoolName') ?></span>
+					</p>
+					<?php
+						$startDate = get_custom_field('startDate');
+						$endDate = get_custom_field('endDate');
+						if(!empty($startDate)) {
+							echo '<p class="info-date">' . "\n" .
+											'<span class="info-desc">開催期間</span>' . "\n" .
+											'<span class="info-date-content">'. $startDate .'〜'. $endDate .'</span>' . "\n" .
+										'</p>';
+						}
+					?>
+					<?php
+						$publicStartDate = get_custom_field('publicStartDate');
+						$publicEndDate = get_custom_field('publicEndDate');
+						if(!empty($publicStartDate)) {
+							echo '<p class="info-date">' . "\n" .
+											'<span class="info-desc">一般公開期間</span>' . "\n" .
+											'<span class="info-date-content">'. $publicStartDate .'〜'. $publicEndDate .'</span>' . "\n" .
+										'</p>';
+						}
+					?>
 				</div>
+				<a class="permalink" href="<?php the_permalink(); ?>">詳細を見る</a>
 			</dd>
 		</dl>
 	<?php endwhile; else: ?>
