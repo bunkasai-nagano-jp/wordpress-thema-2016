@@ -109,3 +109,8 @@ $(function() {
 		$('#menu').slideToggle();
 	});
 });
+$(function() {
+	$("li.menu-item-has-children").click(function(){
+		$(this).children('ul.sub-menu').slideToggle();
+	});
+});
