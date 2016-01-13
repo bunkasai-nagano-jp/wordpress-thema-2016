@@ -58,6 +58,10 @@ object {
   vertical-align: bottom;
   display: block;
 }
+abbr[title] {
+  border-bottom: none;
+  text-decoration: none;
+}
 .size-full,
 .size-large {
   margin-bottom: 10px;
@@ -436,6 +440,9 @@ footer h4 a {
 #side aside #mybox ul li ul li {
   font-size: 14px;
   line-height: 27px;
+}
+#side aside #mybox ul li ul li a {
+  text-decoration: none;
 }
 .rssbox a {
   display: block;
