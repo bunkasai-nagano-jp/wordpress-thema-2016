@@ -157,7 +157,7 @@ h2 {
   color: #1a1a1a;
   font-size: 20px;
   line-height: 27px;
-  margin: 0 0 20px 0;
+  margin: 20px 0;
   padding: 10px 20px;
 }
 h2::after,
@@ -239,6 +239,9 @@ h2::after {
 .post ol li {
   font-size: 17px;
   line-height: 27px;
+}
+.post iframe {
+  margin: 0 0 10px 0;
 }
 #side aside h4 {
   font-size: 16px;
