@@ -30,7 +30,6 @@
       elseif(is_404()):
       echo'404 -';
       endif;
-      bloginfo('name');
       if($paged >= 2 || $page >= 2):
       echo'-'.sprintf('%sページ',
       max($paged,$page));
