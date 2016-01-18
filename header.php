@@ -15,16 +15,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
-    <?php if(is_category()): ?>
-    <?php elseif(is_archive()): ?>
-        <meta name="robots" content="noindex,follow">
-    <?php elseif(is_search()): ?>
-        <meta name="robots" content="noindex,follow">
-    <?php elseif(is_tag()): ?>
-        <meta name="robots" content="noindex,follow">
-    <?php elseif(is_paged()): ?>
-        <meta name="robots" content="noindex,follow">
-    <?php endif; ?>
 		<title><?php wp_title(); ?></title>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/normalize.css">
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
