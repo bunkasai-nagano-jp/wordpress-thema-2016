@@ -237,8 +237,9 @@ function get_gmap_url() {
     $schoolName = $gmap['schoolName'];
     $width = $gmap['width'];
     $height = $gmap['height'];
-    return '<iframe width="' . $width .'" height="' . $height . '" frameborder="0" style="border:0" ' . 'src="https://www.google.com/maps/embed/v1/place?key=' . $googleApiKey . '&q=' . urlencode($schoolName) . '" allowfullscreen></iframe>';
-    }
+    $g = '<iframe width="' . $width .'" height="' . $height . '" frameborder="0" style="border:0" ' . 'src="https://www.google.com/maps/embed/v1/place?key=' . $googleApiKey . '&q=' . urlencode($schoolName) . '" allowfullscreen></iframe>';
+		return '<div class="gmap">' . $g . '</div>';
+		}
 };
 add_shortcode ('gmap' , 'get_gmap_url');
 
