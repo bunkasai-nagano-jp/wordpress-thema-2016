@@ -31,7 +31,7 @@
       echo'404 -';
       endif;
       bloginfo('name');
-      if($paged &gt;= 2 || $page &gt;= 2):
+      if($paged >= 2 || $page >= 2):
       echo'-'.sprintf('%sページ',
       max($paged,$page));
       endif;
