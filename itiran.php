@@ -31,17 +31,24 @@
 						if(!empty($startDate)) {
 							echo '<p class="info-date">' . "\n" .
 											'<span class="info-desc">開催期間</span>' . "\n" .
-											'<span class="info-date-content">'. $startDate .'〜'. $endDate .'</span>' . "\n" .
+											'<span class="info-date-content">'. $startDate .' 〜 '. $endDate .'</span>' . "\n" .
 										'</p>';
 						}
 					?>
 					<?php
 						$publicStartDate = get_custom_field('publicStartDate');
 						$publicEndDate = get_custom_field('publicEndDate');
-						if(!empty($publicStartDate)) {
+						if (empty($publicStartDate)) {
+
+						} elseif (empty($publicEndDate)) {
+							echo '<p class="info-date">' . "\n" .
+											'<span class="info-desc">一般公開日</span>' . "\n" .
+											'<span class="info-date-content">'. $publicStartDate .'</span>' . "\n" .
+										'</p>';
+						} else {
 							echo '<p class="info-date">' . "\n" .
 											'<span class="info-desc">一般公開期間</span>' . "\n" .
-											'<span class="info-date-content">'. $publicStartDate .'〜'. $publicEndDate .'</span>' . "\n" .
+											'<span class="info-date-content">'. $publicStartDate .' 〜 '. $publicEndDate .'</span>' . "\n" .
 										'</p>';
 						}
 					?>
