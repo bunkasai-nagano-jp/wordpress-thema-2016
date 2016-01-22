@@ -272,3 +272,4 @@ function get_gmap_sv_url() {
     }
 }
 add_shortcode ( 'getGSV' , 'get_gmap_sv_url');
+add_theme_support( 'title-tag' );

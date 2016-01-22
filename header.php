@@ -15,27 +15,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
-    <title>
-      <?php
-      global $page, $paged;
-      if(is_front_page()):
-      elseif(is_single()):
-      wp_title('-',true,'right');
-      elseif(is_page()):
-      wp_title('-',true,'right');
-      elseif(is_archive()):
-      wp_title('-',true,'right');
-      elseif(is_search()):
-      wp_title('-',true,'right');
-      elseif(is_404()):
-      echo'404 -';
-      endif;
-      if($paged >= 2 || $page >= 2):
-      echo'-'.sprintf('%sページ',
-      max($paged,$page));
-      endif;
-      ?>
-    </title>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/normalize.css">
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
     <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
