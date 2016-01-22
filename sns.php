@@ -1,6 +1,6 @@
 <?php
     $url_encode=urlencode(get_permalink());
-    $title_encode=urlencode(get_the_title());
+    $title_encode=urlencode(get_the_title() . " - " . get_bloginfo('name'));
 ?>
 
 <div id="socialbox">
