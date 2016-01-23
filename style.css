@@ -177,7 +177,6 @@ h2::after {
 .post h3 {
   font-size: 20px;
   padding: 10px;
-  margin: 20px 0 20px 0;
   color: #1a1a1a;
   line-height: 27px;
   background-repeat: no-repeat;
@@ -196,6 +195,9 @@ h2::after {
 .post h5 {
   margin-bottom: 10px;
   font-size: 16px;
+}
+.post p {
+  margin-bottom: 10px;
 }
 .post blockquote {
   background-color: #f3f3f3;
@@ -278,7 +280,7 @@ footer h4 a {
   font-size: 16px;
   font-weight: bold;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 28px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
@@ -400,8 +402,8 @@ footer h4 a {
 .info .info-desc {
   font-weight: bold;
 }
-#kanren dd {
-  padding-left: 110px;
+#kanren {
+  padding: 0 10px;
 }
 #kanren dd h5 {
   font-size: 16px;
