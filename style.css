@@ -420,14 +420,11 @@ footer h4 a {
 }
 #kanren dl {
   margin-bottom: 10px;
-  padding-bottom: 10px;
   border-bottom-width: 1px;
   border-bottom-style: dotted;
   border-bottom-color: #ccc;
 }
 #kanren dl:last-child {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
   border-style: none;
 }
 #kanren .clearfix dd p {
