@@ -7,7 +7,7 @@
     endforeach ;
     $args = array(
       'post__not_in' => array($post -> ID),
-      'posts_per_page'=> 10,
+      'posts_per_page'=> 4,
       'category__in' => $category_ID,
       'orderby' => 'rand',
     );
