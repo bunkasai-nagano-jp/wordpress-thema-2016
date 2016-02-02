@@ -27,7 +27,7 @@ function register_open_sans_style() {
 add_action( 'wp_enqueue_scripts', 'register_open_sans_style' );
 
 function register_ionicons_style() {
-    wp_enqueue_style( 'ionicons', 'http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css',array(), false, false);
+    wp_enqueue_style( 'ionicons', get_template_directory_uri() . '/css/ionicons.css',array(), false, false);
 }
 add_action( 'wp_enqueue_scripts', 'register_ionicons_style' );
 
