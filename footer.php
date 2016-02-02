@@ -6,10 +6,7 @@
         All Rights Reserved.</p>
     </footer>
 </div>
-<!-- /#wrapper -->
-<!-- ページトップへ戻る -->
 <div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
-<!-- ページトップへ戻る　終わり -->
 <?php  wp_enqueue_script('base',get_bloginfo('template_url') . '/js/base.js', array()); ?>
 
 <script type="text/javascript">
