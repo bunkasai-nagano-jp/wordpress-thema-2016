@@ -232,14 +232,14 @@ function get_gmap_url() {
         'width' => get_field('width'),
         'height' => get_field('height')
     ];
-    $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE'; //使用時要変更
+    $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
     if (!empty($gmap)) {
     $schoolName = $gmap['schoolName'];
     $width = $gmap['width'];
     $height = $gmap['height'];
     $g = '<iframe width="' . $width .'" height="' . $height . '" frameborder="0" style="border:0" ' . 'src="https://www.google.com/maps/embed/v1/place?key=' . $googleApiKey . '&q=' . urlencode($schoolName) . '" allowfullscreen></iframe>';
-		return '<div class="gmap">' . $g . '</div>';
-		}
+    return '<div class="gmap">' . $g . '</div>';
+    }
 };
 add_shortcode ('gmap' , 'get_gmap_url');
 
@@ -263,12 +263,16 @@ function get_gmap_sv_url() {
     $width = '580';
     $height = '300';
     $location = get_field('streetviewLocation');
-		$fov = get_field('streetviewFov');
-		$pitch = get_field('streetviewPitch');
-		$heading = get_field('heading');
-    if (!empty($location)) {
-        $url = $base . 'size=' . $width . 'x' . $height  .'&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading .'&key=' . $googleApiKey;
-				return $url;
+    $fov = get_field('streetviewFov');
+    $pitch = get_field('streetviewPitch');
+    $heading = get_field('heading');
+    if (empty($location)) {
+      $url = get_template_directory_uri() . "/images/no-image.jpg";
+      return $url;
+    }
+    else {
+      $url = $base . 'size=' . $width . 'x' . $height  .'&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading .'&key=' . $googleApiKey;
+      return $url;
     }
 }
 add_shortcode ( 'getGSV' , 'get_gmap_sv_url');
