@@ -15,7 +15,7 @@
 					</p>
 				</div>
 				<div class="info">
-					<img class="info-img" src="<?php echo get_gmap_sv_url(); ?>" alt="" />
+					<img class="info-img" src="<?php echo get_gmap_sv_url(); ?>">
 					<p class="info-name">
 						<span class="info-desc">文化祭名</span>
 						<span><?php echo get_custom_field('name') ?></span>
