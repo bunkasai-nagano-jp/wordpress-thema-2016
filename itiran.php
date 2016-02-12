@@ -3,9 +3,7 @@
 		<dl class="clearfix">
 			<dd>
 				<h1>
-					<a href="<?php the_permalink(); ?>">
-						<?php the_title(); ?>
-					</a>
+					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 				</h1>
 				<div class="blog-info">
 					<p>
