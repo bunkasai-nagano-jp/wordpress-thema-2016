@@ -1,10 +1,6 @@
 <footer id="footer">
-    <p class="copy">Copyright&copy;
-        <?php bloginfo('name');?>
-        ,
-        <?php the_date('Y');?>
-        All Rights Reserved.</p>
-    </footer>
+    <p class="copy">Copyright&copy;<?php echo bloginfo('name'); ?>&nbsp;,&nbsp;<?php the_date('Y');?>&nbsp;All Rights Reserved.</p>
+</footer>
 </div>
 <div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
 
