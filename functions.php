@@ -31,6 +31,11 @@ function register_ionicons_style() {
 }
 add_action( 'wp_enqueue_scripts', 'register_ionicons_style' );
 
+function register_base_script() {
+    wp_enqueue_script( 'base' , get_template_directory_uri() . '/js/base.js', array());
+}
+add_action( 'wp_enqueue_scripts' , 'register_base_script')
+
 //WordPress の投稿スラッグを自動的に生成する
 function auto_post_slug( $slug, $post_ID, $post_status, $post_type ) {
     if ( preg_match( '/(%[0-9a-f]{2})+/', $slug ) ) {

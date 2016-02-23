@@ -7,7 +7,6 @@
     </footer>
 </div>
 <div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
-<?php  wp_enqueue_script('base',get_bloginfo('template_url') . '/js/base.js', array()); ?>
 
 <script type="text/javascript">
 	  window._pt_lt = new Date().getTime();
