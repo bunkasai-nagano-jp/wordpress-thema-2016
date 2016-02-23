@@ -24,17 +24,15 @@
       <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb"> <a href="<?php echo get_category_link($catid); ?>" itemprop="url"> <span itemprop="title"><?php echo get_cat_name($catid); ?></span> </a> &gt; </div>
       <?php endforeach; ?>
     </div>
-          <h2>
-            <?php if( is_category() ) { ?>
-            <?php single_cat_title(); ?>
-            <?php } elseif( is_tag() ) { ?>
-            <?php single_tag_title(); ?>
-            <?php } elseif( is_tax() ) { ?>
-            <?php single_term_title(); ?>
-            <?php } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-              ブログアーカイブ
-              <?php } ?>
-             の文化祭 </h2>
+      <h2>
+        <?php if ( is_category() ) {
+                single_cat_title();
+              } elseif ( is_tag() ) {
+                single_tag_title();
+              } elseif ( is_tax() ) {
+                single_term_title();
+              } ?>の文化祭
+      </h2>
           <?php get_template_part('itiran');?>
         <?php if (function_exists("pagination")) {
 pagination($wp_query->max_num_pages);
