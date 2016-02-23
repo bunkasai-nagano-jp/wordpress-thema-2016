@@ -11,14 +11,14 @@
       <?php $catid = $postcat[0]->cat_ID; ?>
       <?php $allcats = array($catid); ?>
       <?php
-while(!$catid==0) {	/* すべてのカテゴリーIDを取得し配列にセットするループ */
-    $mycat = get_category($catid); 	/* カテゴリーIDをセット */
-    $catid = $mycat->parent; 	/* 上で取得したカテゴリーIDの親カテゴリーをセット */
-    array_push($allcats, $catid);
-}
-array_pop($allcats);
-$allcats = array_reverse($allcats);
-?>
+        while(!$catid==0) {	/* すべてのカテゴリーIDを取得し配列にセットするループ */
+          $mycat = get_category($catid); 	/* カテゴリーIDをセット */
+          $catid = $mycat->parent; 	/* 上で取得したカテゴリーIDの親カテゴリーをセット */
+          array_push($allcats, $catid);
+        }
+        array_pop($allcats);
+        $allcats = array_reverse($allcats);
+      ?>
       <?php /*--- 親カテゴリーがある場合は表示させる --- */ ?>
       <?php foreach($allcats as $catid): ?>
       <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb"> <a href="<?php echo get_category_link($catid); ?>" itemprop="url"> <span itemprop="title"><?php echo get_cat_name($catid); ?></span> </a> &gt; </div>
