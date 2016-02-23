@@ -40,8 +40,7 @@
       </article>
     </main>
   </div>
-  <!-- /#contentInner -->
   <?php get_sidebar(); ?>
 </div>
-<!--/#content -->
+
 <?php get_footer(); ?>
