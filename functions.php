@@ -187,35 +187,6 @@ register_sidebars(1,
     'before_title' => '<h4 class="menu_underh2">',
     'after_title' => '</h4>',
     ));
-register_sidebars(1,
-    array(
-    'name'=>'スクロール広告用',
-    'description' => '「テキスト」をここにドロップして内容を入力して下さい。アドセンスは禁止です。※PC以外では非表示部分',
-    'before_widget' => '<ul><li>',
-    'after_widget' => '</li></ul>',
-    'before_title' => '<h4 class="menu_underh2" style="text-align:left;">',
-    'after_title' => '</h4>',
-    ));
-register_sidebars(1,
-    array(
-    'name'=>'Googleアドセンス用336px',
-    'description' => '「テキスト」をここにドロップしてコードを入力して下さい。タイトルは反映されません。',
-    'before_widget' => '',
-    'after_widget' => '',
-    'before_title' => '<p style="display:none">',
-    'after_title' => '</p>',
-    ));
-
-register_sidebars(1,
-    array(
-    'name'=>'Googleアドセンスのスマホ用300px',
-    'description' => '「テキスト」をここにドロップしてコードを入力して下さい。タイトルは反映されません。',
-    'before_widget' => '',
-    'after_widget' => '',
-    'before_title' => '<p style="display:none">',
-    'after_title' => '</p>',
-    ));
-
 
 //更新日の追加
 function get_mtime($format) {
