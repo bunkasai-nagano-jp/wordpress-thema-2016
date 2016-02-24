@@ -14,7 +14,7 @@
 </div>
 <div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	  window._pt_lt = new Date().getTime();
 	  window._pt_sp_2 = [];
 	  _pt_sp_2.push('setAccount,7bc15af7');
@@ -27,7 +27,7 @@
 		var s = document.getElementsByTagName('script')[0];
 		s.parentNode.insertBefore(atag, s);s.parentNode.insertBefore(stag, s);
 	  })();
-</script>
+</script> -->
 
 <?php wp_footer(); ?>
     </body>
