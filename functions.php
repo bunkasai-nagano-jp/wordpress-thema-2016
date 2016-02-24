@@ -31,6 +31,11 @@ function register_ionicons_style() {
 }
 add_action( 'wp_enqueue_scripts', 'register_ionicons_style' );
 
+function register_bootstrap__style() {
+    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css',array(), false, false);
+}
+add_action( 'wp_enqueue_scripts', 'register_bootstrap__style' );
+
 function register_base_script() {
     wp_enqueue_script( 'base' , get_template_directory_uri() . '/js/base.js', array());
 }
