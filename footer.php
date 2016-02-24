@@ -1,4 +1,14 @@
 <footer id="footer">
+    <?php
+    if ( ! is_active_sidebar( 'sidebar-2' ) ){
+      return;
+    }
+    else {
+      echo '<div class="">';
+        dynamic_sidebar( 'sidebar-2' );
+      echo '</div>';
+    }
+    ?>
     <p class="copy">Copyright&copy;<?php echo bloginfo('name'); ?>&nbsp;,&nbsp;<?php the_date('Y');?>&nbsp;All Rights Reserved.</p>
 </footer>
 </div>

@@ -178,15 +178,25 @@ function wrap_iframe_in_div($the_content) {
 add_filter( 'the_content','wrap_iframe_in_div' );
 
 //ウイジェット追加
-if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar(4) )
-register_sidebars(1,
-    array(
-    'name'=>'サイドバーウイジェット',
+function stinger5_widgets_init() {
+  register_sidebar( array(
+    'name'=>__('Primary Sidebar', 'stinger5' ),
+    'id'            => 'sidebar-1',
     'before_widget' => '<ul><li>',
     'after_widget' => '</li></ul>',
     'before_title' => '<h4 class="menu_underh2">',
     'after_title' => '</h4>',
-    ));
+  ) );
+  register_sidebar( array(
+    'name'=>__('Footer Widget Area', 'stinger5' ),
+    'id'            => 'sidebar-2',
+    'before_widget' => '<ul><li>',
+    'after_widget' => '</li></ul>',
+    'before_title' => '<h4 class="menu_underh2">',
+    'after_title' => '</h4>',
+  ) );
+}
+add_action( 'widgets_init', 'stinger5_widgets_init' );
 
 //更新日の追加
 function get_mtime($format) {
