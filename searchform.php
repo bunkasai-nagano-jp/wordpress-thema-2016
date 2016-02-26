@@ -1,10 +1,9 @@
-<div id="search">
-  <form method="get" id="searchform" action="<?php echo home_url(); ?>/">
-    <label class="hidden" for="s">
-      <?php _e('', 'kubrick'); ?>
-    </label>
-    <input type="text" value="<?php the_search_query(); ?>"  name="s" id="s" />
-    <input type="image" src="<?php echo get_template_directory_uri(); ?>/images/search.png" alt="検索" id="searchsubmit"  value="<?php _e('Search', 'kubrick'); ?>" />
-  </form>
-</div>
-<!-- /stinger --> 
+<form method="get" action="<?php echo home_url(); ?>/">
+  <div class="input-group">
+    <label class="hidden" for="s"><?php _e('', 'kubrick'); ?></label>
+    <input type="text" class="form-control" value="<?php the_search_query(); ?>"  name="s"/>
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-default form-control" alt="検索" value="<?php _e('Search', 'kubrick'); ?>">検索</button>
+    </span>
+  </div>
+</form>
