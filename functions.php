@@ -41,6 +41,11 @@ function register_base_script() {
 }
 add_action( 'wp_enqueue_scripts' , 'register_base_script');
 
+function register_theme_style() {
+    wp_enqueue_style( 'theme_style' , get_template_directory_uri() . '/style.css' , array() , false , false );
+}
+add_action( 'wp_enqueue_scripts' , 'register_theme_style');
+
 //WordPress の投稿スラッグを自動的に生成する
 function auto_post_slug( $slug, $post_ID, $post_status, $post_type ) {
     if ( preg_match( '/(%[0-9a-f]{2})+/', $slug ) ) {
