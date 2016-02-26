@@ -8,7 +8,7 @@ add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
 function register_jq_script() {
-    if (!is_admin()) {
+    if ( ! is_admin() ) {
         $script_dir = get_template_directory_uri();
         wp_deregister_script( 'jquery' );
         wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',array(), false, false);
@@ -124,7 +124,7 @@ function pagination ($pages = '', $range = 4) {
         if ($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; First</a>";
         if ($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo; Previous</a>";
         for ($i=1; $i <= $pages; $i++) {
-            if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems)) {
+            if (1 != $pages &&( ! ($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems)) {
                 echo ($paged == $i)? "<span class=\"current\">".$i."</span>":"<a href='".get_pagenum_link($i)."' class=\"inactive\">".$i."</a>";
             }
          }
@@ -188,7 +188,7 @@ function get_mtime($format) {
     if ($ptime > $mtime) {
         return get_the_time($format);
     } elseif ($ptime === $mtime) {
-        return null;
+        return NULL;
     } else {
         return get_the_modified_time($format);
     }
@@ -202,7 +202,7 @@ function get_gmap_url() {
         'height' => get_field('height')
     ];
     $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-    if (!empty($gmap)) {
+    if ( ! empty($gmap)) {
     $schoolName = $gmap['schoolName'];
     $width = $gmap['width'];
     $height = $gmap['height'];
@@ -228,19 +228,19 @@ add_shortcode ('get_data' , 'get_custom_field_wrap');
 
 function get_gmap_sv_url() {
     $base = 'https://maps.googleapis.com/maps/api/streetview?';
-    $googleApiKey = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
+    $google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
     $width = '580';
     $height = '300';
     $location = get_field('streetviewLocation');
     $fov = get_field('streetviewFov');
     $pitch = get_field('streetviewPitch');
     $heading = get_field('heading');
-    if (empty($location)) {
+    if ( empty($location) ) {
       $url = get_template_directory_uri() . "/images/no-image.jpg";
       return $url;
     }
     else {
-      $url = $base . 'size=' . $width . 'x' . $height  .'&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading .'&key=' . $googleApiKey;
+      $url = $base . 'size=' . $width . 'x' . $height  .'&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading .'&key=' . $google_api_key;
       return $url;
     }
 }
