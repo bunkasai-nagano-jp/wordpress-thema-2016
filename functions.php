@@ -55,12 +55,6 @@ function auto_post_slug( $slug, $post_ID, $post_status, $post_type ) {
 }
 add_filter( 'wp_unique_post_slug', 'auto_post_slug', 10, 4  );
 
-//カスタム背景
-$custom_bgcolor_defaults = array(
-    'default-color' => '#f2f2f2',
-);
-add_theme_support( 'custom-background', $custom_bgcolor_defaults );
-
 //カスタムヘッダー
 $custom_header = array(
      'random-default' => false,
@@ -87,27 +81,6 @@ function custom_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
 
-//スマホ表示分岐
-function is_mobile(){
-    $useragents = array(
-        'iPhone', // iPhone
-        'iPod', // iPod touch
-        'Android.*Mobile', // 1.5+ Android *** Only mobile
-        'Windows.*Phone', // *** Windows Phone
-        'dream', // Pre 1.5 Android
-        'CUPCAKE', // 1.5+ Android
-        'blackberry9500', // Storm
-        'blackberry9530', // Storm
-        'blackberry9520', // Storm v2
-        'blackberry9550', // Storm v2
-        'blackberry9800', // Torch
-        'webOS', // Palm Pre Experimental
-        'incognito', // Other iPhone browser
-        'webmate' // Other iPhone browser
-    );
-    $pattern = '/'.implode('|', $useragents).'/i';
-    return preg_match($pattern, $_SERVER['HTTP_USER_AGENT']);
-}
 //アイキャッチサムネイル
 add_theme_support('post-thumbnails');
 add_image_size('thumb100',100,100,true);
