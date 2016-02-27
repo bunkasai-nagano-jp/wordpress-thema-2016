@@ -21,18 +21,18 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a href="<?php echo home_url(); ?>/" class="navbar-brand"><?php bloginfo( 'name' ); ?></a>
+                <a href="<?php echo home_url(); ?>/" class="navbar-brand"><?php bloginfo('name'); ?></a>
               </div>
               <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <?php
-                    $defaults = array(
-                                      'theme_location'  => 'navbar',
-                                      'container' => '' ,
-                                      'items_wrap' => '%3$s'
-                                );
-                    wp_nav_menu( $defaults );
-                  ?>
+<?php
+  $defaults = array(
+                    'theme_location'  => 'navbar',
+                    'container' => '' ,
+                    'items_wrap' => '%3$s'
+              );
+  wp_nav_menu( $defaults );
+?>
                 </ul>
               </div>
             </div>
