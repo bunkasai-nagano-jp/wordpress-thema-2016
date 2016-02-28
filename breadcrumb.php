@@ -27,11 +27,16 @@ $tmp = count($allcats);
 	{
 		break;
 	}
-if( ($tmp == 1) )
-{
-	echo '<li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<span itemprop="title">'.get_cat_name($catid).'</span></li>';
-	break;
-}
+	if( ($tmp == 1) )
+	{
+			if ( is_single() )
+			{
+				echo '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<a href="'.get_category_link($catid).'" itemprop="url">'.'<span itemprop="title">'.get_cat_name($catid).'</span></a></li>';
+				break;
+			}
+		echo '<li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<span itemprop="title">'.get_cat_name($catid).'</span></li>';
+		break;
+	}
 echo '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<a href="'.get_category_link($catid).'" itemprop="url">'.'<span itemprop="title">'.get_cat_name($catid).'</span></a></li>';
 $tmp--;
 }
