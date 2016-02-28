@@ -12,7 +12,6 @@
     <p class="copy">Copyright&copy;<?php echo bloginfo('name'); ?>&nbsp;,&nbsp;<?php the_date('Y');?>&nbsp;All Rights Reserved.</p>
 </footer>
 </div>
-<div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
 
 <script type="text/javascript">
 	  window._pt_lt = new Date().getTime();
