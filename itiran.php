@@ -14,7 +14,7 @@
 <?php
   $start_date = get_custom_field('startDate');
   $end_date = get_custom_field('endDate');
-  if( ! empty($start_date) )
+  if ( ! empty($start_date) )
   {
     echo '<dt>開催期間</dt>' . "\n" .
          '<dd>'. $start_date .' 〜 '. $end_date .'</dd>';
