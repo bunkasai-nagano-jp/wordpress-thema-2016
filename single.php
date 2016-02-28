@@ -13,12 +13,14 @@
             <?php the_content(); ?>
             <?php wp_link_pages(); ?>
           </div>
+          <div class="panel-footer">
+            <span class="tagst">
+              <i class="fa fa-tags"></i>&nbsp;-
+              <?php the_category(', ') ?>
+              <?php the_tags('', ', '); ?>
+            </span>
+          </div>
         </div>
-        <p class="tagst">
-            <i class="fa fa-tags"></i>&nbsp;-
-            <?php the_category(', ') ?>
-            <?php the_tags('', ', '); ?>
-        </p>
         <aside>
             <?php get_template_part('sns'); ?>
             <?php endwhile; else: ?>
