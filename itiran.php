@@ -16,8 +16,8 @@
   $end_date = get_custom_field('endDate');
   if ( ! empty($start_date) )
   {
-    echo '<dt>開催期間</dt>' . "\n" .
-         '<dd>'. $start_date .' 〜 '. $end_date .'</dd>';
+    echo '<dt>開催期間</dt>';
+    echo '<dd>'. $start_date .'&nbsp;~&nbsp;'. $end_date .'</dd>';
   }
 ?>
 <?php
@@ -29,13 +29,13 @@
   }
   elseif ( empty($public_end_date) )
   {
-    echo '<dt>一般公開日</dt>' . "\n" .
-         '<dd>'. $public_start_date .'</dd>';
+    echo '<dt>一般公開日</dt>';
+    echo '<dd>'. $public_start_date .'</dd>';
   }
   else
   {
-    echo '<dt>一般公開期間<dt>' . "\n" .
-         '<dd>'. $public_start_date .' 〜 '. $public_end_date .'</dd>';
+    echo '<dt>一般公開期間<dt>';
+    echo '<dd>'. $public_start_date .'&nbsp;~&nbsp;'. $public_end_date .'</dd>';
   }
 ?>
       </dl>
