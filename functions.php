@@ -66,20 +66,6 @@ function auto_post_slug($slug, $post_ID, $post_status, $post_type)
 }
 add_filter('wp_unique_post_slug', 'auto_post_slug', 10, 4);
 
-//カスタムヘッダー
-$custom_header = array(
-	'random-default' => false,
-	'width' => 980,
-	'height' => 250,
-	'flex-height' => true,
-	'flex-width' => false,
-	'default-text-color' => '',
-	'header-text' => false,
-	'uploads' => true,
-	'default-image' => get_template_directory_uri() . '/images/stinger5.png',
-);
-add_theme_support('custom-header', $custom_header);
-
 // 抜粋の長さを変更する
 function custom_excerpt_length($length)
 {
