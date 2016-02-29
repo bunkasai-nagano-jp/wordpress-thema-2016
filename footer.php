@@ -1,15 +1,18 @@
-<footer id="footer">
+<footer class="footer">
+  <div class="container">
     <?php
-    if ( ! is_active_sidebar( 'sidebar-2' ) ){
+    if ( ! is_active_sidebar( 'sidebar-2' ) )
+    {
       return;
     }
     else {
-      echo '<div class="">';
-        dynamic_sidebar( 'sidebar-2' );
-      echo '</div>';
+      echo '<div class="row">';
+      dynamic_sidebar( 'sidebar-2' );
+      echo "</div>";
     }
     ?>
-    <p class="copy">Copyright&copy;<?php echo bloginfo('name'); ?>&nbsp;,&nbsp;<?php the_date('Y');?>&nbsp;All Rights Reserved.</p>
+    <p>Copyright&copy;<?php echo bloginfo('name'); ?>&nbsp;,&nbsp;<?php the_date('Y');?>&nbsp;All Rights Reserved.</p>
+  </div>
 </footer>
 </div>
 
