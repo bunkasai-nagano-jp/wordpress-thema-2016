@@ -138,19 +138,17 @@ function pagination ($pages = '', $range = 4)
 	}
 	if ( 1 != $pages )
 	{
-		echo "<div class=\"pagination\"><span>Page" . $paged . " of " . $pages . "</span>";
-		if ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) echo "<a href='" . get_pagenum_link(1) . "'>&laquo; First</a>";
-		if ( $paged > 1 && $showitems < $pages) echo "<a href='" . get_pagenum_link($paged - 1) . "'>&lsaquo; Previous</a>";
+		echo "<div><nav class=\"text-center\"><ul class=\"pagination pagination-lg\">";
+		echo "<li><a href='" . get_pagenum_link($paged - 1) . "' aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
 		for ( $i=1; $i <= $pages; $i++ )
 		{
 			if ( 1 != $pages &&( ! ($i >= $paged+$range+1 OR $i <= $paged-$range-1) OR $pages <= $showitems) )
 			{
-				echo ($paged == $i)? "<span class=\"current\">" . $i . "</span>":"<a href='" . get_pagenum_link($i) . "' class=\"inactive\">" . $i . "</a>";
+				echo ($paged == $i)? "<li class=\"active\"><a href=\"#\">".$i."<span class=\"sr-only\">(current)</span></a></li>":"<li><a href='" . get_pagenum_link($i) . "'>" . $i . "</a></li>";
 			}
 		}
-		if ($paged < $pages && $showitems < $pages) echo "<a href=\"" . get_pagenum_link($paged +1) . "\">Next &rsaquo;</a>";
-		if ($paged < $pages-1 &&	$paged+$range-1 < $pages && $showitems < $pages) echo "<a href='" . get_pagenum_link($pages) . "'>Last &raquo;</a>";
-		echo "</div>\n";
+		echo "<li><a href=\"" . get_pagenum_link($paged +1) . "\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+		echo "</ul></nav></div>\n";
 	}
 }
 
