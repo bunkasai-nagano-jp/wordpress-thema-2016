@@ -259,6 +259,13 @@ function get_gmap_sv_url()
 	}
 }
 add_shortcode ('getGSV', 'get_gmap_sv_url');
+
+function get_school_page()
+{
+	get_template_part('school');
+}
+add_shortcode('school', 'get_school_page' );
+
 add_theme_support('title-tag');
 
 class MY_WP_Widget_Recent_Posts extends WP_Widget {
