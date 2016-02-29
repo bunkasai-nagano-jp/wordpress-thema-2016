@@ -332,3 +332,63 @@ class MY_WP_Widget_Recent_Posts extends WP_Widget {
 add_action('widgets_init', function(){
      register_widget( 'MY_WP_Widget_Recent_Posts' );
 });
+
+class MY_WP_Widget_Categories extends WP_Widget {
+
+	public function __construct()
+	{
+		$widget_ops = array(
+			'classname' => 'widget_categories_bootstrap',
+			'description' => __( "BootstrapのためのCategories" ),
+		);
+		parent::__construct('categories_bootstrap', __('カテゴリー Bootstrap'), $widget_ops);
+	}
+
+	public function widget( $args, $instance )
+	{
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Categories' ) : $instance['title'], $instance, $this->id_base );
+
+		echo $args['before_widget'];
+		if ( $title ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		}
+
+		$cat_args = array(
+			'orderby'      => 'name',
+		);
+?>
+		<ul class="nav nav-pills nav-stacked">
+<?php
+		$outputs = get_categories($cat_args);
+		foreach ($output as $output)
+		{
+?>
+			<li role="presentation"><a href="<?php echo get_category_link($output->cat_ID); ?>"><?php echo $output->cat_name ?><span class="badge"><?php echo $output->count ?></span></a></li>
+<?php
+		}
+?>
+		</ul>
+<?php
+	echo $args['after_widget'];
+}
+
+	public function update( $new_instance, $old_instance )
+	{
+		$instance = $old_instance;
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+		return $instance;
+	}
+
+	public function form( $instance )
+	{
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
+		$title = sanitize_text_field( $instance['title'] );
+		?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<?php
+	}
+}
+add_action('widgets_init', function(){
+     register_widget( 'MY_WP_Widget_Categories' );
+});
