@@ -285,3 +285,75 @@ function get_gmap_sv_url()
 }
 add_shortcode ('getGSV', 'get_gmap_sv_url');
 add_theme_support('title-tag');
+
+class MY_WP_Widget_Recent_Posts extends WP_Widget {
+
+	public function __construct() {
+		$widget_ops = array('classname' => 'my_widget_recent_entries', 'description' => __( "BootstrapのためのRecent Posts") );
+		parent::__construct('my-recent-posts', __('最近の投稿 Bootstrap'), $widget_ops);
+		$this->alt_option_name = 'my_widget_recent_entries';
+	}
+
+	public function widget( $args, $instance ) {
+		if ( ! isset( $args['widget_id'] ) ) {
+			$args['widget_id'] = $this->id;
+		}
+
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'My Recent Posts' );
+
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
+		if ( ! $number )
+			$number = 5;
+
+		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
+			'posts_per_page'      => $number,
+			'no_found_rows'       => true,
+			'post_status'         => 'publish',
+			'ignore_sticky_posts' => true
+		) ) );
+
+		if ($r->have_posts()) :
+		?>
+		<?php echo $args['before_widget']; ?>
+		<?php if ( $title ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		} ?>
+		<ul class="nav nav-pills nav-stacked">
+		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
+			<li>
+				<a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
+			</li>
+		<?php endwhile; ?>
+		</ul>
+		<?php echo $args['after_widget']; ?>
+		<?php
+		// Reset the global $the_post as this query will have stomped on it
+		wp_reset_postdata();
+
+		endif;
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+		$instance['number'] = (int) $new_instance['number'];
+		return $instance;
+	}
+
+	public function form( $instance ) {
+		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+?>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
+<?php
+	}
+}
+add_action('widgets_init', function(){
+     register_widget( 'MY_WP_Widget_Recent_Posts' );
+});
