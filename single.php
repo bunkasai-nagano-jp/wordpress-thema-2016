@@ -8,7 +8,7 @@
         <h1 class="title"><?php the_title(); ?></h1>
         <div class="panel panel-default">
           <div class="panel-body">
-            <span><i class="fa fa-fw fa-calendar"></i>&nbsp;公開<time datetime="<?php the_time('c') ;?>"><?php the_time('Y/m/d') ;?></time>&nbsp;<?php if ($mtime = get_mtime('Y/m/d')) echo ' <i class="fa fa-fw fa-repeat"></i>&nbsp;更新 ' , $mtime; ?></span>
+            <span><i class="fa fa-fw fa-calendar"></i>&nbsp;公開 <time datetime="<?php the_time('c') ;?>"><?php the_time('Y/m/d') ;?></time>&nbsp;<?php if ($mtime = get_mtime('Y/m/d')) echo ' <i class="fa fa-fw fa-repeat"></i>&nbsp;更新 ' , $mtime; ?></span>
             <hr>
             <?php the_content(); ?>
             <?php wp_link_pages(); ?>
