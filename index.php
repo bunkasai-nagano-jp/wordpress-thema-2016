@@ -1,22 +1,16 @@
 <?php get_header(); ?>
-
-<div id="content" class="clearfix">
-	<div id="contentInner">
-		<main>
-			<article>
-				<section>
-					<?php get_template_part('itiran');?>
-				</section>
-				<!--/section-->
-				<!--ページナビ-->
-				<?php if (function_exists("pagination")) {
-					pagination($wp_query->max_num_pages);
-				} ?>
-			</article>
-		</main>
-	</div>
-	<!-- /#contentInner -->
-	<?php get_sidebar(); ?>
+<div class="col-md-8">
+  <main>
+    <article>
+<?php get_template_part('breadcrumb'); ?>
+<?php get_template_part('itiran');?>
+<?php if ( function_exists("pagination") )
+			{
+				pagination($wp_query->max_num_pages);
+			}
+?>
+    </article>
+  </main>
 </div>
-<!--/#content -->
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

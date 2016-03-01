@@ -1,13 +1,9 @@
-<footer id="footer">
-    <p class="copy">Copyright&copy;
-        <?php bloginfo('name');?>
-        ,
-        <?php the_date('Y');?>
-        All Rights Reserved.</p>
-    </footer>
 </div>
-<div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
-<?php  wp_enqueue_script('base',get_bloginfo('template_url') . '/js/base.js', array()); ?>
+<footer class="footer">
+  <div class="container">
+    <p>&copy;&nbsp;<?php echo bloginfo('name'); ?>&nbsp;2015</p>
+  </div>
+</footer>
 
 <script type="text/javascript">
 	  window._pt_lt = new Date().getTime();
@@ -25,4 +21,5 @@
 </script>
 
 <?php wp_footer(); ?>
-</body></html>
+    </body>
+</html>
