@@ -1,34 +1,29 @@
 <?php get_header(); ?>
-<div id="content" class="clearfix">
-	<div id="contentInner">
-		<main>
-			<div class="post">
-				<div id="breadcrumb"><a href="<?php echo home_url(); ?>">HOME</a>&nbsp;>&nbsp;
-					<?php foreach ( array_reverse(get_post_ancestors($post->ID)) as $parid ) { ?>
-						<a href="<?php echo get_page_link( $parid );?>" title="<?php echo get_page($parid)->post_title; ?>"> <?php echo get_page($parid)->post_title; ?></a>&nbsp;>&nbsp;
-					<?php } ?>
-				</div>
-				<article>
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-						<h1 class="entry-title"><?php the_title(); ?></h1>
-						<?php the_content(); ?>
-				</article>
-						<?php wp_link_pages(); ?>
-						<div class="blog-info contentsbox">
-							<p>公開日：
-								<time class="entry-date" datetime="<?php the_time('c') ;?>">
-									<?php the_time('Y/m/d') ;?>
-								</time>
-								<br>
-								<?php if ($mtime = get_mtime('Y/m/d')) echo '最終更新日：' , $mtime; ?>
-							</p>
-						</div>
-					<?php endwhile; else: ?>
-						<p>記事がありません</p>
-					<?php endif; ?>
-			</div>
-		</main>
-	</div>
-	<?php get_sidebar(); ?>
+<div class="col-md-8">
+  <main>
+    <article>
+      <?php get_template_part('breadcrumb'); ?>
+      <div>
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <h1 class="title page-header"><?php the_title(); ?></h1>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <span><i class="fa fa-fw fa-calendar"></i>&nbsp;公開 <time datetime="<?php the_time('c') ;?>"><?php the_time('Y/m/d') ;?></time>&nbsp;<?php if ($mtime = get_mtime('Y/m/d')) echo ' <i class="fa fa-fw fa-repeat"></i>&nbsp;更新 ' , $mtime; ?></span>
+            <hr>
+            <?php the_content(); ?>
+            <?php wp_link_pages(); ?>
+          </div>
+        </div>
+      </div>
+      <?php endwhile; else: ?>
+        <div class="panel panel-info">
+          <div class="panel-body">
+            記事がありません
+          </div>
+        </div>
+      <?php endif; ?>
+    </article>
+  </main>
 </div>
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -145,18 +145,6 @@ function no_self_pingst (&$links)
 }
 add_action('pre_ping', 'no_self_pingst');
 
-//iframeのレスポンシブ対応
-function wrap_iframe_in_div($the_content)
-{
-	if ( is_singular() )
-	{
-		$the_content = preg_replace('/< *?iframe/i', '<div class="youtube-container"><iframe', $the_content);
-		$the_content = preg_replace('/<\/ *?iframe *?>/i', '</iframe></div>', $the_content);
-	}
-	return $the_content;
-}
-add_filter('the_content', 'wrap_iframe_in_div');
-
 //ウイジェット追加
 function stinger5_widgets_init()
 {
@@ -164,19 +152,9 @@ function stinger5_widgets_init()
 		array(
 			'name'=>__('Primary Sidebar', 'stinger5'),
 			'id'						=> 'sidebar-1',
-			'before_widget' => '<ul><li>',
+			'before_widget' => '<ul class="hidden-xs hidden-sm hidden-md"><li>',
 			'after_widget' => '</li></ul>',
-			'before_title' => '<h4 class="menu_underh2">',
-			'after_title' => '</h4>',
-		)
-	);
-	register_sidebar(
-		array(
-			'name'=>__('Footer Widget Area', 'stinger5' ),
-			'id'						=> 'sidebar-2',
-			'before_widget' => '<ul><li>',
-			'after_widget' => '</li></ul>',
-			'before_title' => '<h4 class="menu_underh2">',
+			'before_title' => '<h4 class="menu_underh1">',
 			'after_title' => '</h4>',
 		)
 	);
@@ -311,7 +289,6 @@ class MY_WP_Widget_Recent_Posts extends WP_Widget {
 		</ul>
 		<?php echo $args['after_widget']; ?>
 		<?php
-		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
 
 		endif;
@@ -367,7 +344,7 @@ class MY_WP_Widget_Categories extends WP_Widget {
 		<ul class="nav nav-pills nav-stacked">
 <?php
 		$outputs = get_categories($cat_args);
-		foreach ($output as $output)
+		foreach ($outputs as $output)
 		{
 ?>
 			<li role="presentation"><a href="<?php echo get_category_link($output->cat_ID); ?>"><?php echo $output->cat_name ?><span class="badge"><?php echo $output->count ?></span></a></li>

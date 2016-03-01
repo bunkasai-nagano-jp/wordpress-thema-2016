@@ -1,4 +1,4 @@
-<div id="kanren">
+<div class="list-group">
   <?php
   $categories = get_the_category($post->ID);
   $category_ID = array();
@@ -15,22 +15,16 @@
     ?>
     <?php if( $st_query -> have_posts() ): ?>
       <?php while ($st_query -> have_posts()) : $st_query -> the_post(); ?>
-      <dl class="clearfix">
-        <dt>
-          <a href="<?php the_permalink() ?>">
+          <a href="<?php the_permalink() ?>" class="list-group-item">
+            <h4 class="list-group-item-heading"><?php the_title(); ?></h4>
           </a>
-        </dt>
-        <dd>
-          <h5>
-            <a href="<?php the_permalink(); ?>">
-              <?php the_title(); ?>
-            </a>
-          </h5>
-        </dd>
-      </dl>
     <?php endwhile; ?>
     <?php else: ?>
-      <p>関連記事はありませんでした</p>
+      <div class="panel panel-info">
+        <div class="panel-body">
+          関連記事はありませんでした
+        </div>
+      </div>
     <?php endif; ?>
   <?php wp_reset_postdata(); ?>
 </div>

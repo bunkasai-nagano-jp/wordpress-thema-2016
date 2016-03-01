@@ -15,7 +15,7 @@
           <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar-collapse-1" aria-expanded="false" name="button">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false" name="button">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
@@ -39,3 +39,25 @@
           </nav>
         </header>
         <div class="container">
+          <div class="visible-xs-block clearfix">
+            <div class="dropdown pull-right">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-menu-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                市町村別ページ
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1">
+                <?php
+                $cat_args = array(
+                  'orderby'      => 'name',
+                );
+                $outputs = get_categories($cat_args);
+                foreach ($outputs as $output)
+                {
+                ?>
+                <li><a href="<?php echo get_category_link($output->cat_ID); ?>"><?php echo $output->cat_name ?><span class="badge"><?php echo $output->count ?></span></a></li>
+                <?php
+                }
+                ?>
+              </ul>
+            </div>
+          </div>
