@@ -1,18 +1,9 @@
-<footer id="footer">
-    <?php
-    if ( ! is_active_sidebar( 'sidebar-2' ) ){
-      return;
-    }
-    else {
-      echo '<div class="">';
-        dynamic_sidebar( 'sidebar-2' );
-      echo '</div>';
-    }
-    ?>
-    <p class="copy">Copyright&copy;<?php echo bloginfo('name'); ?>&nbsp;,&nbsp;<?php the_date('Y');?>&nbsp;All Rights Reserved.</p>
-</footer>
 </div>
-<div id="page-top"><a href="#wrapper" class="fa fa-angle-up"></a></div>
+<footer class="footer">
+  <div class="container">
+    <p>&copy;&nbsp;<?php echo bloginfo('name'); ?>&nbsp;2015</p>
+  </div>
+</footer>
 
 <!-- <script type="text/javascript">
 	  window._pt_lt = new Date().getTime();
