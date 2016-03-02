@@ -25,12 +25,6 @@ function register_fa_style()
 }
 add_action('wp_enqueue_scripts', 'register_fa_style');
 
-function register_open_sans_style()
-{
-	wp_enqueue_style('open_sans', '//fonts.googleapis.com/css?family=Open+Sans', array(), false, false);
-}
-add_action('wp_enqueue_scripts', 'register_open_sans_style');
-
 function register_bootstrap()
 {
 	wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', array(), false, false);
