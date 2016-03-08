@@ -2,7 +2,7 @@
 <h2 class="header">名称</h2>
 <p class="bg-success"><?php echo get_field('name'); ?></p>
 <h2 class="header">開催期間</h2>
-<p class="bg-info"><?php echo get_field('startDate'); ?>&nbsp;~&nbsp;<?php echo get_field('endDate'); ?>
+<p class="bg-info"><?php echo get_field('startDate'); ?>&nbsp;~&nbsp;<?php echo get_field('endDate'); ?></p>
 <?php
 $public_end_date = get_field('publicEndDate');
 $public_start_date = get_field('publicStartDate');
