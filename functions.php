@@ -179,13 +179,14 @@ function get_gmap_url()
 {
 	$gmap = [
 		'school_name' => get_field('schoolName'),
-		'width' => get_field('width'),
-		'height' => get_field('height'),
+		'width'       => get_field('width'),
+		'height'      => get_field('height'),
+		'address'     => get_field('address'),
 	];
 	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
 	if ( ! empty($gmap) )
 	{
-		$iframe = '<iframe width="' . $gmap['width'] . '" height="' . $gmap['height'] . '" frameborder="0" style="border:0" ' . 'src="https://www.google.com/maps/embed/v1/place?key=' . $google_api_key . '&q=' . urlencode($gmap['school_name']) . '" allowfullscreen></iframe>';
+		$iframe = '<iframe width="' . $gmap['width'] . '" height="' . $gmap['height'] . '" frameborder="0" style="border:0" ' . 'src="https://www.google.com/maps/embed/v1/place?key=' . $google_api_key . '&q=' . urlencode($gmap['school_name'].' '.$gmap['address']) . '" allowfullscreen></iframe>';
 		return '<div class="gmap">' . $iframe . '</div>';
 		}
 };
