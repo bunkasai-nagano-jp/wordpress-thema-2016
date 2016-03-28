@@ -69,6 +69,11 @@ h2 + p {
 .nav-pills li a .badge {
   line-height: 1.42857;
 }
+.nav li a {
+  position: relative;
+  display: block;
+  padding: 2px 15px;
+}
 .footer {
   position: absolute;
   bottom: 0;
