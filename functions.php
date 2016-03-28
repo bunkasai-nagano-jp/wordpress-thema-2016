@@ -146,7 +146,7 @@ function stinger5_widgets_init()
 		array(
 			'name'=>__('Primary Sidebar', 'stinger5'),
 			'id'						=> 'sidebar-1',
-			'before_widget' => '<ul class="hidden-xs hidden-sm hidden-md"><li>',
+			'before_widget' => '<ul class="hidden-xs hidden-sm"><li>',
 			'after_widget' => '</li></ul>',
 			'before_title' => '<h4 class="menu_underh1">',
 			'after_title' => '</h4>',
