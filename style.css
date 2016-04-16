@@ -7,7 +7,7 @@ Author: Sugiyama Masato
 Author URI: http://bunkasai.nagano.jp
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 20160320
+Version: 20160416
 ---------------------------------------------------------*/
 html {
   position: relative;
@@ -69,6 +69,11 @@ h2 + p {
 .nav-pills li a .badge {
   line-height: 1.42857;
 }
+.nav li a {
+  position: relative;
+  display: block;
+  padding: 2px 15px;
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -108,4 +113,8 @@ aside div ul {
   color: #fff;
   background-color: #0087ba;
   border-color: #adadad;
+}
+.year a:first-child {
+  display: inline-block;
+  margin-right: 5px;
 }

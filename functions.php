@@ -146,7 +146,7 @@ function stinger5_widgets_init()
 		array(
 			'name'=>__('Primary Sidebar', 'stinger5'),
 			'id'						=> 'sidebar-1',
-			'before_widget' => '<ul class="hidden-xs hidden-sm hidden-md"><li>',
+			'before_widget' => '<ul class="hidden-xs hidden-sm"><li>',
 			'after_widget' => '</li></ul>',
 			'before_title' => '<h4 class="menu_underh1">',
 			'after_title' => '</h4>',
@@ -239,6 +239,33 @@ function get_school_page()
 add_shortcode('school', 'get_school_page' );
 
 add_theme_support('title-tag');
+
+function get_school_info( $ID , $param) {
+	if ( !empty($ID) )
+	{
+		$custom_fields = get_post_custom( $ID );
+		$post = get_post( $ID, ARRAY_A );
+		return $post[$param];
+	}
+	else
+	{
+
+	}
+}
+
+function is_other_year_post( $school_name ) {
+	$args = array(
+		 'meta_value' => $school_name,
+	);
+	$result = get_posts( $args );
+	$number = count($result);
+	if ($number == 1) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
 
 class MY_WP_Widget_Recent_Posts extends WP_Widget {
 
