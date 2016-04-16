@@ -18,25 +18,50 @@
               <tbody>
                 <?php
                 $args = array(
-                  'post_type' => 'post',
-                  'meta_key'   => 'startDate',
-                  'meta_type'   => 'DATE',
-                  'order'   => 'ASC',
-                  'orderby' => 'meta_value',
-                  'nopaging' => true);
-                  $query = new WP_Query($args);
-                  if ( $query->have_posts() )
+                          'post_type'   => 'post',
+                          'meta_key'    => 'startDate',
+                          'meta_type'   => 'DATE',
+                          'order'       => 'ASC',
+                          'orderby'     => 'meta_value',
+                          'nopaging'    => true,
+                        );
+                $posts = query_posts($args);
+                ?>
+                <?php
+                $tmp = array();
+                foreach ( $posts as $value )
+                {
+                  $school_name = get_post_meta($value->ID, 'schoolName', true);
+                  if ( in_array($school_name, $tmp) )
                   {
-                    while ( $query->have_posts() )
+                    continue;
+                  }
+                  ?>
+                  <tr>
+                    <td><?php echo get_post_meta($value->ID, 'schoolName', true); ?></td>
+                    <td><?php echo get_post_meta($value->ID, 'name', true); ?></td>
+                    <td class="year"><?php if ( is_other_year_post($school_name) )
                     {
-                      $query->the_post();
-                      echo "<tr>";
-                      echo "<td>".get_field('schoolName')."</td>";
-                      echo "<td>".get_field('name')."</td>";
-                      echo "<td>".get_field('startDate')."&nbsp;~&nbsp;".get_field('endDate')."</td>";
-                      echo "</tr>";
+                      $args = array(
+                                'meta_value' => $school_name,
+                              );
+                      $result = get_posts($args);
+                      foreach ( $result as $value )
+                      {
+                        $start_date = date_create(get_post_meta($value->ID, 'startDate', true));
+                        echo "<a href=\"".get_permalink($value->ID)."\">".date_format($start_date, 'Y')."年</a>";
+                      }
                     }
-                  }?>
+                    else
+                    {
+                      $start_date = date_create(get_post_meta($value->ID, 'startDate', true));
+                      echo "<a href=\"".get_permalink($value->ID)."\">".date_format($start_date, 'Y')."年</a>";
+                    } ?></td>
+                  </tr>
+                <?php
+                    $tmp[] = $school_name;
+                }
+                ?>
               </tbody>
             </table>
           </div>
