@@ -12,7 +12,7 @@
                 <tr>
                   <th>学校名</th>
                   <th>文化祭名</th>
-                  <th>開催期間</th>
+                  <th>詳細</th>
                 </tr>
               </thead>
               <tbody>
