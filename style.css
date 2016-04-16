@@ -114,3 +114,7 @@ aside div ul {
   background-color: #0087ba;
   border-color: #adadad;
 }
+.year a:first-child {
+  display: inline-block;
+  margin-right: 5px;
+}
