@@ -4,26 +4,32 @@
 <h2 class="header">開催期間</h2>
 <p class="bg-info"><?php echo get_field('startDate'); ?>&nbsp;~&nbsp;<?php echo get_field('endDate'); ?></p>
 <?php
-$public_end_date = get_field('publicEndDate');
-$public_start_date = get_field('publicStartDate');
-if ( empty($public_end_date) )
-{
-	if ( empty($public_start_date) )
-	{
-		echo '<h2 class="header">一般公開</h2>';
-		echo '<p class="bg-warning">なし</p>';
+
+$public_end_date   =    get_field('publicEndDate');    //一般公開開始日
+$public_start_date =    get_field('publicStartDate');  //一般公開終了日
+$public_unknown    =    get_field('public_unknown');   //一般公開情報が不明かどうか真偽値
+
+if ( empty($public_end_date) ) {                 //一般公開終了日が入力されていない
+	if ( empty($public_start_date) ) {             //一般公開開始日入力されていない
+		if ( is_bool($public_unknown) == true) {     //一般公開情報が不明
+			echo "<h2 class=\"header\">一般公開</h2>\n";
+			echo "<p class=\"bg-warning\">不明</p>\n";
+		}
+		else {
+			echo "<h2 class=\"header\">一般公開</h2>\n";
+			echo "<p class=\"bg-warning\">なし</p>\n";
+		}
 	}
-	else
-	{
-		echo '<h2 class="header">一般公開日</h2>';
-		echo '<p class="bg-info">'.get_field('publicStartDate').'</p>';
+	else {
+		echo "<h2 class=\"header\">一般公開日</h2>\n";
+		echo '<p class="bg-info">'.get_field('publicStartDate')."</p>\n";
 	}
 }
-else
-{
-	echo '<h2 class="header">一般公開期間</h2>';
-	echo '<p class="bg-info">'.get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate').'</p>';
+else {
+	echo "<h2 class=\"header\">一般公開期間</h2>\n";
+	echo '<p class="bg-info">'.get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate')."</p>\n";
 }
+
 ?>
 <h2 class="header">地図</h2>
 <?php echo get_gmap_url(); ?>
