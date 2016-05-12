@@ -22,12 +22,12 @@ if ( empty($public_end_date) ) {                 //一般公開終了日が入�
 	}
 	else {
 		echo "<h2 class=\"header\">一般公開日</h2>\n";
-		echo '<p class="bg-info">'.get_field('publicStartDate')."</p>\n";
+		echo '<p class="bg-info">'. $public_start_date ."</p>\n";
 	}
 }
 else {
 	echo "<h2 class=\"header\">一般公開期間</h2>\n";
-	echo '<p class="bg-info">'.get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate')."</p>\n";
+	echo '<p class="bg-info">'. $public_start_date .'&nbsp;~&nbsp;'. $public_end_date ."</p>\n";
 }
 
 ?>

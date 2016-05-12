@@ -25,26 +25,29 @@
         }
 ?>
 <?php
-        $public_start_date = get_custom_field('publicStartDate');
-        $public_end_date = get_custom_field('publicEndDate');
-        if ( empty($public_start_date) )
-        {
-          echo '<dt>一般公開</dt>'."\n";
-          echo '<dd>'.'なし'.'</dd>'."\n";
+        $public_start_date =    get_custom_field('publicStartDate');
+        $public_end_date   =    get_custom_field('publicEndDate');
+        $public_unknown    =    get_field('public_unknown');
+
+        if ( empty($public_start_date) ) {
+          if ( empty($public_start_date) ) {
+            if ( is_bool($public_unknown) == true ) {
+              echo '<dt>一般公開</dt>'."\n";
+              echo '<dd>不明</dd>'."\n";
+            }
+            else {
+              echo '<dt>一般公開</dt>'."\n";
+              echo '<dd>'.'なし'.'</dd>'."\n";
+            }
+          }
+          else {
+            echo '<dt>一般公開日</dt>'."\n";
+            echo '<dd>'. $public_start_date .'</dd>'."\n";
+          }
         }
-        elseif ( empty($public_end_date) )
-        {
-?>
-        <?php echo '<dt>一般公開日</dt>'."\n"; ?>
-        <?php echo '<dd>'. $public_start_date .'</dd>'."\n"; ?>
-<?php
-        }
-        else
-        {
-?>
-        <?php echo '<dt>一般公開期間<dt>'."\n"; ?>
-        <?php echo '<dd>'. $public_start_date .'&nbsp;~&nbsp;'. $public_end_date .'</dd>'."\n"; ?>
-<?php
+        else {
+          echo '<dt>一般公開期間<dt>'."\n";
+          echo '<dd>'. $public_start_date .'&nbsp;~&nbsp;'. $public_end_date .'</dd>'."\n";
         }
 ?>
       </dl>
