@@ -5,25 +5,25 @@
 <p class="bg-info"><?php echo get_field('startDate'); ?>&nbsp;~&nbsp;<?php echo get_field('endDate'); ?></p>
 <?php
 
-$public_end_date   =    get_field('publicEndDate');    //一般公開開始日
-$public_start_date =    get_field('publicStartDate');  //一般公開終了日
+$public_start_date =    get_field('publicStartDate');  //一般公開公開日
+$public_end_date   =    get_field('publicEndDate');    //一般公開終了日
 $public_unknown    =    get_field('public_unknown');   //一般公開情報が不明かどうか真偽値
 
-if ( empty($public_end_date) ) {                 //一般公開終了日が入力されていない
-	if ( empty($public_start_date) ) {             //一般公開開始日入力されていない
-		if ( is_bool($public_unknown) == true) {     //一般公開情報が不明
-			echo "<h2 class=\"header\">一般公開</h2>\n";
-			echo "<p class=\"bg-warning\">不明</p>\n";
-		}
-		else {
-			echo "<h2 class=\"header\">一般公開</h2>\n";
-			echo "<p class=\"bg-warning\">なし</p>\n";
-		}
-	}
-	else {
-		echo "<h2 class=\"header\">一般公開日</h2>\n";
-		echo '<p class="bg-info">'. $public_start_date ."</p>\n";
-	}
+if ( $public_unknown === true ) {
+	// 一般公開情報が不明
+	echo "<h2 class=\"header\">一般公開</h2>\n";
+	echo "<p class=\"bg-warning\">不明</p>\n";
+}
+elseif ( empty($public_start_date) ) {
+	// 一般公開なし
+	echo "<h2 class=\"header\">一般公開</h2>\n";
+	echo "<p class=\"bg-warning\">なし</p>\n";
+}
+elseif ( empty($public_end_date) ) {
+	// 一般公開終了日が空
+	// 一般公開が1日
+	echo "<h2 class=\"header\">一般公開日</h2>\n";
+	echo '<p class="bg-info">'. $public_start_date ."</p>\n";
 }
 else {
 	echo "<h2 class=\"header\">一般公開期間</h2>\n";
