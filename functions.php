@@ -362,17 +362,22 @@ class MY_WP_Widget_Categories extends WP_Widget {
 			'orderby'      => 'name',
 		);
 ?>
-		<ul class="nav nav-pills nav-stacked">
-<?php
-		$outputs = get_categories($cat_args);
-		foreach ($outputs as $output)
-		{
-?>
-			<li role="presentation"><a href="<?php echo get_category_link($output->cat_ID); ?>"><?php echo $output->cat_name ?><span class="badge"><?php echo $output->count ?></span></a></li>
-<?php
-		}
-?>
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+表示
+</a>
+	<div class="collapse" id="collapseCategories">
+		<ul class="nav nav-pills nav-stacked nav-thin">
+	<?php
+			$outputs = get_categories($cat_args);
+			foreach ($outputs as $output)
+			{
+	?>
+				<li role="presentation"><a href="<?php echo get_category_link($output->cat_ID); ?>"><?php echo $output->cat_name ?><span class="badge"><?php echo $output->count ?></span></a></li>
+	<?php
+			}
+	?>
 		</ul>
+	</div>
 <?php
 	echo $args['after_widget'];
 }
