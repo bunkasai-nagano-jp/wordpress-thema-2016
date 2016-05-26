@@ -25,13 +25,6 @@ function register_fa_style()
 }
 add_action('wp_enqueue_scripts', 'register_fa_style');
 
-function register_bootstrap()
-{
-	wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', array(), false, false);
-	wp_enqueue_script('bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', array(), false, false);
-}
-add_action('wp_enqueue_scripts', 'register_bootstrap');
-
 function register_theme_style()
 {
 	wp_enqueue_style('theme_style', get_template_directory_uri() . '/style.css', array(), false, false);
