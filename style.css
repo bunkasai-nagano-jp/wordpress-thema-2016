@@ -95,6 +95,10 @@ h2 + p {
 aside div ul {
   list-style-type: none;
 }
+.sns {
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
