@@ -8,6 +8,13 @@ if ( strpos($src, 'ver=') )
 add_filter('style_loader_src', 'vc_remove_wp_ver_css_js', 9999);
 add_filter('script_loader_src', 'vc_remove_wp_ver_css_js', 9999);
 
+function register_bootstrap () {
+	wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css', array(), false, false);
+	wp_enqueue_script('bootstrap-script', 'https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js', array(), false, false);
+}
+
+add_action('wp_enqueue_scripts', "register_bootstrap");
+
 function register_jq_script()
 {
 	if ( ! is_admin() )
@@ -206,8 +213,8 @@ function get_gmap_sv_url()
 {
 	$base = 'https://maps.googleapis.com/maps/api/streetview?';
 	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-	$width = '580';
-	$height = '300';
+	$width = 400;
+	$height = 300;
 	$location = get_field('streetviewLocation');
 	$fov = get_field('streetviewFov');
 	$pitch = get_field('streetviewPitch');

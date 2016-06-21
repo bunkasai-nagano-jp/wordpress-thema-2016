@@ -9,6 +9,7 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Version: 20160523
 ---------------------------------------------------------*/
+@import "css/normalize.css";
 html {
   position: relative;
   min-height: 100%;
@@ -25,12 +26,6 @@ body {
 }
 .breadcrumb {
   margin-bottom: 11px;
-}
-.panel div dl {
-  margin-top: 22px;
-}
-.panel-body hr {
-  margin-top: 15px;
 }
 h2 + p {
   padding: 15px;
