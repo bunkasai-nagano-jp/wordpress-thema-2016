@@ -2,7 +2,7 @@
 <!-- /container -->
 <footer class="footer">
   <div class="container">
-    <p>&copy;&nbsp;<?php echo bloginfo('name'); ?>&nbsp;2015</p>
+    <p>&copy; <?php echo bloginfo('name'); ?> 2015</p>
   </div>
 </footer>
 
