@@ -6,5 +6,6 @@
   </div>
 </footer>
 <?php wp_footer(); ?>
-    </body>
+<script type="text/javascript" src="//www.google.com/cse/brand?form=cse-search-box&lang=ja"></script>
+</body>
 </html>
