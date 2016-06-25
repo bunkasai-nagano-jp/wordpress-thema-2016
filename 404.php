@@ -8,5 +8,4 @@
     <p>また、URLが変更された可能性があります。検索ボックスをご利用ください。</p>
   </div>
 </div>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
