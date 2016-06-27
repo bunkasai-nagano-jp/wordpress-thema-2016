@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 //== Footer Height
-@footer-height: 60px;
+@footer-height: 40px;
 
 html {
   position: relative;
@@ -9,40 +9,120 @@ html {
 }
 
 body {
-  margin-bottom: @footer-height;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  > .container {
+    margin-bottom: @footer-height;
+  }
 }
 
 .navbar {
-  border-radius: 0;
+  margin-bottom: 20px;
 }
 
-.page-header {
-  &.title {
-    margin-top: 11px;
-    margin-bottom: 11px;
+.gsc-search-box {
+  float: right!important;
+  box-sizing: inherit!important;
+  td.gsc-input {
+    margin-right: 5px;
+  }
+  input.gsc-input {
+    display: inline-block!important;
+    width: auto;
+    vertical-align: middle;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+  }
+  input.gsc-search-button {
+    display: inline-block!important;
+    color: #5cb85c;
+    background-color: transparent;
+    background-image: none;
+    border-color: #5cb85c;
+    border: 1px solid;
+    padding: .375rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: .25rem;
+    &:focus, &:hover {
+      text-decoration: none;
+    }
+    &:focus {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+    &:hover {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    }
+    &:focus, &:active {
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #5cb85c;
+    }
+  }
+}
+
+@media (min-width: 544px) {
+  .img-fluid {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    .card {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+}
+@media (min-width: 1200px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: baseline;
+    .card {
+    margin-bottom: 2rem;
+    }
   }
 }
 
 .breadcrumb {
   margin-bottom: 11px;
-}
-
-h2 {
-  & + p {
-    padding: 15px;
-  }
-}
-
-.header{
-  border-bottom: 1px solid #ecf0f1;
-}
-
-.container {
-  .visible-xs-block {
-    &.clearfix {
-      margin-bottom: 20px;
-    }
-  }
 }
 
 .gmap {
@@ -51,6 +131,7 @@ h2 {
   padding-top: 30px;
   height: 0;
   overflow: hidden;
+  margin-bottom: 1rem;
   iframe,object,embed {
     position: absolute;
     top: 0;
@@ -60,87 +141,23 @@ h2 {
   }
 }
 
-.search-form {
-  div {
-    label {
-      display: block;
-      font-size: 19px;
-      margin-top: 11px;
-      margin-bottom: 11px;
-      font-weight: 300;
-      line-height: 1.2;
-      color: inherit;
-    }
-  }
-}
-
-.nav-pills {
-  li {
-    a {
-      .badge {
-        line-height: 1.42857;
-      }
-    }
-  }
-}
-
-.nav-thin {
-  li {
-    a {
-      padding: 3px 15px;
-    }
-  }
-}
-
-#collapseCategories {
-  margin-top: 11px;
-}
-
 .footer {
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: @footer-height;
   background-color: #2c3e50;
   .container {
     width: auto;
-    height: @footer-height;
     padding: 0 15px;
+    margin: 0;
     p {
       margin:@footer-height/3 0;
       line-height: @footer-height/3;
       color: #fff;
     }
-  }
-}
-
-aside {
-  div {
-    ul {
-      list-style-type: none;
-    }
-	}
-}
-
-.btn-facebook {
-  color: #fff;
-  background-color: #3b5998;
-  border-color: #ccc;
-  &:hover {
-    color: #fff;
-    background-color: darken(#3b5998,10%);
-    border-color: #adadad;
-  }
-}
-
-.btn-twitter {
-  color: #fff;
-  background-color: #00aced;
-  border-color: #ccc;
-  &:hover {
-    color: #fff;
-    background-color: darken(#00aced,10%);
-    border-color: #adadad;
   }
 }
 
