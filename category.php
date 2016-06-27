@@ -67,7 +67,7 @@
               <span>不明</span>
 <?php } ?>
             </p>
-            <p class="card-text">
+            <p class="card-text hidden-sm-down">
 <?php if ($public_unknown) { ?>
               <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
               <span>不明</span>
@@ -89,9 +89,6 @@
           <div class="card-block text-xs-right">
             <a href="<?php the_permalink(); ?>" class="btn btn-primary">詳細</a>
           </div>
-        </div>
-        <div class="card-footer">
-          <i class="fa fa-tags"></i> <span><?php the_category(', '); ?></span>
         </div>
       </div>
       <!-- /card -->
