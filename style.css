@@ -94,6 +94,9 @@ h2 + p {
   }
 }
 @media (max-width: 768px) {
+  div.card div.card-block:first-child {
+    padding: 1.25rem;
+  }
   div.card div.card-block {
     padding: 1rem 1rem 0;
   }
