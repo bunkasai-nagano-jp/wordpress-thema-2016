@@ -85,8 +85,22 @@ body > .container {
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
+h2 + p {
+  padding: 15px;
+}
 @media (min-width: 544px) {
   .img-fluid {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  div.card div.card-block {
+    padding: 1rem 1rem 0;
+  }
+  div.card div.card-block.text-xs-right {
+    padding: 0 1rem 1rem;
+  }
+  div.card-deck > div.card .img-fluid {
     width: 100%;
   }
 }
