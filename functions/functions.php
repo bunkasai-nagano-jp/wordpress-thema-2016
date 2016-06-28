@@ -15,6 +15,7 @@ function get_mtime($format) {
   }
 }
 
+// 他の年の記事があるかどうか
 function is_other_year_post( $school_name ) {
   $args    =  array(
                 'meta_value' => $school_name,
