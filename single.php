@@ -5,36 +5,29 @@
       <?php get_template_part('breadcrumb'); ?>
       <div>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <h1 class="title page-header"><?php the_title(); ?></h1>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <span><i class="fa fa-fw fa-calendar"></i>&nbsp;公開 <time datetime="<?php the_time('c') ;?>"><?php the_time('Y/m/d') ;?></time>&nbsp;<?php if ($mtime = get_mtime('Y/m/d')) echo ' <i class="fa fa-fw fa-repeat"></i>&nbsp;更新 ' , $mtime; ?></span>
-            <hr>
-            <?php the_content(); ?>
-            <?php wp_link_pages(); ?>
+        <div class="card">
+          <div class="card-block">
+            <h1 class="card-title"><?php the_title(); ?></h1>
+            <h6 class="card-subtitle text-muted">
+              <span><i class="fa fa-fw fa-calendar"></i> 公開 <?php echo get_the_date(); ?></span>
+              <?php
+                if ( get_the_date() != get_the_modified_date() ) {
+                  echo '<span><i class="fa fa-fw fa-repeat"></i> 更新 '. get_the_modified_date(). '</span>';
+                }?>
+            </h6>
           </div>
-          <div class="panel-footer">
-            <span class="tagst">
-              <i class="fa fa-tags"></i>&nbsp;-
-              <?php the_category(', ') ?>
-              <?php the_tags('', ', '); ?>
-            </span>
+          <?php the_content(); ?>
+          <?php wp_link_pages(); ?>
+          <?php global $displaying_post_id;
+          $displaying_post_id = get_the_ID() ?>
+          <div class="card-footer">
+            <i class="fa fa-fw fa-tags"></i> <?php the_category(', ') ?> <?php the_tags('', ', '); ?>
           </div>
         </div>
-        <aside>
-            <?php get_template_part('sns'); ?>
-            <?php endwhile; else: ?>
-            <div class="panel panel-info">
-              <div class="panel-body">
-                記事がありません
-              </div>
-            </div>
-            <?php endif; ?>
-            <h3 class="title page-header">
-                <i class="fa fa-th-list"></i>&nbsp;関連記事
-            </h3>
-            <?php get_template_part('kanren');?>
-        </aside>
+        <?php endwhile; ?>
+        <?php get_template_part('kanren');?>
+        <?php else: ?>
+        <?php endif; ?>
       </div>
     </article>
   </main>
