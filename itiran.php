@@ -33,7 +33,7 @@
 <?php } elseif ($year == date("Y") and strtotime($today) >= strtotime($start_date) and strtotime($today) <= strtotime($end_date)) { ?>
         <p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> 開催中</p>
 <?php } elseif ($days > 0) { ?>
-        <p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 開催まで<?php echo $days; ?></p>
+        <p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 開催まで<?php echo $days; ?>日</p>
 <?php } else { }; ?>
         <p class="card-text">
 <?php if ($start_date and $end_date) { ?>
