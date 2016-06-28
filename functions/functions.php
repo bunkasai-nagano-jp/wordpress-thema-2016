@@ -28,3 +28,13 @@ function is_other_year_post( $school_name ) {
     return true;
   endif;
 }
+
+// 文化祭が終了しているか
+function is_ended() {
+  $end_date = get_field('endDate');
+  if ( $end_date < date("Y/m/d") ):
+    return true;
+  else:
+    return false;
+  endif;
+}
