@@ -48,7 +48,7 @@
           </a>
           <h6 class="card-subtitle text-muted"><?php echo $class; ?> <?php echo $school_name; ?></h6>
           <div class="card-block">
-<?php if ($year < date("Y")) { ?>
+<?php if ($end_date < $today) { ?>
             <p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 終了</p>
 <?php } elseif ($year == date("Y") and strtotime($today) >= strtotime($start_date) and strtotime($today) <= strtotime($end_date)) { ?>
             <p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> 開催中</p>
