@@ -75,7 +75,8 @@
     </div>
   </div>
   <!-- /card -->
-<?php endwhile; else: ?>
+<?php endwhile; ?>
+<?php else: ?>
   <!-- no articles -->
   <div class="card">
     <div class="card-block">
