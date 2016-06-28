@@ -28,10 +28,10 @@ function relation_category_list ($post_id) {
       $public_start_date  =   get_field('publicStartDate', $relation_post->ID);
       $public_end_date    =   get_field('publicEndDate', $relation_post->ID);
       $public_unknown     =   get_field('public_unknown', $relation_post->ID);
-      if ($post_id == $relation_post->ID): ?>
-  <a href="<?php get_permalink($relation_post->ID); ?>" class="list-group-item active"><?php echo $relation_post->post_title; ?></a>
+  if ($post_id == $relation_post->ID): ?>
+  <a href="<?php echo get_permalink($relation_post->ID); ?>" class="list-group-item active"><?php echo $relation_post->post_title; ?></a>
 <?php else: ?>
-  <a href="<?php get_permalink($relation_post->ID); ?>" class="list-group-item"><?php echo $relation_post->post_title; ?></a>
+  <a href="<?php echo get_permalink($relation_post->ID); ?>" class="list-group-item"><?php echo $relation_post->post_title; ?></a>
 <?php endif;
 } ?>
 </div>
