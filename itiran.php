@@ -71,7 +71,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <i class="fa fa-tags"></i> <span><?php the_category(', '); ?></span>
+      <i class="fa fa-fw fa-tags"></i> <span><?php the_category(', '); ?></span>
     </div>
   </div>
   <!-- /card -->
