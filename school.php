@@ -1,5 +1,10 @@
 <img src="<?php echo get_gmap_sv_url(600,350); ?>" class="img-fluid" style="width:100%;">
 <div class="card-block">
+	<?php
+	if ( is_ended() ) {
+		echo "<p class=\"card-text text-muted\">この文化祭は終了しました</p>";
+	}
+	?>
 	<h2 class="card-title">名称</h2>
 	<p class="bg-success"><?php echo get_field('name'); ?></p>
 	<h2 class="card-title"><?php
