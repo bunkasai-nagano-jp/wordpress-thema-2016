@@ -10,7 +10,7 @@ add_action('wp_enqueue_scripts', 'register_jq_script');
 
 // Bootstrap
 function register_bootstrap () {
-	wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css', array(), false, 'all');
+  wp_enqueue_style('bootstrap', get_template_directory_uri(). '/css/bootstrap.css', array(), false, 'all');
 	wp_enqueue_script('tether-script', 'https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js', array(), false, false);
 	wp_enqueue_script('bootstrap-script', 'https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js', array(), false, false);
 }
