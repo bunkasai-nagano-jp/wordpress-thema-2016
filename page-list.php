@@ -1,8 +1,5 @@
 <?php get_header(); ?>
 <div class="col-md-12">
-  <?php get_template_part('breadcrumb'); ?>
-</div>
-<div class="col-md-12">
   <div class="card">
     <div class="card-block">
       <h1 class="card-title"><?php the_title(); ?></h4>
