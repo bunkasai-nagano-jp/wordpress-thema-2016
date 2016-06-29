@@ -18,9 +18,6 @@
             <?php the_content(); ?>
             <?php wp_link_pages(); ?>
           </div>
-          <div class="card-footer">
-            <i class="fa fa-fw fa-tags"></i> <?php the_category(', ') ?> <?php the_tags('', ', '); ?>
-          </div>
         </div>
       <?php endwhile; ?>
       <?php else: ?>
