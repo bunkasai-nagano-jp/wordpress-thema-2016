@@ -11,7 +11,7 @@
             <th>市町村</th>
             <th>学校名</th>
             <th>文化祭名</th>
-            <th>詳細</th>
+            <th>詳細ページ</th>
           </tr>
         </thead>
         <tbody>
