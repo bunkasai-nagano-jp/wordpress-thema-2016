@@ -8,6 +8,12 @@ function register_jq_script() {
 }
 add_action('wp_enqueue_scripts', 'register_jq_script');
 
+// normalize.css
+function register_normalize_style() {
+  wp_enqueue_style('normalize', get_template_directory_uri(). '/css/normalize.css', array(), false, 'all');
+}
+add_action('wp_enqueue_scripts', 'register_normalize_style');
+
 // Bootstrap
 function register_bootstrap () {
   wp_enqueue_style('bootstrap', get_template_directory_uri(). '/css/bootstrap.css', array(), false, 'all');
