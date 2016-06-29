@@ -76,7 +76,7 @@ EOT;
               </div>
             </div>
             <div class="card-footer">
-              <i class="fa fa-tags"></i> <span><?php the_category(', ',$post->ID); ?></span>
+              <i class="fa fa-fw fa-tags"></i> <span><?php the_category(', ',$post->ID); ?></span>
             </div>
           </div><?php
       } ?>
