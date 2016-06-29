@@ -1,4 +1,6 @@
-<img src="<?php echo get_gmap_sv_url(600,350); ?>" class="img-fluid" style="width:100%;">
+<?php if ( get_gmap_sv_url(600, 350) ): ?>
+<img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(600, 350); ?>" alt="streetview">
+<?php endif; ?>
 <div class="card-block">
 	<?php
 	if ( is_ended() ) {

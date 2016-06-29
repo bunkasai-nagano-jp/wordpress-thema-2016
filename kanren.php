@@ -17,9 +17,8 @@
         $year               =   date("Y", strtotime($start_date));
         $days               =   abs(strtotime($start_date) - strtotime($today)) / (60 * 60 * 24); ?>
         <div class="card"><?php
-        $src = get_gmap_sv_url(360, 200);
-        if ($src) { ?>
-          <a href="<?php get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo $src; ?>" alt="streetview"></a><?php
+        if ( get_gmap_sv_url(640, 300) ) { ?>
+          <a href="<?php get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
         } ?>
           <div class="card-block">
             <a href="<?php get_permalink($post->ID); ?>"><h2 class="card-title"><?php echo $name; ?></h2></a>
