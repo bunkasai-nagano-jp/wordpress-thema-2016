@@ -30,7 +30,7 @@ function get_gmap_sv_url($width = 400, $height = 300) {
 	$pitch = get_field('streetviewPitch');
 	$heading = get_field('heading');
 	if ( !$location ) {
-		return null;
+		return false;
 	}
 	else {
 		$url = $base . 'size=' . $width . 'x' . $height .'&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading .'&key=' . $google_api_key;
