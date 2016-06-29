@@ -32,5 +32,7 @@
     </article>
   </main>
 </div>
-<?php get_sidebar(); ?>
+<div class="col-md-4 hidden-sm-down">
+  <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>
