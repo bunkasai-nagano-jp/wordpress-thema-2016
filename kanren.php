@@ -24,52 +24,37 @@
             <a href="<?php get_permalink($post->ID); ?>"><h2 class="card-title"><?php echo $name; ?></h2></a>
             <h6 class="card-subtitle text-muted"><?php echo $class; ?> <?php echo $school_name; ?></h6>
             <div class="card-block">
-              <?php
-              if ($year < date("Y")) {
-                echo '<p class="card-text text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i>'.' 終了'.'</p>';
-              }
-              elseif ($days > 0) {
-                echo '<p class="card-text text-primary"><i class="fa fa-clock-o" aria-hidden="true"></i>'.' 開催まで'.$days.'日'.'</p>';
-              }
-              elseif ($days == 0) {
-                echo '<p class="card-text text-info"><i class="fa fa-flag" aria-hidden="true"></i>'.' 開催中</p>';
-              }
-              else {
-
-              };
-              ?>
-              <p class="card-text"><?php
-              if ($start_date) {
-                echo <<<EOT
-                <span><i class="fa fa-calendar"></i> 開催期間</span>
-                <span>$start_date ~ $end_date</span>
-EOT;
-              }
-              elseif ($public_unknown) {
-                echo <<<EOT
-                <span>一般公開</span>
+            <?php if ($year < date("Y")): ?>
+              <p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 終了</p>
+            <?php elseif ($days > 0): ?>
+              <p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 開催まで<?php echo $days; ?>日</p>
+            <?php elseif ($days == 0): ?>
+              <p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> 開催中</p>
+            <?php endif; ?>
+              <p class="card-text">
+            <?php if ($start_date and $end_date): ?>
+                <span><i class="fa fa-fw fa-calendar"></i> 開催期間</span>
+                <span><?php echo $start_date; ?> ~ <?php echo $end_date; ?></span>
+            <?php elseif ($start_date and !$end_date): ?>
+                <span><i class="fa fa-fw fa-calendar"></i> 開催日</span>
+                <span><?php echo $start_date; ?></span>
+            <?php endif; ?>
+              </p>
+              <p class="card-text">
+            <?php if ($public_unknown): ?>
+                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
                 <span>不明</span>
-EOT;
-              }
-              elseif (!$public_start_date) {
-                echo <<<EOT
-                <span>一般公開</span>
+            <?php elseif (!$public_start_date): ?>
+                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
                 <span>なし</span>
-EOT;
-              }
-              elseif (!$public_end_date) {
-                echo <<<EOT
-                <span>一般公開日</span>
-                <span>$public_start_date</span>
-EOT;
-              }
-              else {
-                echo <<<EOT
-                <span>一般公開期間<span>
-                <span>{$public_start_date} ~ {$public_end_date}</span>
-EOT;
-                }
-                ?></p>
+              <?php elseif (!$public_end_date): ?>
+                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開日</span>
+                <span><?php echo $public_start_date; ?></span>
+            <?php else: ?>
+                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開期間<span>
+                <span><?php echo $public_start_date; ?> ~ <?php echo $public_end_date; ?></span>
+            <?php endif; ?>
+              </p>
               </div>
               <div class="card-block text-xs-right">
                 <a href="<?php get_permalink($post->ID); ?>" class="btn btn-primary">詳細</a>
