@@ -40,7 +40,7 @@ function pagination ($pages = '', $range = 4) {
 <?php endif; ?>
 <?php } ?>
 <?php } ?>
-<?php if ($paged == $showitems): ?>
+<?php if ($paged == $pages): ?>
       <li class="page-item disabled">
         <a class="page-link" href="" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
