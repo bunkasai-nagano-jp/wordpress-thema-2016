@@ -124,14 +124,16 @@ h2 {
   height: @footer-height;
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
-  .container {
+  .container-fluid {
     width: auto;
     padding: 0 15px;
     margin: 0;
-    p {
+    p, a {
       margin:@footer-height/3 0;
       line-height: @footer-height/3;
-      color: #373a3c;
+    }
+    a {
+      color: rgba(0, 0, 0, 0.3);
     }
   }
 }

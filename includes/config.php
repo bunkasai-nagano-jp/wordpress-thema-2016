@@ -11,6 +11,7 @@ remove_action('wp-head', 'rsd_links_extra', 3);
 register_nav_menus(
 	array(
 	'navbar' => __( 'Navbar', 'wp-thema' ),
+	'footer' => __( 'Footer', 'wp-thema' ),
 	)
 );
 
