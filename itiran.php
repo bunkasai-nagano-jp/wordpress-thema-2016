@@ -11,7 +11,7 @@
   $public_unknown     =  get_field('public_unknown');
   $today              =  date("Y/m/d");
   $year               =  date("Y", strtotime($start_date));
-  $days               =  abs(strtotime($start_date) - strtotime($today)) / (60 * 60 * 24);
+  $days               =  get_remaining_days();
 ?>
   <!-- card -->
   <div class="card">
