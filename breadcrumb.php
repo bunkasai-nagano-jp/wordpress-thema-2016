@@ -1,47 +1,57 @@
+<!-- breadcrumb -->
 <ol class="breadcrumb">
-<?php
-	if ( is_home() )
-	{
-		echo '<li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">ホーム</span></li>';
+<?php if ( is_home() ) { ?>
+  <li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <span itemprop="title">ホーム</span>
+  </li>
+<?php } else { ?>
+  <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo home_url(); ?>" itemprop="url">
+      <span itemprop="title">ホーム</span>
+    </a>
+  </li>
+<?php } ?>
+<?php $categories = get_the_category();
+if ( $categories ) {
+	$current_category_id  =  $categories[0]->cat_ID;
+	$all_category_id      =  array($current_category_id);
+	while( $current_category_id ) {
+		$current_category     =  get_category($current_category_id);
+		$current_category_id  =  $current_category->parent;
+		array_push($all_category_id, $current_category_id);
 	}
-	else {
-		echo '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.home_url().'" itemprop="url"><span itemprop="title">ホーム</span></a></li>';
-	}
-?>
-<?php $postcat = get_the_category();
-if ( ! empty($postcat) )
-{
-	$catid = $postcat[0]->cat_ID;
-	$allcats = array($catid);
-	while( ! $catid == 0 )
-	{
-		$mycat = get_category($catid);
-		$catid = $mycat->parent;
-		array_push($allcats, $catid);
-	}
-	array_pop($allcats);
-	$allcats = array_reverse($allcats);
-	$tmp = count($allcats);
+	array_pop($all_category_id);
+	$all_category_id = array_reverse($all_category_id);
+	$tmp = count($all_category_id);
 	?>
-	<?php foreach( $allcats as $catid )
-	{
-		if ( is_home() )
-		{
+<?php foreach( $all_category_id as $current_category_id ) {
+		if ( is_home() ) {
 			break;
 		}
-		if( ($tmp == 1) )
-		{
-				if ( is_single() )
-				{
-					echo '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<a href="'.get_category_link($catid).'" itemprop="url">'.'<span itemprop="title">'.get_cat_name($catid).'</span></a></li>';
-					break;
-				}
-			echo '<li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<span itemprop="title">'.get_cat_name($catid).'</span></li>';
+		if( ($tmp == 1) ) {
+			if ( is_single() ) { ?>
+  <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo get_category_link($current_category_id); ?>" itemprop="url">
+      <span itemprop="title"><?php echo get_cat_name($current_category_id); ?></span>
+    </a>
+  </li>
+<?php
+				break;
+			}
+?>
+  <li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <span itemprop="title"><?php echo get_cat_name($current_category_id); ?></span>
+  </li>
+<?php
 			break;
-		}
-	echo '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'.'<a href="'.get_category_link($catid).'" itemprop="url">'.'<span itemprop="title">'.get_cat_name($catid).'</span></a></li>';
+		} ?>
+  <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo get_category_link($current_category_id); ?>" itemprop="url">
+      <span itemprop="title"><?php echo get_cat_name($current_category_id); ?></span>
+    </a>
+  </li>
+<?php
 	$tmp--;
 	}
-}
-?>
-</ol>
+} ?></ol>
+<!-- /breadcrumb -->
