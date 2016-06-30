@@ -1,25 +1,47 @@
 {
-  "name": "stinger5",
+  "name": "wp-thema",
   "version": "1.0.0",
-  "description": "stinger5",
+  "description": "wp-thema",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.masato.nagano.jp:root/stinger5.git"
+    "url": "git@github.com:sugi-ya/wp-thema.git"
   },
   "author": "sugiyama",
   "license": "GPL-3.0",
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib":"*",
+    "grunt": "^0.4.0" ,
+    "grunt-contrib-clean": "^0.5.0" ,
+    "grunt-contrib-coffee": "^0.10.0" ,
+    "grunt-contrib-compass": "^0.7.0" ,
+    "grunt-contrib-compress":"^0.8.0",
+    "grunt-contrib-concat":"^0.4.0",
+    "grunt-contrib-connect":"^0.7.0",
+    "grunt-contrib-copy":"^0.5.0",
+    "grunt-contrib-csslint":"^0.2.0",
+    "grunt-contrib-cssmin":"1.0.1",
+    "grunt-contrib-handlebars":"0.8.0",
+    "grunt-contrib-htmlmin":"^0.2.0",
+    "grunt-contrib-csslint":"^0.2.0",
+    "grunt-contrib-imagemin":"^0.7.0",
+    "grunt-contrib-jade":"^0.11.0",
+    "grunt-contrib-jasmine":"^0.6.0",
+    "grunt-contrib-jshint":"^0.10.0",
+    "grunt-contrib-jst":"^0.6.0",
+    "grunt-contrib-less":"1.3.0",
+    "grunt-contrib-nodeunit":"^0.3.0",
+    "grunt-contrib-qunit":"^0.4.0",
+    "grunt-contrib-requirejs":"^0.4.1",
+    "grunt-contrib-sass":"^0.7.0",
+    "grunt-contrib-stylus":"^0.15.1",
+    "grunt-contrib-symlink":"^0.3.0",
+    "grunt-contrib-uglify":"^0.4.0",
+    "grunt-contrib-watch":"1.0.0",
+    "grunt-contrib-yuidoc":"^0.5.0",
     "grunt-autoprefixer": "*",
-		"grunt-contrib-less": "*",
-    "grunt-contrib-cssmin": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-sass": "*",
-    "grunt-compass": "*"
+    "grunt-contrib-watch": "*"
   }
 }

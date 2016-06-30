@@ -1,15 +1,11 @@
 <?php get_header(); ?>
-<div class="col-md-8">
-    <main>
-      <article>
-        <div class="page-header">
-          <h2>404 Page Not Found</h2>
-        </div>
-        <div class="panel panel-info">
-          <div class="panel-body">ページが見つかりませんでした。申し訳ありません。</div>
-        </div>
-      </article>
-    </main>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">404 Page Not Found</h1>
+    <p class="lead">ページが見つかりませんでした。申し訳ありません。</p>
+    <hr class="m-y-2">
+    <p>URLをお確かめください。</p>
+    <p>また、URLが変更された可能性があります。検索ボックスをご利用ください。</p>
+  </div>
 </div>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

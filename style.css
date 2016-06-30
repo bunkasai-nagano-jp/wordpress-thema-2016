@@ -14,32 +14,77 @@ html {
   min-height: 100%;
 }
 body {
-  margin-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+body > .container {
+  margin-bottom: 40px;
+}
+a:hover {
+  text-decoration: none;
 }
 .navbar {
-  border-radius: 0;
-}
-.page-header.title {
-  margin-top: 11px;
-  margin-bottom: 11px;
-}
-.breadcrumb {
-  margin-bottom: 11px;
-}
-.panel div dl {
-  margin-top: 22px;
-}
-.panel-body hr {
-  margin-top: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
 }
 h2 + p {
   padding: 15px;
 }
-.header {
-  border-bottom: 1px solid #ecf0f1;
+@media (min-width: 544px) {
+  .img-fluid {
+    width: 100%;
+  }
 }
-.container .visible-xs-block.clearfix {
-  margin-bottom: 20px;
+@media (max-width: 768px) {
+  .card .card-block:first-child {
+    padding: 1.25rem;
+  }
+  .card .card-block {
+    padding: 1rem 1rem 0;
+  }
+  .card .card-block .text-xs-right {
+    padding: 0 1rem 1rem;
+  }
+  .card-deck > .card .img-fluid {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  .flex-container .card {
+    margin-bottom: 1.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+}
+@media (min-width: 1200px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: baseline;
+  }
+  .flex-container .card {
+    margin-bottom: 2rem;
+  }
+}
+.breadcrumb {
+  margin-bottom: 11px;
 }
 .gmap {
   position: relative;
@@ -47,6 +92,7 @@ h2 + p {
   padding-top: 30px;
   height: 0;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 .gmap iframe,
 .gmap object,
@@ -57,67 +103,28 @@ h2 + p {
   width: 100% !important;
   height: 100% !important;
 }
-.search-form div label {
-  display: block;
-  font-size: 19px;
-  margin-top: 11px;
-  margin-bottom: 11px;
-  font-weight: 300;
-  line-height: 1.2;
-  color: inherit;
-}
-.nav-pills li a .badge {
-  line-height: 1.42857;
-}
-.nav-thin li a {
-  padding: 3px 15px;
-}
-#collapseCategories {
-  margin-top: 11px;
-}
 .footer {
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  height: 60px;
-  background-color: #2c3e50;
+  height: 40px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
 }
-.footer .container {
+.footer .container-fluid {
   width: auto;
-  height: 60px;
   padding: 0 15px;
+  margin: 0;
 }
-.footer .container p {
-  margin: 20px 0;
-  line-height: 20px;
-  color: #fff;
+.footer .container-fluid p,
+.footer .container-fluid a {
+  margin: 13.33333333px 0;
+  line-height: 13.33333333px;
 }
-aside div ul {
-  list-style-type: none;
-}
-.sns {
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-.btn-facebook {
-  color: #fff;
-  background-color: #3b5998;
-  border-color: #ccc;
-}
-.btn-facebook:hover {
-  color: #fff;
-  background-color: #2d4373;
-  border-color: #adadad;
-}
-.btn-twitter {
-  color: #fff;
-  background-color: #00aced;
-  border-color: #ccc;
-}
-.btn-twitter:hover {
-  color: #fff;
-  background-color: #0087ba;
-  border-color: #adadad;
+.footer .container-fluid a {
+  color: rgba(0, 0, 0, 0.3);
 }
 .year a:first-child {
   display: inline-block;

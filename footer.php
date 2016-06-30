@@ -1,25 +1,30 @@
-</div>
+<!-- footer -->
 <footer class="footer">
-  <div class="container">
-    <p>&copy;&nbsp;<?php echo bloginfo('name'); ?>&nbsp;2015</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <p>&copy; <?php echo bloginfo('name'); ?> 2015</p>
+      </div>
+      <div class="col-md-8">
+        <?php
+        $defaults = array(
+          'menu'            => 'footer',
+          'container'       => false,
+          'echo'            => true,
+          'depth'           => 0,
+          'walker'          => new navbar_link_list,
+          'theme_location'  => 'footer',
+          'items_wrap'      => '%3$s',
+        );
+        wp_nav_menu( $defaults );?>
+      </div>
+    </div>
   </div>
 </footer>
-
-<script type="text/javascript">
-	  window._pt_lt = new Date().getTime();
-	  window._pt_sp_2 = [];
-	  _pt_sp_2.push('setAccount,7bc15af7');
-	  var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-	  (function() {
-		var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
-		atag.src = _protocol + 'js.ptengine.jp/pta.js';
-		var stag = document.createElement('script'); stag.type = 'text/javascript'; stag.async = true;
-		stag.src = _protocol + 'js.ptengine.jp/pts.js';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(atag, s);s.parentNode.insertBefore(stag, s);
-	  })();
-</script>
-
+<!-- /footer -->
+</div>
+<!-- /container -->
 <?php wp_footer(); ?>
-    </body>
+<script type="text/javascript" src="//www.google.com/cse/brand?form=cse-search-box&lang=ja"></script>
+</body>
 </html>
