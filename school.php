@@ -20,7 +20,7 @@ if ( get_gmap_sv_url(600, 350) ): ?>
   </p>
   <h2 class="card-title">一般公開</h2>
 <?php
-if ( get_field('public_unknown') === true ):
+if ( get_field('public_unknown') ):
   echo '<p>';
   echo '不明';
   echo '</p>';
