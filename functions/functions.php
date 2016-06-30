@@ -38,3 +38,17 @@ function is_ended() {
     return false;
   endif;
 }
+
+// 文化祭までの残り日数を取得
+function get_remaining_days() {
+  if ( get_field('startDate') and get_field('endDate')) {
+    $start_date         =  get_field('startDate');
+    $end_date           =  get_field('endDate');
+    $today              =  date("Y/m/d");
+    $days               =  abs(strtotime($start_date) - strtotime($today)) / (60 * 60 * 24);
+    return $days;
+  }
+  else {
+    return null;
+  }
+}
