@@ -1,14 +1,8 @@
 <!-- .flex-container -->
 <div class="flex-container">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-  $name               =  get_field('name');
-  $class              =  get_field('class');
-  $school_name        =  get_field('schoolName');
   $start_date         =  get_field('startDate');
   $end_date           =  get_field('endDate');
-  $public_start_date  =  get_field('publicStartDate');
-  $public_end_date    =  get_field('publicEndDate');
-  $public_unknown     =  get_field('public_unknown');
   $today              =  date("Y/m/d");
   $year               =  date("Y", strtotime($start_date));
   $days               =  get_remaining_days();
@@ -17,54 +11,72 @@
   <div class="card">
 <?php
   $src = get_gmap_sv_url(385, 200);
-  if ($src) { ?>
+  if ($src): ?>
     <a href="<?php the_permalink(); ?>">
       <img class="card-img-top img-fluid" src="<?php echo $src; ?>" alt="streetview">
     </a>
-<?php } ?>
+<?php endif; ?>
     <div class="card-block">
       <a href="<?php the_permalink(); ?>">
-        <h2 class="card-title"><?php echo $name; ?></h2>
+        <h2 class="card-title"><?php the_field('name'); ?></h2>
       </a>
-      <h6 class="card-subtitle text-muted"><?php echo $class; ?> <?php echo $school_name; ?></h6>
+      <h6 class="card-subtitle text-muted"><?php the_field('class'); ?> <?php the_field('schoolName'); ?></h6>
       <div class="card-block">
-<?php if ($end_date < $today) { ?>
+<?php if ($end_date < $today): ?>
         <p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 終了</p>
-<?php } elseif ($year == date("Y") and strtotime($today) >= strtotime($start_date) and strtotime($today) <= strtotime($end_date)) { ?>
+<?php elseif ($year == date("Y") and strtotime($today) >= strtotime($start_date) and strtotime($today) <= strtotime($end_date)): ?>
         <p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> 開催中</p>
-<?php } elseif ($days > 0) { ?>
+<?php elseif ($days > 0): ?>
         <p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 開催まで<?php echo $days; ?>日</p>
-<?php } else { }; ?>
+<?php endif; ?>
         <p class="card-text">
-<?php if ($start_date and $end_date) { ?>
           <span><i class="fa fa-fw fa-calendar"></i> 開催期間</span>
-          <span><?php echo $start_date ?> ~ <?php echo $end_date ?></span>
-<?php } elseif ($start_date and !$end_date) { ?>
-          <span><i class="fa fa-fw fa-calendar"></i> 開催日</span>
-          <span><?php echo $start_date?></span>
-<?php } else { ?>
-          <span><i class="fa fa-fw fa-calendar"></i> 開催期間</span>
+<?php if ( get_field('startDate') and get_field('endDate') ): ?>
+          <span><?php the_field('startDate'); ?>&nbsp;~&nbsp;<?php the_field('endDate'); ?></span>
+<?php elseif ( get_field('startDate') and !get_field('endDate') ): ?>
+          <span><?php the_field('startDate'); ?></span>
+<?php else: ?>
           <span>不明</span>
-<?php } ?>
+<?php endif; ?>
         </p>
-        <p class="card-text">
-<?php if ($public_unknown) { ?>
-          <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
-          <span>不明</span>
-<?php } elseif (!$public_start_date and !$public_end_date) { ?>
-          <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
-          <span>なし</span>
-<?php } elseif ($public_start_date and !$public_end_date) { ?>
-          <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開日</span>
-          <span><?php echo $public_start_date ?></span>
-<?php } elseif ($public_start_date and $public_end_date) { ?>
-          <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開期間<span>
-          <span><?php echo $public_start_date; ?> ~ <?php echo $public_end_date; ?></span>
-<?php } else { ?>
-          <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
-          <span>不明</span>
-<?php } ?>
-        </p>
+        <p class="card-text"><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</p>
+          <?php
+          if ( get_field('public_unknown') ):
+            echo '<p class="card-text">';
+            echo '不明';
+            echo '</span>';
+          else:
+            if ( have_rows('public_open') ):
+              while ( have_rows('public_open') ) : the_row();
+                if ( get_sub_field('public_open_day') and get_sub_field('public_open_start_time') and get_sub_field('public_open_end_time') ):
+                  echo '<p class="card-text">';
+                  echo get_sub_field('public_open_day'). '&nbsp;'. get_sub_field('public_open_start_time'). '&nbsp;~&nbsp;'. get_sub_field('public_open_end_time');
+                  echo '</p>';
+                elseif ( get_sub_field('public_open_day') ):
+                  echo '<p class="card-text">';
+                  get_sub_field('public_open_day');
+                  echo '</p>';
+                else:
+
+                endif;
+              endwhile;
+
+            elseif ( get_field('startDate') and get_field('endDate') ):
+              echo '<p class="card-text">';
+              echo get_field('startDate').'&nbsp;~&nbsp;'.get_field('endDate');
+              echo '</p>';
+            elseif ( get_field('startDate') ):
+              echo '<p class="card-text">';
+              echo get_field('startDate');
+              echo '</p>';
+            else:
+              echo '<p class="card-text">';
+              echo 'なし';
+              echo '</p>';
+            endif;
+
+          endif;
+          ?>
       </div>
       <div class="card-block text-xs-right">
         <a href="<?php the_permalink(); ?>" class="btn btn-primary">詳細</a>
