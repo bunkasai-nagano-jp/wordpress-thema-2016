@@ -17,31 +17,31 @@
           </thead>
           <tbody>
 <?php
-  $args = array(
-            'meta_query' => array(
-                              'start_date'  => array(
-                                                'key'     =>  'startDate',
-                                                'value'   =>  array('2016/01/01', '2016/12/31'),
-                                                'compare' =>  'BETWEEN',
-                                                'type'    =>  'DATE'
-                                              ),
-                              'address'     => array(
-                                                'key'  =>  'address',
-                                                'type' =>  'CHAR',
-                                              )
-                            ),
+  $args   = array(
+              'meta_query' => array(
+                                'start_date'  => array(
+                                                  'key'     =>  'startDate',
+                                                  'value'   =>  array('2016/01/01', '2016/12/31'),
+                                                  'compare' =>  'BETWEEN',
+                                                  'type'    =>  'DATE'
+                                                ),
+                                'address'     => array(
+                                                  'key'  =>  'address',
+                                                  'type' =>  'CHAR',
+                                                )
+                              ),
             'post_type'  => 'post',
             'order'      => 'ASC',
             'orderby'    => 'address',
             'nopaging'   => true,
             );
-            $posts = query_posts($args);
-            $tmp = array();
-            foreach ( $posts as $post ) {
-              $public_unknown    = get_field('public_unknown', $post->ID);
-              if ( in_array( get_field('schoolName', $post->ID), $tmp ) ) {
-                continue;
-              } ?>
+  $posts  = query_posts($args);
+  $tmp    = array();
+  foreach ( $posts as $post ) {
+    if ( in_array( get_field('schoolName', $post->ID), $tmp ) ) {
+      continue;
+    }
+?>
               <tr>
                 <td><a href="<?php echo get_permalink($post->ID); ?>"><?php the_field('schoolName', $post->ID) ?></a></td>
                 <td><?php the_field('name', $post->ID); ?></td>
@@ -70,11 +70,11 @@
                   endif;
                 ?></td>
               </tr>
-              <?php
-              $tmp[] = get_field('schoolName', $post->ID);
-            }
-            wp_reset_query();
-            ?>
+<?php
+    $tmp[] = get_field('schoolName', $post->ID);
+  }
+  wp_reset_query();
+?>
           </tbody>
         </table>
       </div>
