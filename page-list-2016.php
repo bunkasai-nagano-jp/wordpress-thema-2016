@@ -16,28 +16,26 @@
             </tr>
           </thead>
           <tbody>
-            <?php
-            $args = array(
-              'meta_query' => array(
-                                'start_date'=>array(
+<?php
+  $args = array(
+            'meta_query' => array(
+                              'start_date'  => array(
                                                 'key'     =>  'startDate',
                                                 'value'   =>  array('2016/01/01', '2016/12/31'),
                                                 'compare' =>  'BETWEEN',
                                                 'type'    =>  'DATE'
                                               ),
-                                'address'=>array(
-                                          'key'  =>  'address',
-                                          'type' =>  'CHAR',
-                                        )
-                              ),
-              'post_type'   => 'post',
-              'order'       => 'ASC',
-              'orderby'     => 'address',
-              'nopaging'    => true,
+                              'address'     => array(
+                                                'key'  =>  'address',
+                                                'type' =>  'CHAR',
+                                              )
+                            ),
+            'post_type'  => 'post',
+            'order'      => 'ASC',
+            'orderby'    => 'address',
+            'nopaging'   => true,
             );
             $posts = query_posts($args);
-            ?>
-            <?php
             $tmp = array();
             foreach ( $posts as $post ) {
               $school_name = get_post_meta($post->ID, 'schoolName', true);
