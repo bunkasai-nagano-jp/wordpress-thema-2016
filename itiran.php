@@ -40,43 +40,45 @@
 <?php endif; ?>
         </p>
         <p class="card-text"><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</p>
-          <?php
-          if ( get_field('public_unknown') ):
-            echo '<p class="card-text">';
-            echo '不明';
-            echo '</span>';
-          else:
-            if ( have_rows('public_open') ):
-              while ( have_rows('public_open') ) : the_row();
-                if ( get_sub_field('public_open_day') and get_sub_field('public_open_start_time') and get_sub_field('public_open_end_time') ):
-                  echo '<p class="card-text">';
-                  echo get_sub_field('public_open_day'). '&nbsp;'. get_sub_field('public_open_start_time'). '&nbsp;~&nbsp;'. get_sub_field('public_open_end_time');
-                  echo '</p>';
-                elseif ( get_sub_field('public_open_day') ):
-                  echo '<p class="card-text">';
-                  get_sub_field('public_open_day');
-                  echo '</p>';
-                else:
+<?php
+  if ( get_field('public_unknown') ):
+    echo '<p class="card-text">';
+    echo '不明';
+    echo '</span>';
+  else:
 
-                endif;
-              endwhile;
+    if ( have_rows('public_open') ):
 
-            elseif ( get_field('startDate') and get_field('endDate') ):
-              echo '<p class="card-text">';
-              echo get_field('startDate').'&nbsp;~&nbsp;'.get_field('endDate');
-              echo '</p>';
-            elseif ( get_field('startDate') ):
-              echo '<p class="card-text">';
-              echo get_field('startDate');
-              echo '</p>';
-            else:
-              echo '<p class="card-text">';
-              echo 'なし';
-              echo '</p>';
-            endif;
+      while ( have_rows('public_open') ) : the_row();
+        if ( get_sub_field('public_open_day') and get_sub_field('public_open_start_time') and get_sub_field('public_open_end_time') ):
+          echo '<p class="card-text">';
+          echo get_sub_field('public_open_day'). '&nbsp;'. get_sub_field('public_open_start_time'). '&nbsp;~&nbsp;'. get_sub_field('public_open_end_time');
+          echo '</p>';
+        elseif ( get_sub_field('public_open_day') ):
+          echo '<p class="card-text">';
+          echo get_sub_field('public_open_day');
+          echo '</p>';
+        else:
 
-          endif;
-          ?>
+        endif;
+      endwhile;
+
+    elseif ( get_field('publicStartDate') and get_field('publicEndDate') ):
+      echo '<p class="card-text">';
+      echo get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate');
+      echo '</p>';
+    elseif ( get_field('publicStartDate') and !get_field('publicEndDate') ):
+      echo '<p class="card-text">';
+      echo get_field('publicStartDate');
+      echo '</p>';
+    elseif ( !have_rows('public_open') and !get_field('publicStartDate') and !get_field('publicEndDate') ):
+      echo '<p class="card-text">';
+      echo 'なし';
+      echo '</p>';
+    endif;
+
+  endif;
+?>
       </div>
       <div class="card-block text-xs-right">
         <a href="<?php the_permalink(); ?>" class="btn btn-primary">詳細</a>
