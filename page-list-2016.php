@@ -48,10 +48,12 @@
                 <td><?php
                 if ( !get_field('startDate', $post->ID) ):
                   echo '';
-                elseif ( !get_field('endDate', $post->ID) ):
-                  the_field('schoolName', $post->ID);
-                else:
+                elseif ( get_field('startDate', $post->ID) and !get_field('endDate', $post->ID) ):
+                  the_field('startDate', $post->ID);
+                elseif ( get_field('startDate', $post->ID) and get_field('endDate', $post->ID) ):
                   echo get_field('startDate', $post->ID).'&nbsp;~&nbsp;'.get_field('endDate', $post->ID);
+                else:
+                  echo '';
                 endif; ?>
                 </td>
                 <td><?php
