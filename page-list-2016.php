@@ -16,67 +16,60 @@
             </tr>
           </thead>
           <tbody>
-            <?php
-            $args = array(
-              'meta_query' => array(
-                                'start_date'=>array(
+<?php
+  $args = array(
+            'meta_query' => array(
+                              'start_date'  => array(
                                                 'key'     =>  'startDate',
                                                 'value'   =>  array('2016/01/01', '2016/12/31'),
                                                 'compare' =>  'BETWEEN',
                                                 'type'    =>  'DATE'
                                               ),
-                                'address'=>array(
-                                          'key'  =>  'address',
-                                          'type' =>  'CHAR',
-                                        )
-                              ),
-              'post_type'   => 'post',
-              'order'       => 'ASC',
-              'orderby'     => 'address',
-              'nopaging'    => true,
+                              'address'     => array(
+                                                'key'  =>  'address',
+                                                'type' =>  'CHAR',
+                                              )
+                            ),
+            'post_type'  => 'post',
+            'order'      => 'ASC',
+            'orderby'    => 'address',
+            'nopaging'   => true,
             );
             $posts = query_posts($args);
-            ?>
-            <?php
             $tmp = array();
             foreach ( $posts as $post ) {
-              $school_name = get_post_meta($post->ID, 'schoolName', true);
-              $start_date  = get_post_meta($post->ID, 'startDate', true);
-              $end_date    = get_post_meta($post->ID, 'endDate', true);
-              $public_start_date  = get_post_meta($post->ID, 'publicStartDate', true);
-              $public_end_date    = get_post_meta($post->ID, 'publicEndDate', true);
-              $public_unknown    = get_post_meta($post->ID, 'public_unknown', true);
-              if ( in_array($school_name, $tmp) ) {
+              $public_unknown    = get_field('public_unknown', $post->ID);
+              if ( in_array( get_field('schoolName', $post->ID), $tmp ) ) {
                 continue;
               } ?>
               <tr>
-                <td><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $school_name ?></a></td>
-                <td><?php echo get_post_meta($post->ID, 'name', true); ?></td>
+                <td><a href="<?php echo get_permalink($post->ID); ?>"><?php the_field('schoolName', $post->ID) ?></a></td>
+                <td><?php the_field('name', $post->ID); ?></td>
                 <td><?php
-                if (!$start_date):
+                if ( !get_field('startDate', $post->ID) ):
                   echo '';
-                elseif (!$end_date):
-                  echo $start_date;
+                elseif ( !get_field('endDate', $post->ID) ):
+                  the_field('schoolName', $post->ID);
                 else:
-                  echo $start_date.' ~ '. $end_date;
+                  echo get_field('startDate', $post->ID).'&nbsp;~&nbsp;'.get_field('endDate', $post->ID);
                 endif; ?>
                 </td>
                 <td><?php
                   if ($public_unknown):
                     echo '不明';
-                  elseif (!$public_start_date and !$public_end_date):
+                  elseif ( !get_field('publicStartDate', $post->ID) and !get_field('publicEndDate', $post->ID) ):
                     echo 'なし';
-                  elseif ($public_start_date and !$public_end_date):
-                    echo $public_start_date;
-                  elseif ($public_start_date and $public_end_date): ?>
-                    <?php echo $public_start_date; ?> ~ <?php echo $public_end_date; ?>
-                  <?php else:
+                  elseif ( get_field('publicStartDate', $post->ID) and !get_field('publicStartDate', $post->ID) ):
+                    the_field('publicStartDate', $post->ID);
+                  elseif ( get_field('publicStartDate', $post->ID) and get_field('publicStartDate', $post->ID) ):
+                    echo get_field('publicStartDate', $post->ID).'&nbsp;~&nbsp;'.get_field('publicStartDate', $post->ID);
+                  else:
                     echo '不明';
                   endif;
                 ?></td>
               </tr>
               <?php
-              $tmp[] = $school_name;
+              $tmp[] = get_field('schoolName', $post->ID);
             }
             wp_reset_query();
             ?>
