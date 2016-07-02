@@ -33,7 +33,8 @@
   foreach ( $posts as $post ):
     if ( in_array( get_field('schoolName'), $tmp) ) {
       continue;
-    } ?>
+    }
+?>
         <tr>
           <td>
 <?php
@@ -52,16 +53,19 @@
       $result = get_posts($args);
 
       foreach ( $result as $post ):
-        $start_date = date_create( get_field('startDate') ); ?>
+        $start_date = date_create( get_field('startDate') );
+?>
             <a href="<?php echo get_permalink($post->ID); ?>"><?php echo date_format($start_date, 'Y'); ?>年</a>
 <?php
       endforeach;
 
     else:
-      $start_date = date_create( get_field('startDate') ); ?>
+      $start_date = date_create( get_field('startDate') );
+?>
             <a href="<?php echo get_permalink($post->ID); ?>"><?php echo date_format($start_date, 'Y'); ?>年</a>
 <?php
-    endif; ?>
+    endif;
+?>
           </td>
         </tr>
 <?php
