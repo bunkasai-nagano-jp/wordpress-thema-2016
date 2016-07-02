@@ -44,7 +44,7 @@
   if ( get_field('public_unknown') ):
     echo '<p class="card-text">';
     echo '不明';
-    echo '</span>';
+    echo '</p>';
   else:
 
     if ( have_rows('public_open') ):
