@@ -31,6 +31,11 @@ a:hover {
   .img-fluid {
     width: 100%;
   }
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 }
 @media (max-width: 768px) {
   .card .card-block:first-child {
