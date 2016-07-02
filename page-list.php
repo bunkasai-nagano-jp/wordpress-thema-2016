@@ -4,7 +4,7 @@
     <div class="card-block">
       <h1 class="card-title"><?php the_title(); ?></h4>
     </div>
-    <div class="card-block">
+    <div class="table-responsive">
       <table class="table table-hover table-striped">
         <thead>
           <tr>
