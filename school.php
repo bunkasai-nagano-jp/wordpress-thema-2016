@@ -56,6 +56,22 @@ else:
 
 endif;
 ?>
+<?php
+  if ( have_rows('bunkasai_site') ):
+    echo '<h2 class="card-title">関連サイト</h2>';
+    echo '<div class="card-block">';
+    while ( have_rows('bunkasai_site') ) :the_row();
+      if ( get_sub_field('bunkasai_site_name') and get_sub_field('bunkasai_site_url') ):
+        $element = '<a href="'.get_sub_field('bunkasai_site_url').'">'.get_sub_field('bunkasai_site_url').'</a>';
+        echo '<h3>'. get_sub_field('bunkasai_site_name'). '</h3>';
+        echo $element;
+      endif;
+    endwhile;
+    echo '</div>';
+  else:
+
+  endif;
+?>
   <h2 class="card-title">地図</h2>
   <?php echo get_gmap_url(); ?>
   <h3 class="card-title">学校情報</h3>
