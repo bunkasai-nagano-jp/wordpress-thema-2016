@@ -12,11 +12,11 @@
         $days               =   get_remaining_days(); ?>
         <div class="card"><?php
         if ( get_gmap_sv_url(640, 300) ) { ?>
-          <a href="<?php get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
+          <a href="<?php echo get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
         } ?>
           <div class="card-block">
-            <a href="<?php get_permalink($post->ID); ?>"><h2 class="card-title"><?php echo $name; ?></h2></a>
-            <h6 class="card-subtitle text-muted"><?php echo $class; ?> <?php echo $school_name; ?></h6>
+            <a href="<?php echo get_permalink($post->ID); ?>"><h2 class="card-title"><?php the_field('name'); ?></h2></a>
+            <h6 class="card-subtitle text-muted"><?php the_field('class'); ?> <?php the_field('schoolName'); ?></h6>
             <div class="card-block">
             <?php if ($year < date("Y")): ?>
               <p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 終了</p>
@@ -51,7 +51,7 @@
               </p>
               </div>
               <div class="card-block text-xs-right">
-                <a href="<?php get_permalink($post->ID); ?>" class="btn btn-primary">詳細</a>
+                <a href="<?php echo get_permalink($post->ID); ?>" class="btn btn-primary">詳細</a>
               </div>
             </div>
             <div class="card-footer">
