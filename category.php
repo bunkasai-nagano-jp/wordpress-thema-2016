@@ -7,6 +7,7 @@
 <?php
     $category     =  get_the_category();
     $category_id  =  $category[0]->cat_ID;
+    $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
     $args = array(
             'meta_query'      =>  array(
                                     'meta'=>array(
@@ -17,9 +18,11 @@
             'cat'             =>  $category_id,
             'orderby' => 'meta',
             'order'   => 'DESC',
+            'posts_per_page' => 10,
+            'paged' => $paged
     );
-    $query = new WP_Query( $args );
-     if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+    $wp_query = new WP_Query( $args );
+     if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post();
       $name               =  get_field('name');
       $class              =  get_field('class');
       $school_name        =  get_field('schoolName');
