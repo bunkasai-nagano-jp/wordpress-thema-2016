@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-7 col-lg-4 col-lg-offset-0 col-xl-3 col-xl-offset-0">
-        <form action="http://www.google.com/cse" class="input-group" id="cse-search-box" >
+        <form action="https://www.google.com/cse" class="input-group" id="cse-search-box" >
           <input type="hidden" name="cx" value="000907066374336213658:lnnce0mnjry" />
           <input type="hidden" name="ie" value="UTF-8" />
           <input class="form-control" type="text" name="q" size="31" />
