@@ -86,7 +86,7 @@ endif;
         <td><?php echo get_field('address'); ?></td>
       </tr>
       <tr>
-        <td>公式サイト</td>
+        <td>学校公式サイト</td>
         <td><a href="<?php echo get_field('url'); ?>"><?php echo get_field('url'); ?></a></td>
       </tr>
       <tr>
