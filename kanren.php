@@ -5,17 +5,11 @@
     <div class="card-deck-wrapper">
       <div class="card-deck"><?php
       foreach($posts as $post) {
-        $name               =   get_field('name', $post->ID);
-        $class              =   get_field('class', $post->ID);
-        $school_name        =   get_field('schoolName', $post->ID);
         $start_date         =   get_field('startDate', $post->ID);
         $end_date           =   get_field('endDate', $post->ID);
-        $public_start_date  =   get_field('publicStartDate', $post->ID);
-        $public_end_date    =   get_field('publicEndDate', $post->ID);
-        $public_unknown     =   get_field('public_unknown', $post->ID);
         $today              =   date("Y/m/d");
         $year               =   date("Y", strtotime($start_date));
-        $days               =   abs(strtotime($start_date) - strtotime($today)) / (60 * 60 * 24); ?>
+        $days               =   get_remaining_days(); ?>
         <div class="card"><?php
         if ( get_gmap_sv_url(640, 300) ) { ?>
           <a href="<?php get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
