@@ -38,20 +38,20 @@
   $posts  = query_posts($args);
   $tmp    = array();
   foreach ( $posts as $post ) {
-    if ( in_array( get_field('schoolName', $post->ID), $tmp ) ) {
+    if ( in_array( get_field('schoolName'), $tmp ) ) {
       continue;
     }
 ?>
               <tr>
-                <td><a href="<?php echo get_permalink($post->ID); ?>"><?php the_field('schoolName', $post->ID) ?></a></td>
-                <td><?php the_field('name', $post->ID); ?></td>
+                <td><a href="<?php echo get_permalink($post->ID); ?>"><?php the_field('schoolName') ?></a></td>
+                <td><?php the_field('name'); ?></td>
                 <td><?php
-    if ( !get_field('startDate', $post->ID) ):
+    if ( !get_field('startDate') ):
       echo '';
-    elseif ( get_field('startDate', $post->ID) and !get_field('endDate', $post->ID) ):
-      the_field('startDate', $post->ID);
-    elseif ( get_field('startDate', $post->ID) and get_field('endDate', $post->ID) ):
-      echo get_field('startDate', $post->ID).'&nbsp;~&nbsp;'.get_field('endDate', $post->ID);
+    elseif ( get_field('startDate') and !get_field('endDate') ):
+      the_field('startDate');
+    elseif ( get_field('startDate') and get_field('endDate') ):
+      echo get_field('startDate').'&nbsp;~&nbsp;'.get_field('endDate');
     else:
       echo '';
     endif;
@@ -72,13 +72,13 @@
         endif;
       endwhile;
 
-    elseif ( get_field('public_unknown', $post->ID) ):
+    elseif ( get_field('public_unknown') ):
       echo '<p>不明</p>';
-    elseif ( get_field('publicStartDate', $post->ID) and get_field('publicEndDate', $post->ID) ):
-      echo '<p>'.get_field('publicStartDate', $post->ID).'&nbsp;~&nbsp;'.get_field('publicEndDate', $post->ID).'</p>';
-    elseif ( get_field('publicStartDate', $post->ID) and !get_field('publicEndDate', $post->ID) ):
-      echo '<p>'.get_field('publicStartDate', $post->ID).'</p>';
-    elseif ( !get_field('publicStartDate', $post->ID) and !get_field('publicEndDate', $post->ID) ):
+    elseif ( get_field('publicStartDate') and get_field('publicEndDate') ):
+      echo '<p>'.get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate').'</p>';
+    elseif ( get_field('publicStartDate') and !get_field('publicEndDate') ):
+      echo '<p>'.get_field('publicStartDate').'</p>';
+    elseif ( !get_field('publicStartDate') and !get_field('publicEndDate') ):
       echo '<p>なし</p>';
     else:
       echo '<p>不明</p>';
@@ -87,7 +87,7 @@
                 </td>
               </tr>
 <?php
-    $tmp[] = get_field('schoolName', $post->ID);
+    $tmp[] = get_field('schoolName');
   }
   wp_reset_query();
 ?>
