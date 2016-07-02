@@ -31,7 +31,7 @@
   $posts = query_posts($args);
   $tmp = array();
   foreach ( $posts as $post ):
-    if ( in_array( get_field('schoolName', $post->ID), $tmp) ) {
+    if ( in_array( get_field('schoolName'), $tmp) ) {
       continue;
     } ?>
         <tr>
@@ -41,31 +41,31 @@
   $cayrgory_name = $category[0]->name; ?>
             <a href="<?php echo get_category_link( $category[0]->cat_ID ); ?>"><?php echo $cayrgory_name; ?></a>
           </td>
-          <td><?php the_field('schoolName', $post->ID); ?></td>
-          <td><?php the_field('name', $post->ID); ?></td>
+          <td><?php the_field('schoolName'); ?></td>
+          <td><?php the_field('name'); ?></td>
           <td class="year">
 <?php
-    if ( is_other_year_post( get_field('schoolName', $post->ID) ) ):
+    if ( is_other_year_post( get_field('schoolName') ) ):
       $args = array(
-              'meta_value' => get_field('schoolName', $post->ID),
+              'meta_value' => get_field('schoolName'),
               );
       $result = get_posts($args);
 
       foreach ( $result as $post ):
-        $start_date = date_create( get_field('startDate', $post->ID) ); ?>
+        $start_date = date_create( get_field('startDate') ); ?>
             <a href="<?php echo get_permalink($post->ID); ?>"><?php echo date_format($start_date, 'Y'); ?>年</a>
 <?php
       endforeach;
 
     else:
-      $start_date = date_create( get_field('startDate', $post->ID) ); ?>
+      $start_date = date_create( get_field('startDate') ); ?>
             <a href="<?php echo get_permalink($post->ID); ?>"><?php echo date_format($start_date, 'Y'); ?>年</a>
 <?php
     endif; ?>
           </td>
         </tr>
 <?php
-          $tmp[] = get_field('schoolName', $post->ID);
+          $tmp[] = get_field('schoolName');
   endforeach;
 ?>
         </tbody>
