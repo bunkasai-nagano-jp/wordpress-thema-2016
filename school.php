@@ -11,7 +11,7 @@ if ( get_gmap_sv_url(600, 350) ): ?>
   <p><?php echo the_field('name'); ?></p>
   <h2 class="card-title">開催期間</h2>
   <p><?php
-  if ( !get_field('startDate') ):
+  if ( !get_field('endDate') ):
     the_field('startDate');
   else:
     echo get_field('startDate').'&nbsp;~&nbsp;'.get_field('endDate');
