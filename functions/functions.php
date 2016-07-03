@@ -31,7 +31,13 @@ function is_other_year_post( $school_name ) {
 
 // 文化祭が終了しているか
 function is_ended() {
-  $end_date = get_field('endDate');
+
+  if ( !get_field('endDate') ) {
+    $end_date = get_field('startDate');
+  }
+  else {
+    $end_date = get_field('endDate');
+  }
   if ( $end_date < date("Y/m/d") ):
     return true;
   else:
