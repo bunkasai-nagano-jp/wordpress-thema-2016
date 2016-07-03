@@ -40,13 +40,13 @@ else:
       endif;
     endwhile;
 
-  elseif ( get_field('startDate') and get_field('endDate') ):
+  elseif ( get_field('publicStartDate') and get_field('publicEndDate') ):
     echo '<p>';
-    echo get_field('startDate').'&nbsp;~&nbsp;'.get_field('endDate');
+    echo get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate');
     echo '</p>';
-  elseif ( get_field('startDate') ):
+  elseif ( get_field('publicStartDate') ):
     echo '<p>';
-    echo get_field('startDate');
+    echo get_field('publicStartDate');
     echo '</p>';
   else:
     echo '<p>';
