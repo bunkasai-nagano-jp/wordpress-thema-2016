@@ -21,7 +21,7 @@
       $displaying_post_id = get_the_ID();
 ?>
           <div class="card-footer">
-            <i class="fa fa-fw fa-tags"></i> <?php the_category(', ') ?> <?php the_tags('', ', '); ?>
+            <span><i class="fa fa-fw fa-tags"></i> <?php the_category(', ') ?> <?php the_tags('', ', '); ?></span>
           </div>
         </div>
         <?php endwhile; ?>
