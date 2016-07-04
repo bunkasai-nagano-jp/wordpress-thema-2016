@@ -33,7 +33,7 @@ else:
         echo '</p>';
       elseif ( get_sub_field('public_open_day') ):
         echo '<p>';
-        get_sub_field('public_open_day');
+        echo get_sub_field('public_open_day');
         echo '</p>';
       else:
 
