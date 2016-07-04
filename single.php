@@ -17,8 +17,9 @@
           </div>
           <?php the_content(); ?>
           <?php wp_link_pages(); ?>
-          <?php global $displaying_post_id;
-          $displaying_post_id = get_the_ID() ?>
+<?php global $displaying_post_id;
+      $displaying_post_id = get_the_ID();
+?>
           <div class="card-footer">
             <i class="fa fa-fw fa-tags"></i> <?php the_category(', ') ?> <?php the_tags('', ', '); ?>
           </div>
