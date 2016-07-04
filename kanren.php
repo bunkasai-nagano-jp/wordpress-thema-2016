@@ -2,27 +2,20 @@
   $posts = relation_post();
   if ($posts) { ?>
     <h2><i class="fa fa-th-list"></i> 関連</h2>
-    <div class="card-deck-wrapper">
-      <div class="card-deck"><?php
+      <div class="card-columns"><?php
       foreach($posts as $post) {
-        $name               =   get_field('name', $post->ID);
-        $class              =   get_field('class', $post->ID);
-        $school_name        =   get_field('schoolName', $post->ID);
         $start_date         =   get_field('startDate', $post->ID);
         $end_date           =   get_field('endDate', $post->ID);
-        $public_start_date  =   get_field('publicStartDate', $post->ID);
-        $public_end_date    =   get_field('publicEndDate', $post->ID);
-        $public_unknown     =   get_field('public_unknown', $post->ID);
         $today              =   date("Y/m/d");
         $year               =   date("Y", strtotime($start_date));
-        $days               =   abs(strtotime($start_date) - strtotime($today)) / (60 * 60 * 24); ?>
+        $days               =   get_remaining_days(); ?>
         <div class="card"><?php
         if ( get_gmap_sv_url(640, 300) ) { ?>
-          <a href="<?php get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
+          <a href="<?php echo get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
         } ?>
           <div class="card-block">
-            <a href="<?php get_permalink($post->ID); ?>"><h2 class="card-title"><?php echo $name; ?></h2></a>
-            <h6 class="card-subtitle text-muted"><?php echo $class; ?> <?php echo $school_name; ?></h6>
+            <a href="<?php echo get_permalink($post->ID); ?>"><h2 class="card-title"><?php the_field('name'); ?></h2></a>
+            <h6 class="card-subtitle text-muted"><?php the_field('class'); ?> <?php the_field('schoolName'); ?></h6>
             <div class="card-block">
             <?php if ($year < date("Y")): ?>
               <p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 終了</p>
@@ -40,32 +33,57 @@
                 <span><?php echo $start_date; ?></span>
             <?php endif; ?>
               </p>
-              <p class="card-text">
-            <?php if ($public_unknown): ?>
-                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
-                <span>不明</span>
-            <?php elseif (!$public_start_date): ?>
-                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
-                <span>なし</span>
-              <?php elseif (!$public_end_date): ?>
-                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開日</span>
-                <span><?php echo $public_start_date; ?></span>
-            <?php else: ?>
-                <span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開期間<span>
-                <span><?php echo $public_start_date; ?> ~ <?php echo $public_end_date; ?></span>
-            <?php endif; ?>
-              </p>
+              <p class="card-text"><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</p>
+<?php
+if ( get_field('public_unknown') ):
+  echo '<p class="card-text">';
+  echo '不明';
+  echo '</p>';
+else:
+
+  if ( have_rows('public_open') ):
+
+    while ( have_rows('public_open') ) : the_row();
+      if ( get_sub_field('public_open_day') and get_sub_field('public_open_start_time') and get_sub_field('public_open_end_time') ):
+        echo '<p class="card-text">';
+        echo get_sub_field('public_open_day'). '&nbsp;'. get_sub_field('public_open_start_time'). '&nbsp;~&nbsp;'. get_sub_field('public_open_end_time');
+        echo '</p>';
+      elseif ( get_sub_field('public_open_day') ):
+        echo '<p class="card-text">';
+        echo get_sub_field('public_open_day');
+        echo '</p>';
+      else:
+
+      endif;
+    endwhile;
+
+  elseif ( get_field('publicStartDate') and get_field('publicEndDate') ):
+    echo '<p class="card-text">';
+    echo get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate');
+    echo '</p>';
+  elseif ( get_field('publicStartDate') and !get_field('publicEndDate') ):
+    echo '<p class="card-text">';
+    echo get_field('publicStartDate');
+    echo '</p>';
+  elseif ( !have_rows('public_open') and !get_field('publicStartDate') and !get_field('publicEndDate') ):
+    echo '<p class="card-text">';
+    echo 'なし';
+    echo '</p>';
+  endif;
+
+endif;
+?>
               </div>
               <div class="card-block text-xs-right">
-                <a href="<?php get_permalink($post->ID); ?>" class="btn btn-primary">詳細</a>
+                <a href="<?php echo get_permalink($post->ID); ?>" class="btn btn-primary">詳細</a>
               </div>
             </div>
             <div class="card-footer">
-              <i class="fa fa-fw fa-tags"></i> <span><?php the_category(', ',$post->ID); ?></span>
+              <i class="fa fa-fw fa-tags"></i> <span><?php the_category(', '); ?></span>
             </div>
           </div><?php
       } ?>
       </div>
-    </div><?php
+<?php
   }
 ?>

@@ -4,7 +4,7 @@
     <div class="card-block">
       <h1 class="card-title"><?php the_title(); ?></h4>
     </div>
-    <div class="card-block">
+    <div class="table-responsive">
       <table class="table table-hover table-striped">
         <thead>
           <tr>
@@ -15,59 +15,63 @@
           </tr>
         </thead>
         <tbody>
-        <?php
-          $args = array(
-                    'meta_query'  =>  array(
-                                        'meta'=>array(
-                                                  'key'  =>  'address',
-                                                  'type' =>  'CHAR',
-                                                )
-                                      ),
-                    'post_type'   => 'post',
-                    'order'       => 'ASC',
-                    'orderby'     => 'meta',
-                    'nopaging'    => true,
-                  );
-          $posts = query_posts($args);
-          $tmp = array();
-          foreach ( $posts as $value ) {
-            $school_name = get_post_meta($value->ID, 'schoolName', true);
-            if ( in_array($school_name, $tmp) ) {
-              continue;
-            }
-            $name = get_post_meta($value->ID, 'name', true); ?>
+<?php
+  $args = array(
+            'meta_query'  =>  array(
+                                'meta'=>array(
+                                          'key'  =>  'address',
+                                          'type' =>  'CHAR',
+                                        )
+                              ),
+            'post_type'   => 'post',
+            'order'       => 'ASC',
+            'orderby'     => 'meta',
+            'nopaging'    => true,
+          );
+  $posts = query_posts($args);
+  $tmp = array();
+  foreach ( $posts as $post ):
+    if ( in_array( get_field('schoolName'), $tmp) ) {
+      continue;
+    }
+?>
         <tr>
-          <td><?php
-            $category = get_the_category( $value->ID );
-            $category_url = get_category_link( $category[0]->cat_ID );
-            $cayrgory_name = $category[0]->name;
-            echo <<<EOT
-            <a href="$category_url">$cayrgory_name</a>
-EOT;
-            ?></td>
-          <td><?php echo $school_name ?></td>
-          <td><?php echo $name ?></td>
-          <td class="year"><?php
-            if ( is_other_year_post($school_name) ) {
-              $args = array(
-                'meta_value' => $school_name,
+          <td>
+<?php
+  $category      = get_the_category( $post->ID );
+  $cayrgory_name = $category[0]->name; ?>
+            <a href="<?php echo get_category_link( $category[0]->cat_ID ); ?>"><?php echo $cayrgory_name; ?></a>
+          </td>
+          <td><?php the_field('schoolName'); ?></td>
+          <td><?php the_field('name'); ?></td>
+          <td class="year">
+<?php
+    if ( is_other_year_post( get_field('schoolName') ) ):
+      $args = array(
+              'meta_value' => get_field('schoolName'),
               );
-              $result = get_posts($args);
-              foreach ( $result as $value ) {
-                $start_date = date_create(get_post_meta($value->ID, 'startDate', true));
-                echo "<a href=\"".get_permalink($value->ID)."\">".date_format($start_date, 'Y')."年</a>";
-              }
-            }
-            else {
-              $start_date = date_create(get_post_meta($value->ID, 'startDate', true));
-              echo "<a href=\"".get_permalink($value->ID)."\">".date_format($start_date, 'Y')."年</a>";
-            } ?>
+      $result = get_posts($args);
+
+      foreach ( $result as $post ):
+        $start_date = date_create( get_field('startDate') );
+?>
+            <a href="<?php echo get_permalink($post->ID); ?>"><?php echo date_format($start_date, 'Y'); ?>年</a>
+<?php
+      endforeach;
+
+    else:
+      $start_date = date_create( get_field('startDate') );
+?>
+            <a href="<?php echo get_permalink($post->ID); ?>"><?php echo date_format($start_date, 'Y'); ?>年</a>
+<?php
+    endif;
+?>
           </td>
         </tr>
-        <?php
-          $tmp[] = $school_name;
-          }
-        ?>
+<?php
+          $tmp[] = get_field('schoolName');
+  endforeach;
+?>
         </tbody>
       </table>
     </div>

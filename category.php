@@ -1,7 +1,7 @@
 <?php get_header(); ?>
   <main>
 <?php get_template_part('breadcrumb'); ?>
-    <h1><?php single_term_title(); ?>の文化祭</h1>
+    <h1><?php single_cat_title(); ?>の文化祭</h1>
     <!-- .flex-container -->
     <div class="flex-container">
 <?php
