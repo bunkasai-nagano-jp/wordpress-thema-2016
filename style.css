@@ -88,6 +88,10 @@ a:hover {
 .breadcrumb {
   margin-bottom: 11px;
 }
+.card-date {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .gmap {
   position: relative;
   padding-bottom: 75%;
