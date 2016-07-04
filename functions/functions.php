@@ -31,10 +31,30 @@ function is_other_year_post( $school_name ) {
 
 // 文化祭が終了しているか
 function is_ended() {
-  $end_date = get_field('endDate');
+
+  if ( !get_field('endDate') ) {
+    $end_date = get_field('startDate');
+  }
+  else {
+    $end_date = get_field('endDate');
+  }
   if ( $end_date < date("Y/m/d") ):
     return true;
   else:
     return false;
   endif;
+}
+
+// 文化祭までの残り日数を取得
+function get_remaining_days() {
+  if ( get_field('startDate') and get_field('endDate')) {
+    $start_date         =  get_field('startDate');
+    $end_date           =  get_field('endDate');
+    $today              =  date("Y/m/d");
+    $days               =  abs(strtotime($start_date) - strtotime($today)) / (60 * 60 * 24);
+    return $days;
+  }
+  else {
+    return null;
+  }
 }

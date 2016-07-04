@@ -5,7 +5,7 @@
       <div class="card-block">
         <h1 class="card-title"><?php the_title(); ?></h1>
       </div>
-      <div class="card-block">
+      <div class="table-responsive">
         <table class="table table-hover table-striped">
           <thead>
             <tr>
@@ -17,64 +17,80 @@
           </thead>
           <tbody>
 <?php
-  $args = array(
-            'meta_query' => array(
-                              'start_date'  => array(
-                                                'key'     =>  'startDate',
-                                                'value'   =>  array('2016/01/01', '2016/12/31'),
-                                                'compare' =>  'BETWEEN',
-                                                'type'    =>  'DATE'
-                                              ),
-                              'address'     => array(
-                                                'key'  =>  'address',
-                                                'type' =>  'CHAR',
-                                              )
-                            ),
+  $args   = array(
+              'meta_query' => array(
+                                'start_date'  => array(
+                                                  'key'     =>  'startDate',
+                                                  'value'   =>  array('2016/01/01', '2016/12/31'),
+                                                  'compare' =>  'BETWEEN',
+                                                  'type'    =>  'DATE'
+                                                ),
+                                'address'     => array(
+                                                  'key'  =>  'address',
+                                                  'type' =>  'CHAR',
+                                                )
+                              ),
             'post_type'  => 'post',
             'order'      => 'ASC',
             'orderby'    => 'address',
             'nopaging'   => true,
             );
-            $posts = query_posts($args);
-            $tmp = array();
-            foreach ( $posts as $post ) {
-              $public_unknown    = get_field('public_unknown', $post->ID);
-              if ( in_array( get_field('schoolName', $post->ID), $tmp ) ) {
-                continue;
-              } ?>
+  $posts  = query_posts($args);
+  $tmp    = array();
+  foreach ( $posts as $post ) {
+    if ( in_array( get_field('schoolName'), $tmp ) ) {
+      continue;
+    }
+?>
               <tr>
-                <td><a href="<?php echo get_permalink($post->ID); ?>"><?php the_field('schoolName', $post->ID) ?></a></td>
-                <td><?php the_field('name', $post->ID); ?></td>
+                <td><a href="<?php echo get_permalink($post->ID); ?>"><?php the_field('schoolName') ?></a></td>
+                <td><?php the_field('name'); ?></td>
                 <td><?php
-                if ( !get_field('startDate', $post->ID) ):
-                  echo '';
-                elseif ( get_field('startDate', $post->ID) and !get_field('endDate', $post->ID) ):
-                  the_field('startDate', $post->ID);
-                elseif ( get_field('startDate', $post->ID) and get_field('endDate', $post->ID) ):
-                  echo get_field('startDate', $post->ID).'&nbsp;~&nbsp;'.get_field('endDate', $post->ID);
-                else:
-                  echo '';
-                endif; ?>
+    if ( !get_field('startDate') ):
+      echo '';
+    elseif ( get_field('startDate') and !get_field('endDate') ):
+      the_field('startDate');
+    elseif ( get_field('startDate') and get_field('endDate') ):
+      echo get_field('startDate').'&nbsp;~&nbsp;'.get_field('endDate');
+    else:
+      echo '';
+    endif;
+?>
                 </td>
-                <td><?php
-                  if ($public_unknown):
-                    echo '不明';
-                  elseif ( !get_field('publicStartDate', $post->ID) and !get_field('publicEndDate', $post->ID) ):
-                    echo 'なし';
-                  elseif ( get_field('publicStartDate', $post->ID) and !get_field('publicEndDate', $post->ID) ):
-                    the_field('publicStartDate', $post->ID);
-                  elseif ( get_field('publicStartDate', $post->ID) and get_field('publicEndDate', $post->ID) ):
-                    echo get_field('publicStartDate', $post->ID).'&nbsp;~&nbsp;'.get_field('publicEndDate', $post->ID);
-                  else:
-                    echo '不明';
-                  endif;
-                ?></td>
+                <td>
+<?php
+
+    if ( have_rows('public_open') ):
+
+      while ( have_rows('public_open') ) : the_row();
+        if ( get_sub_field('public_open_day') and get_sub_field('public_open_start_time') and get_sub_field('public_open_end_time') ):
+          echo '<p>'.get_sub_field('public_open_day'). '&nbsp;'. get_sub_field('public_open_start_time'). '&nbsp;~&nbsp;'. get_sub_field('public_open_end_time').'</p>';
+        elseif ( get_sub_field('public_open_day') ):
+          echo '<p>'.get_sub_field('public_open_day').'</p>';
+        else:
+
+        endif;
+      endwhile;
+
+    elseif ( get_field('public_unknown') ):
+      echo '<p>不明</p>';
+    elseif ( get_field('publicStartDate') and get_field('publicEndDate') ):
+      echo '<p>'.get_field('publicStartDate').'&nbsp;~&nbsp;'.get_field('publicEndDate').'</p>';
+    elseif ( get_field('publicStartDate') and !get_field('publicEndDate') ):
+      echo '<p>'.get_field('publicStartDate').'</p>';
+    elseif ( !get_field('publicStartDate') and !get_field('publicEndDate') ):
+      echo '<p>なし</p>';
+    else:
+      echo '<p>不明</p>';
+    endif;
+?>
+                </td>
               </tr>
-              <?php
-              $tmp[] = get_field('schoolName', $post->ID);
-            }
-            wp_reset_query();
-            ?>
+<?php
+    $tmp[] = get_field('schoolName');
+  }
+  wp_reset_query();
+?>
           </tbody>
         </table>
       </div>
