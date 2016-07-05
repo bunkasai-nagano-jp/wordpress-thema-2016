@@ -7,7 +7,7 @@ Author: Sugiyama Masato
 Author URI: http://bunkasai.nagano.jp
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 20160704_3
+Version: 20160704_4
 ---------------------------------------------------------*/
 html {
   position: relative;
@@ -26,6 +26,9 @@ a:hover {
 .navbar {
   margin-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
+}
+.form-control {
+  height: 38px;
 }
 @media (min-width: 544px) {
   .img-fluid {
