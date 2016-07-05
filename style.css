@@ -27,6 +27,9 @@ a:hover {
   margin-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
+.form-control {
+  height: 38px;
+}
 @media (min-width: 544px) {
   .img-fluid {
     width: 100%;
