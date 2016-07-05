@@ -9,21 +9,28 @@
         $today              =   date("Y/m/d");
         $year               =   date("Y", strtotime($start_date));
         $days               =   get_remaining_days(); ?>
-        <div class="card"><?php
-        if ( get_gmap_sv_url(640, 300) ) { ?>
+        <div class="card">
+<?php
+  if ( get_gmap_sv_url(640, 300) ): ?>
           <a href="<?php echo get_permalink($post->ID); ?>"><img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url(640, 300); ?>" alt="streetview"></a><?php
-        } ?>
+  endif;
+?>
           <div class="card-block">
             <a href="<?php echo get_permalink($post->ID); ?>"><h2 class="card-title"><?php the_field('name'); ?></h2></a>
             <h6 class="card-subtitle text-muted"><?php the_field('class'); ?> <?php the_field('schoolName'); ?></h6>
             <div class="card-block">
-            <?php if ($year < date("Y")): ?>
+<?php
+  if ($end_date < $today): ?>
               <p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 終了</p>
-            <?php elseif ($days > 0): ?>
-              <p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 開催まで<?php echo $days; ?>日</p>
-            <?php elseif ($days == 0): ?>
+<?php
+  elseif ($year == date("Y") and strtotime($today) >= strtotime($start_date) and strtotime($today) <= strtotime($end_date)): ?>
               <p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> 開催中</p>
-            <?php endif; ?>
+<?php
+  elseif ($days > 0): ?>
+              <p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> 開催まで<?php echo $days; ?>日</p>
+<?php
+  endif;
+?>
               <p class="card-text">
             <?php if ($start_date and $end_date): ?>
                 <span><i class="fa fa-fw fa-calendar"></i> 開催期間</span>
