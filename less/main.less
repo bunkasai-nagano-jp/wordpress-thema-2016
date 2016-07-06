@@ -29,6 +29,18 @@ a:hover {
   height: 38px;
 }
 
+.flex-container {
+  -webkit-display: inline-flex;
+  -moz-display: inline-flex;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+}
+
 @media (min-width: 544px) {
   .img-fluid {
     width: 100%;
@@ -36,6 +48,7 @@ a:hover {
   .card-columns {
       -webkit-column-count: 2;
       -moz-column-count: 2;
+      -ms-column-count: 2;
       column-count: 2;
   }
 }
@@ -63,9 +76,6 @@ a:hover {
 
 @media (min-width: 768px) {
   .flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     .card {
@@ -76,9 +86,6 @@ a:hover {
 
 @media (min-width: 992px) {
   .flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
   }
@@ -86,11 +93,9 @@ a:hover {
 
 @media (min-width: 1200px) {
   .flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
+    -webkit-align-items: baseline;
     align-items: baseline;
     .card {
     margin-bottom: 2rem;
