@@ -6,13 +6,9 @@
 <!-- /card -->
 <?php endwhile; ?>
 <?php else: ?>
-  <!-- no articles -->
-  <div class="card">
-    <div class="card-block">
-      <p class="card-text">記事がありません</p>
-    </div>
-  </div>
-  <!-- /no articles -->
+<!-- no articles -->
+<?php get_template_part('template/no_articles'); ?>
+<!-- /no articles -->
 <?php endif; ?>
 </div>
 <!-- /.flex-container -->

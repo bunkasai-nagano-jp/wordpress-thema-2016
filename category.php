@@ -22,18 +22,15 @@
             'paged' => $paged
     );
     $wp_query = new WP_Query( $args );
-<?php endwhile; else: ?>
-      <!-- no articles -->
-      <div class="card">
-        <div class="card-block">
-          <p class="card-text">記事がありません</p>
-        </div>
-      </div>
-      <!-- /no articles -->
      if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 <!-- card -->
 <?php get_template_part('template/card'); ?>
 <!-- /card -->
+<?php endwhile; ?>
+<?php else: ?>
+<!-- no articles -->
+<?php get_template_part('template/no_articles'); ?>
+<!-- /no articles -->
 <?php endif; ?>
 </div>
 <!-- /.flex-container -->
