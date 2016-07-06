@@ -58,3 +58,44 @@ function get_remaining_days() {
     return null;
   }
 }
+
+// 終了日を取得
+function get_end_date() {
+  if ( !get_field('endDate') ) {
+    $end_date = get_field('startDate');
+  }
+  else {
+    $end_date = get_field('endDate');
+  }
+  return $end_date;
+}
+
+/*
+文化祭が開催中かどうか
+  開催中:true
+  終了:false
+*/
+function is_bunkasai_during_open() {
+  if ( get_field('startDate') ) {
+    $start_date = strtotime(get_field('startDate'));
+  }
+  else {
+    $start_date = null;
+  }
+  if ( get_field('endDate') ) {
+    $end_date = strtotime(get_field('endDate'));
+  }
+  else {
+    $end_date = strtotime(get_field('startDate'));
+  }
+
+  if ( strtotime("today") >= $start_date and strtotime("today") <= $end_date ) {
+    return true;
+  }
+  elseif ( $end_date < strtotime("today") ) {
+    return false;
+  }
+  else {
+    return null;
+  }
+}
