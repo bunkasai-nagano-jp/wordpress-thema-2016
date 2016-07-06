@@ -58,3 +58,14 @@ function get_remaining_days() {
     return null;
   }
 }
+
+// 終了日を取得
+function get_end_date() {
+  if ( !get_field('endDate') ) {
+    $end_date = get_field('startDate');
+  }
+  else {
+    $end_date = get_field('endDate');
+  }
+  return $end_date;
+}
