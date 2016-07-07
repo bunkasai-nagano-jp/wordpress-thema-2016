@@ -10,9 +10,9 @@
                 <a class="navbar-brand" href="<?php echo home_url(); ?>/"><?php bloginfo( 'name' ); ?></a>
               </div>
               <div class="col-xs-2">
-                <button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse"
-                        data-target="#navbar-header" aria-controls="navbar-header"><i class="fa fa-bars"
-                                                                                      aria-hidden="true"></i></button>
+                <button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
               </div>
             </div>
           </div>
