@@ -3,6 +3,7 @@
   <div class="card">
     <div class="card-block">
       <h1 class="card-title"><?php the_title(); ?></h4>
+      <h1 class="card-title"><?php the_title(); ?></h1>
     </div>
     <div class="table-responsive">
       <table class="table table-hover table-striped">
