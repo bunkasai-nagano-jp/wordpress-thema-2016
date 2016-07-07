@@ -25,6 +25,6 @@
 </div>
 <!-- /container -->
 <?php wp_footer(); ?>
-<script type="text/javascript" src="//www.google.com/cse/brand?form=cse-search-box&lang=ja"></script>
+<script type="text/javascript" src="https://cse.google.com/cse/brand?form=cse-search-box&lang=ja"></script>
 </body>
 </html>
