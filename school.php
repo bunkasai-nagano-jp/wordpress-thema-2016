@@ -72,6 +72,7 @@ if ( get_gmap_sv_url( 600, 350 ) ): ?>
 
   endif;
   ?>
+  <?php get_template_part( 'template/twitter_embed' ); ?>
   <h2 class="card-title">地図</h2>
   <?php echo get_gmap_url(); ?>
   <h3 class="card-title">学校情報</h3>

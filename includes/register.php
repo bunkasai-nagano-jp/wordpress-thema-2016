@@ -22,6 +22,12 @@
   }
 
   add_action( 'wp_enqueue_scripts', "register_bootstrap" );
+// Twitter Widgets
+  function register_twitter_widgets() {
+    wp_enqueue_script( 'twitter-widgets', '//platform.twitter.com/widgets.js', [ ], false, true );
+  }
+
+  add_action( 'wp_enqueue_scripts', 'register_twitter_widgets' );
 // Font Awesome
   function register_fa_style() {
     $ver = '4.6.3';
