@@ -99,6 +99,11 @@ a:hover {
   margin-top: 0;
   margin-bottom: 0;
 }
+.list-card-date {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
+}
 .gmap {
   position: relative;
   padding-bottom: 75%;
