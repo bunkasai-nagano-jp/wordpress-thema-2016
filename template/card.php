@@ -2,8 +2,9 @@
   <?php
     $img_url = get_gmap_sv_url( 385, 200 );
     if ( $img_url ): ?>
-      <a href="<?php the_permalink(); ?>">
-        <img src="<?php echo $img_url ?>" alt="streetview" class="card-img-top img-fluid"> </a>
+      <div class="card-img-top">
+        <img src="<?php echo $img_url ?>" alt="streetview" class="img-fluid">
+      </div>
       <?php
     endif;
   ?>
