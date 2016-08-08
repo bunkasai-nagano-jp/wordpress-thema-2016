@@ -91,6 +91,9 @@ a:hover {
   .flex-container .card {
     margin-bottom: 2rem;
   }
+  body > .container {
+    margin-bottom: 40px;
+  }
 }
 .breadcrumb {
   margin-bottom: 11px;
