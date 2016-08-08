@@ -56,11 +56,8 @@ a:hover {
   .card .card-block:first-child {
     padding: 1.25rem;
   }
-  .card .card-block {
+  .card .card-block:not(.text-xs-right) {
     padding: 1rem 1rem 0;
-  }
-  .card .card-block .text-xs-right {
-    padding: 0 1rem 1rem;
   }
   .card-columns > .card .img-fluid {
     width: 100%;
