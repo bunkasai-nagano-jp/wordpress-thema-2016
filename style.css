@@ -14,11 +14,7 @@ html {
   min-height: 100%;
 }
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-body > .container {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 a:hover {
   text-decoration: none;
