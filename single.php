@@ -3,7 +3,6 @@
   <main>
     <article>
       <?php get_template_part( 'breadcrumb' ); ?>
-      <div>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <div class="card">
             <div class="card-block">
@@ -28,7 +27,6 @@
           <?php get_template_part( 'kanren' ); ?>
         <?php else: ?>
         <?php endif; ?>
-      </div>
     </article>
   </main>
 </div>
