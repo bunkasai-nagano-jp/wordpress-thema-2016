@@ -65,9 +65,6 @@ a:hover {
   .flex-container {
     justify-content: center;
     align-content: center;
-    .card {
-      margin-bottom: 1.5rem;
-    }
   }
 }
 
@@ -75,6 +72,18 @@ a:hover {
   .flex-container {
     justify-content: space-around;
     align-content: space-around;
+  }
+  .pagination {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .card:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  .card:last-child {
+    margin-bottom: 0;
   }
 }
 
