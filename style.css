@@ -62,14 +62,22 @@ a:hover {
     justify-content: center;
     align-content: center;
   }
-  .flex-container .card {
-    margin-bottom: 1.5rem;
-  }
 }
 @media (min-width: 992px) {
   .flex-container {
     justify-content: space-around;
     align-content: space-around;
+  }
+  .pagination {
+    margin-bottom: 1.75rem;
+  }
+}
+@media (max-width: 992px) {
+  .card:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  .card:last-child {
+    margin-bottom: 0;
   }
 }
 @media (min-width: 1200px) {
