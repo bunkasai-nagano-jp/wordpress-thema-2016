@@ -1,24 +1,44 @@
-module.exports = function(grunt) {
-
-  grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
-
+module.exports = function (grunt) {
+    'use strict';
     grunt.initConfig({
-      less: {
-        style: {
-          options: { cleancss: true },
-          src: 'style.less',
-          dest: 'style.css'
-        }
-      },
-      watch: {
+
+        pkg: grunt.file.readJSON("package.json"),
+
         less: {
-          files: ["less/main.less","style.less"],
-          tasks: ["less"]
+            minify: {
+                options: {
+                    plugins: [
+                        new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+                        new (require('less-plugin-clean-css'))({
+                            "advanced": true,
+                            "compatibility": "ie9"
+                        })
+                    ]
+                },
+                files: {
+                    'css/main.min.css': ['less/main.less']
+                }
+            },
+            compile: {
+                options: {
+                    plugins: [
+                        new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
+                    ]
+                },
+                files: {
+                    'css/main.css': ['less/main.less']
+                }
+            }
+        },
+        watch: {
+            less: {
+                files: ["less/main.less"],
+                tasks: ["less"]
+            }
         }
-       }
     });
-    grunt.registerTask("default", ["less", "watch"]);
+
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.registerTask("default", ["watch", "less"]);
 };
