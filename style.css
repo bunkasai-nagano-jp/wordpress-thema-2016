@@ -86,6 +86,9 @@ a:hover {
     margin-bottom: 40px;
   }
 }
+.line-height-fix {
+  line-height: 1;
+}
 .breadcrumb {
   margin-bottom: 11px;
 }
