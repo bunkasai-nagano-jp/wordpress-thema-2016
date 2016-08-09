@@ -14,7 +14,7 @@ function pagination ( $pages = '', $range = 4 ) {
   endif;
   if ( 1 != $pages ): ?>
     <div class="row">
-      <div class="col-md-12 text-xs-center">
+      <div class="col-md-12 text-xs-center line-height-fix">
         <ul class="pagination">
           <?php if ( $paged == 1 ): ?>
             <li class="page-item disabled"><a class="page-link" href="" aria-label="Previous">
