@@ -30,29 +30,39 @@ a:hover {
   -ms-flex-align: baseline;
       align-items: baseline;
 }
+.kanren-flex-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+.kanren-flex-container .card {
+  margin: .5rem;
+  -ms-flex: 1;
+      flex: 1;
+}
 @media (min-width: 544px) {
   .img-fluid {
     width: 100%;
-  }
-  .card-columns {
-    -moz-column-count: 2;
-         column-count: 2;
-    -moz-column-gap: 1.15rem;
-         column-gap: 1.15rem;
   }
 }
 @media (max-width: 768px) {
   .card .card-block:first-child {
     padding: 1.25rem;
   }
-  .card .card-block {
+  .card .card-block:not(.text-xs-right) {
     padding: 1rem 1rem 0;
   }
-  .card .card-block .text-xs-right {
-    padding: 0 1rem 1rem;
-  }
-  .card-columns > .card .img-fluid {
-    width: 100%;
+  .kanren-flex-container {
+    -ms-flex-align: center;
+        -ms-grid-row-align: center;
+        align-items: center;
   }
 }
 @media (min-width: 768px) {
@@ -81,6 +91,16 @@ a:hover {
   .card:last-child {
     margin-bottom: 0;
   }
+  .kanren-flex-container {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        -ms-grid-row-align: center;
+        align-items: center;
+  }
+  .kanren-flex-container .card {
+    margin: .5rem;
+  }
 }
 @media (min-width: 1200px) {
   .flex-container {
@@ -94,6 +114,9 @@ a:hover {
   }
   .flex-container .card {
     margin-bottom: 2rem;
+  }
+  body > .container {
+    margin-bottom: 40px;
   }
 }
 .line-height-fix {
