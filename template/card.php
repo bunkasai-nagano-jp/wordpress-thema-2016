@@ -2,8 +2,9 @@
   <?php
     $img_url = get_gmap_sv_url( 385, 200 );
     if ( $img_url ): ?>
-      <a href="<?php the_permalink(); ?>">
-        <img src="<?php echo $img_url ?>" alt="streetview" class="card-img-top img-fluid"> </a>
+      <div class="card-img-top">
+        <img src="<?php echo $img_url ?>" alt="streetview" class="img-fluid">
+      </div>
       <?php
     endif;
   ?>
@@ -72,9 +73,9 @@
         endif;
       ?>
     </div>
-    <div class="card-block text-xs-right">
-      <a href="<?php the_permalink(); ?>" class="btn btn-primary">詳細</a>
-    </div>
+  </div>
+  <div class="card-block text-xs-right">
+    <a href="<?php the_permalink(); ?>" class="btn btn-primary">詳細</a>
   </div>
   <div class="card-footer">
     <i class="fa fa-fw fa-tags"></i> <span><?php the_category( ', ' ); ?></span>
