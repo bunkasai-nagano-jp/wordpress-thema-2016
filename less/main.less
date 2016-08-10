@@ -9,7 +9,9 @@ html {
 }
 
 body {
-  padding-bottom: @footer-height;
+  > .container {
+    margin-bottom: @footer-height;
+  }
 }
 
 a:hover {
@@ -31,7 +33,6 @@ a:hover {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  -webkit-align-items: baseline;
   align-items: baseline;
 }
 .kanren-flex-container {
@@ -65,9 +66,6 @@ a:hover {
   .flex-container {
     justify-content: center;
     align-content: center;
-    .card {
-      margin-bottom: 1.5rem;
-    }
   }
 }
 
@@ -76,13 +74,24 @@ a:hover {
     justify-content: space-around;
     align-content: space-around;
   }
+  .pagination {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .card:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  .card:last-child {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 1200px) {
   .flex-container {
     justify-content: space-around;
     align-content: space-around;
-    -webkit-align-items: baseline;
     align-items: baseline;
     .card {
     margin-bottom: 2rem;
@@ -93,6 +102,9 @@ a:hover {
   }
 }
 
+.line-height-fix {
+  line-height: 1;
+}
 .breadcrumb {
   margin-bottom: 11px;
 }
