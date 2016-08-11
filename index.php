@@ -3,7 +3,5 @@
   <?php get_template_part( 'breadcrumb' ); ?>
   <?php get_template_part( 'itiran' ); ?>
 </main>
-<!-- pagination -->
 <?php get_template_part( 'template/pagination' ); ?>
-<!-- /pagination -->
 <?php get_footer(); ?>
