@@ -8,7 +8,7 @@ if ( get_gmap_sv_url( 600, 350 ) ): ?>
     <p class="card-text text-muted">この文化祭は終了しました</p>
   <?php endif; ?>
   <h2 class="card-title">名称</h2>
-  <p><?php echo the_field( 'name' ); ?></p>
+  <p><?php the_field( 'name' ); ?></p>
   <h2 class="card-title">開催期間</h2>
   <p><?php
     if ( !get_field( 'endDate' ) ):
