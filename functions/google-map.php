@@ -1,7 +1,7 @@
 <?php
 
 // GoogleMap埋め込み
-function get_gmap_url () {
+function get_gmap_url() {
 	$gmap           = [
 		'school_name' => get_field( 'schoolName' ),
 		'width'       => get_field( 'width' ),
@@ -22,7 +22,7 @@ function get_gmap_url () {
 add_shortcode( 'gmap', 'get_gmap_url' );
 
 // GoogleMapストリートビューのURLを取得する関数
-function get_gmap_sv_url ( $width = 400, $height = 300 ) {
+function get_gmap_sv_url( $width = 400, $height = 300 ) {
 	$base           = 'https://maps.googleapis.com/maps/api/streetview?';
 	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
 	$width          = $width;
@@ -31,10 +31,10 @@ function get_gmap_sv_url ( $width = 400, $height = 300 ) {
 	$fov            = get_field( 'streetviewFov' );
 	$pitch          = get_field( 'streetviewPitch' );
 	$heading        = get_field( 'heading' );
-	if ( !$location ) {
+	if ( ! $location ) {
 		return false;
 	} else {
-		$url = $base . 'size=' . $width . 'x' . $height . '&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading . '&key=' . $google_api_key;
+		$url = $base . 'size=' . $width . 'x' . $height . '&location=' . $location . '&fov=' . $fov . '&pitch=' . $pitch . '&heading=' . $heading . '&key=' . $google_api_key;
 
 		return $url;
 	}

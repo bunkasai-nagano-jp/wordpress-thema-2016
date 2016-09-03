@@ -16,7 +16,7 @@ register_nav_menus(
 );
 
 // セルフピンバック禁止
-function no_self_pingst ( &$links ) {
+function no_self_pingst( &$links ) {
 	$home = home_url();
 	foreach ( $links as $l => $link ) {
 		if ( 0 === strpos( $link, $home ) ) {
@@ -28,7 +28,7 @@ function no_self_pingst ( &$links ) {
 add_action( 'pre_ping', 'no_self_pingst' );
 
 // ウィジェット追加
-function my_widgets_init () {
+function my_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => __( 'Primary Sidebar', 'stinger5' ),
@@ -44,7 +44,7 @@ function my_widgets_init () {
 add_action( 'widgets_init', 'my_widgets_init' );
 
 // cssとjsのバージョンを削除する
-function vc_remove_wp_ver_css_js ( $src ) {
+function vc_remove_wp_ver_css_js( $src ) {
 	if ( strpos( $src, 'ver=' ) ) {
 		$src = remove_query_arg( 'ver', $src );
 	}
@@ -56,15 +56,15 @@ add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
 // 画像サイズを定義
-if ( !isset( $content_width ) ) {
+if ( ! isset( $content_width ) ) {
 	$content_width = 580;
 }
 
 // 管理画面にオリジナルのスタイルを適用
-add_editor_style( "style.css" ); // メインのCSS
+add_editor_style( 'style.css' ); // メインのCSS
 
 // <script>タグにdefer属性を付与する
-function add_async_to_script ( $tag ) {
+function add_async_to_script( $tag ) {
 
 	return str_replace( "type='text/javascript'", 'defer', $tag );
 }
