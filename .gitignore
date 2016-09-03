@@ -4,4 +4,6 @@ node_modules
 /.idea/workspace.xml
 /.idea/dictionaries/
 /.idea/modules.xml
-/.idea/copyright/
+/.idea/copyright
+/.idea/jsLibraryMappings.xml
+
