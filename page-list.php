@@ -31,7 +31,8 @@
 		$posts = query_posts( $args );
 		$tmp   = array();
 		foreach ( $posts as $post ) :
-			if ( in_array( get_field( 'schoolName' ), $tmp ) ) {
+			$current_processing_school_name = get_field( 'schoolName' );
+			if ( in_array( $current_processing_school_name, $tmp, true ) ) {
 				continue;
 			}
 			?>
