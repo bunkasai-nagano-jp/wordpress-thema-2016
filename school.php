@@ -33,7 +33,7 @@ if ( get_gmap_sv_url( 600, 350 ) ) :  ?>
 					echo '</p>';
 				  elseif ( get_sub_field( 'public_open_day' ) ) :
 						echo '<p>';
-						echo get_sub_field( 'public_open_day' );
+						the_sub_field( 'public_open_day' );
 						echo '</p>';
 				  endif;
 			  endwhile;
@@ -44,7 +44,7 @@ if ( get_gmap_sv_url( 600, 350 ) ) :  ?>
 		echo '</p>';
 	elseif ( get_field( 'publicStartDate' ) ) :
 		echo '<p>';
-		echo get_field( 'publicStartDate' );
+		the_field( 'publicStartDate' );
 		echo '</p>';
 	else :
 		echo '<p>';
