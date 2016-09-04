@@ -1,7 +1,7 @@
 <?php
 
 if ( get_gmap_sv_url( 600, 350 ) ) :  ?>
-	<img class="card-img-top img-fluid" src="<?php echo get_gmap_sv_url( 600, 350 ); ?>" alt="streetview">
+	<img class="card-img-top img-fluid" src="<?php echo esc_url( get_gmap_sv_url( 600, 350 ) ); ?>" alt="streetview">
 <?php endif; ?>
 <div class="card-block">
 	<?php if ( is_ended() ) :  ?>
@@ -35,8 +35,6 @@ if ( get_gmap_sv_url( 600, 350 ) ) :  ?>
 						echo '<p>';
 						echo get_sub_field( 'public_open_day' );
 						echo '</p>';
-				  else :
-
 				  endif;
 			  endwhile;
 
@@ -68,8 +66,6 @@ if ( get_gmap_sv_url( 600, 350 ) ) :  ?>
 			endif;
 		endwhile;
 		echo '</div>';
-	else :
-
 	endif;
 	?>
 	<?php get_template_part( 'template/twitter_embed' ); ?>
