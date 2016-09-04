@@ -80,19 +80,19 @@ if ( get_gmap_sv_url( 600, 350 ) ) :  ?>
 	<tbody>
 	<tr>
 	  <td>学校名</td>
-	  <td><?php echo get_field( 'schoolName' ); ?></td>
+	  <td><?php the_field( 'schoolName' ); ?></td>
 	</tr>
 	<tr>
 	  <td>住所</td>
-	  <td><?php echo get_field( 'address' ); ?></td>
+	  <td><?php the_field( 'address' ); ?></td>
 	</tr>
 	<tr>
 	  <td>学校公式サイト</td>
-	  <td><a href="<?php echo get_field( 'url' ); ?>"><?php echo get_field( 'url' ); ?></a></td>
+	  <td><a href="<?php the_field( 'url' ); ?>"><?php the_field( 'url' ); ?></a></td>
 	</tr>
 	<tr>
 	  <td>電話番号</td>
-	  <td><?php echo get_field( 'tel' ); ?></td>
+	  <td><?php the_field( 'tel' ); ?></td>
 	</tr>
 	</tbody>
 	</table>
