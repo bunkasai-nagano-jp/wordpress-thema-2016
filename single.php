@@ -9,7 +9,7 @@
 			  <h1 class="card-title"><?php the_title(); ?></h1>
 			  <h6 class="card-subtitle text-muted">
 				<p class="card-date"><i class="fa fa-fw fa-calendar"></i> 公開 <?php echo get_the_date(); ?></p>
-				<?php if ( get_the_date() != get_the_modified_date() ) :  ?>
+				<?php if ( get_the_date() !== get_the_modified_date() ) :  ?>
 				  <p class="card-date"><i class="fa fa-fw fa-repeat"></i> 更新 <?php echo get_the_modified_date(); ?></p>
 				<?php endif; ?>
 			  </h6>
