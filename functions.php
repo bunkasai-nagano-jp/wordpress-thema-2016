@@ -13,7 +13,7 @@ function get_school_page() {
 
 add_shortcode( 'school', 'get_school_page' );
 
-class navbar_link_list extends Walker {
+class NavbarLinkList extends Walker {
 	public function walk( $elements, $max_depth ) {
 		$list = array();
 

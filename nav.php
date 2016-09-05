@@ -25,7 +25,7 @@
 				  'container'      => false,
 				  'echo'           => true,
 				  'depth'          => 0,
-				  'walker'         => new navbar_link_list,
+				  'walker'         => new NavbarLinkList,
 				  'theme_location' => 'navbar',
 				  'items_wrap'     => '%3$s',
 				);
