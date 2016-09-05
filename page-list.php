@@ -56,7 +56,7 @@
 					foreach ( $result as $post ) :
 						  $start_date = date_create( get_field( 'startDate' ) );
 							?>
-						  <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo date_format( $start_date, 'Y' ); ?>
+						  <a href="<?php the_permalink(); ?>"><?php echo esc_html( date_format( $start_date, 'Y' ) ); ?>
 					  年</a>
 						<?php
 					endforeach;
@@ -64,7 +64,7 @@
 			  else :
 					$start_date = date_create( get_field( 'startDate' ) );
 				?>
-				<a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo date_format( $start_date, 'Y' ); ?>年</a>
+				<a href="<?php the_permalink(); ?>"><?php echo esc_html( date_format( $start_date, 'Y' ) ); ?>年</a>
 				<?php
 			  endif;
 				?>
