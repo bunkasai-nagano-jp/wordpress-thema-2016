@@ -8,9 +8,9 @@
 			<div class="card-block">
 			  <h1 class="card-title"><?php the_title(); ?></h1>
 			  <h6 class="card-subtitle text-muted">
-				<span><i class="fa fa-fw fa-calendar"></i> 公開 <?php echo get_the_date(); ?></span>
+				<span><i class="fa fa-fw fa-calendar"></i> 公開 <?php the_date(); ?></span>
 				<?php if ( get_the_date() !== get_the_modified_date() ) :  ?>
-				  <span><i class="fa fa-fw fa-repeat"></i> 更新 <?php echo get_the_modified_date(); ?></span>
+				  <span><i class="fa fa-fw fa-repeat"></i> 更新 <?php the_modified_date(); ?></span>
 				<?php endif; ?>
 			  </h6>
 			</div>
