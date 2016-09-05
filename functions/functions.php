@@ -1,12 +1,14 @@
 <?php
-
-// 他の年の記事があるかどうか
-function is_other_year_post ( $school_name ) {
-	$args   = array(
-		'meta_value' => $school_name,
-	);
-	$result = get_posts( $args );
-	$number = count( $result );
+/**
+ * 他の年の記事があるかどうか
+ *
+ * @param string $school_name 学校名.
+ *
+ * @return bool
+ */
+function is_other_year_post( $school_name ) {
+	$result = new WP_Query( array( 'meta_value' => $school_name ) );
+	$number = $result->found_posts;
 	if ( 1 === $number ) :
 		return false;
 	else:
