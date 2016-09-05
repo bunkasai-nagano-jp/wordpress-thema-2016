@@ -1,13 +1,11 @@
 <div class="card">
-  <?php
-	$img_url = get_gmap_sv_url( 385, 200 );
-if ( $img_url ) :  ?>
-					<div class="card-img-top">
-					<img src="<?php echo $img_url ?>" alt="streetview" class="img-fluid">
-					</div>
-					<?php
-	endif;
-	?>
+	<?php
+		$img_url = get_gmap_sv_url( 385, 200 );
+	if ( $img_url ) :  ?>
+	<div class="card-img-top">
+		<img src="<?php echo $img_url ?>" alt="streetview" class="img-fluid">
+	</div>
+	<?php endif; ?>
 	<div class="card-block">
 	<a href="<?php the_permalink(); ?>">
 	  <h2 class="card-title"><?php the_field( 'name' ); ?></h2>
