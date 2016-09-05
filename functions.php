@@ -7,39 +7,11 @@ get_template_part( 'functions/pagination' );
 get_template_part( 'functions/google-map' );
 get_template_part( 'functions/relation-category-list' );
 
-function get_custom_field( $field_name ) {
-	$data = get_field( $field_name );
-
-	return $data;
-}
-
-function get_custom_field_wrap( $attr ) {
-	if ( empty( $attr[0] ) ) {
-		return '引数を指定してください';
-	} else {
-		return get_custom_field( $attr[0] );
-	}
-}
-
-add_shortcode( 'get_data', 'get_custom_field_wrap' );
-
 function get_school_page() {
 	get_template_part( 'school' );
 }
 
 add_shortcode( 'school', 'get_school_page' );
-
-
-function get_school_info( $ID, $param ) {
-	if ( ! empty( $ID ) ) {
-		$custom_fields = get_post_custom( $ID );
-		$post          = get_post( $ID, ARRAY_A );
-
-		return $post[ $param ];
-	} else {
-
-	}
-}
 
 class navbar_link_list extends Walker {
 	public function walk( $elements, $max_depth ) {
