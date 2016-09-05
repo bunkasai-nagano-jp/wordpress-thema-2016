@@ -139,6 +139,9 @@ a:hover {
   overflow: hidden;
   margin-bottom: 1rem;
 }
+.gmap iframe {
+  border: 0;
+}
 .gmap iframe,
 .gmap object,
 .gmap embed {
