@@ -67,28 +67,38 @@ function get_end_date () {
 	return $end_date;
 }
 
-/*
-文化祭が開催中かどうか
-  開催中:true
-  終了:false
-*/
-function is_bunkasai_during_open () {
+/**
+ * 文化祭が開催中かどうか
+ * 開催中:true
+ * 開催前:null
+ * 終了:false
+ */
+function is_bunkasai_during_open() {
 	if ( get_field( 'startDate' ) ) {
-		$start_date = strtotime( get_field( 'startDate' ) );
-	} else {
-		$start_date = null;
-	}
-	if ( get_field( 'endDate' ) ) {
-		$end_date = strtotime( get_field( 'endDate' ) );
-	} else {
-		$end_date = strtotime( get_field( 'startDate' ) );
-	}
-
-	if ( strtotime( "today" ) >= $start_date and strtotime( "today" ) <= $end_date ) {
-		return true;
-	} elseif ( $end_date < strtotime( "today" ) ) {
-		return false;
-	} else {
-		return null;
+		$start_date = get_field( 'startDate' );
+		$today      = date( 'Y/m/d' );
+		if ( ! get_field( 'endDate' ) ) {
+			// 開催期間が1日の文化祭を想定する
+			$end_date = get_field( 'startDate' );
+		} else {
+			$end_date = get_field( 'endDate' );
+		}
+		if ( $today === $start_date ) {
+			// 開始日当日
+			return true;
+		} elseif ( $today === $end_date ) {
+			// 終了日当日
+			return true;
+		} elseif ( $today > $end_date ) {
+			// 終了日よりも後
+			return false;
+		} elseif ( $today > $start_date and $today < $end_date ) {
+			// 開催期間中
+			// 開始日よりも後 終了日よりも前
+			return true;
+		} elseif ( $today < $start_date ) {
+			// 開始日よりも前 残り日数を計算する
+			return null;
+		}
 	}
 }
