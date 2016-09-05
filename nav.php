@@ -7,7 +7,7 @@
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 col-xl-5">
             <div class="row">
               <div class="col-xs-10 col-sm-12 col-md-12">
-                <a class="navbar-brand" href="<?php echo home_url(); ?>/"><?php bloginfo( 'name' ); ?></a>
+                <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>/"><?php bloginfo( 'name' ); ?></a>
 			  </div>
 			  <div class="col-xs-2">
 				<button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
