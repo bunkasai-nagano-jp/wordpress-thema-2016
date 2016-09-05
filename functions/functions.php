@@ -7,7 +7,7 @@ function is_other_year_post ( $school_name ) {
 	);
 	$result = get_posts( $args );
 	$number = count( $result );
-	if ( $number == 1 ):
+	if ( 1 === $number ) :
 		return false;
 	else:
 		return true;
