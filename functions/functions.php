@@ -38,7 +38,6 @@ function is_ended() {
 function get_remaining_days() {
 	if ( get_field( 'startDate' ) and get_field( 'endDate' ) ) {
 		$start_date = get_field( 'startDate' );
-		$end_date   = get_field( 'endDate' );
 		$today      = date( 'Y/m/d' );
 		$days       = abs( strtotime( $start_date ) - strtotime( $today ) ) / ( 60 * 60 * 24 );
 
