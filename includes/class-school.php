@@ -20,6 +20,7 @@ class School {
 					}
 					$this->post[] = [
 					'year' => $start_date->format( 'Y' ),
+					'url'  => get_permalink(),
 					];
 			endwhile;
 			endif;
