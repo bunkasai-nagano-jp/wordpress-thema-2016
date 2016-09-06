@@ -95,3 +95,21 @@ function is_bunkasai_during_open() {
 		}
 	}
 }
+/**
+ * 全ての高校名を取得する
+ */
+function get_all_school() {
+	$posts = get_all_posts();
+	$all_school_name = [];
+	$loop_tmp = [];
+	if ( $posts ->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
+			$school_name = get_field( 'schoolName' );
+			if ( ! in_array( $school_name, $loop_tmp, true ) ) :
+				$all_school_name[] = $school_name;
+				$loop_tmp[] = get_field( 'schoolName' );
+		endif;
+		endwhile;
+		ksort( $all_school_name );
+	endif;
+	return $all_school_name;
+}
