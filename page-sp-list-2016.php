@@ -37,7 +37,7 @@
 						<h4 class="card-subtitle text-muted"><?php the_field( 'schoolName' ) ?></h4>
 						<div class="card-block">
 							<p class="card-text">
-								<span><i class="fa fa-fw fa-calendar"></i> 開催期間</span>
+								<span><i class="fa fa-fw fa-calendar"></i>&nbsp;開催期間</span>
 								<?php if ( get_field( 'startDate' ) and get_field( 'endDate' ) ) : ?>
 									<span><?php the_field( 'startDate' ); ?>&nbsp;~&nbsp;<?php the_field( 'endDate' ); ?></span>
 									<?php
@@ -50,7 +50,7 @@
 								?>
 							</p>
 							<p class="card-text">
-								<span><i class="fa fa-fw fa-info" aria-hidden="true"></i> 一般公開</span>
+								<span><i class="fa fa-fw fa-info" aria-hidden="true"></i>&nbsp;一般公開</span>
 								<?php if ( get_field( 'public_unknown' ) ) : ?>
 									<span>不明</span>
 								<?php else : ?>
