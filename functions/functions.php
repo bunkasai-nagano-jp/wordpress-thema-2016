@@ -95,6 +95,27 @@ function is_bunkasai_during_open() {
 		}
 	}
 }
+
+/**
+ * 全ての記事を取得する
+ */
+function get_all_posts() {
+	$args  = array(
+		'meta_query' => array(
+			'meta' => array(
+				'key'  => 'schoolName',
+				'type' => 'CHAR',
+			),
+		),
+		'post_type'  => 'post',
+		'order'      => 'ASC',
+		'orderby'    => 'meta',
+		'posts_per_page' => -1,
+	);
+	$posts = new WP_Query( $args );
+	return $posts;
+}
+
 /**
  * 全ての高校名を取得する
  */
