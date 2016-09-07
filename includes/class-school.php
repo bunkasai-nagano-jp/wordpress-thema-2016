@@ -44,6 +44,16 @@ class School {
 		return $start_date->format( 'Y' );
 	}
 
+	/**
+	 * 投稿の親カテゴリー名を取得する関数
+	 *
+	 * 投稿IDからカテゴリーオブジェクトを取得する.
+	 * カテゴリーオブジェクトの先頭の要素(最上位のカテゴリー)のcat_nameを返す.
+	 *
+	 * @param string $post_id 投稿ID.
+	 *
+	 * @return string カテゴリー名
+	 */
 	private function get_category_parent_name( $post_id ) {
 		$category = get_the_category( $post_id );
 
