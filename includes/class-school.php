@@ -38,6 +38,12 @@ class School {
 		return $start_date->format( 'Y' );
 	}
 
+	private function get_category_parent_name( $id ) {
+		$category = get_the_category( $id );
+
+		return $category[0]->cat_name;
+	}
+
 	/**
 	 * 一般公開期間を取得する
 	 *
