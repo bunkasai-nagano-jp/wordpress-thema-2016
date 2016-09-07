@@ -13,15 +13,11 @@ class School {
 				'meta_compare' => '=',
 			) );
 			if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
-					try {
-						$start_date = new DateTime( get_field( 'startDate' ) );
-					} catch (Exception $e) {
-						echo $e->getMessage();
-						exit( 1 );
+					$year = $this->get_post_year( $posts->ID );
 					}
 					$this->post[] = [
-					'year' => $start_date->format( 'Y' ),
 					'url'  => get_permalink(),
+					'year' => $year,
 					];
 			endwhile;
 			endif;
@@ -33,5 +29,9 @@ class School {
 	}
 	public function get_school_name() {
 		return $this->school_name;
+	}
+	private function get_post_year( $id ) {
+			$start_date = new DateTime( get_field( 'startDate', $id ) );
+		return $start_date->format( 'Y' );
 	}
 }
