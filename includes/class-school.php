@@ -33,7 +33,7 @@ class School {
 	}
 
 	private function get_post_year( $id ) {
-		$start_date = new DateTime( get_field( 'startDate', $id ) );
+		$start_date = $this->get_datetime_t( get_field( 'startDate', $id ) );
 
 		return $start_date->format( 'Y' );
 	}
@@ -45,6 +45,16 @@ class School {
 	}
 
 	/**
+	 * 日本のタイムゾーンでDateTimeオブジェクトを作成する
+	 *
+	 * @param $string
+	 *
+	 * @return DateTime
+	 */
+	private function get_datetime_t( $string ) {
+		$datetime = new DateTime( $string, new DateTimeZone( 'Asia/Tokyo' ) );
+		return $datetime;
+	}
 	 * 一般公開期間を取得する
 	 *
 	 * @return array|bool
@@ -58,19 +68,19 @@ class School {
 					$public_open_start = get_sub_field( 'public_open_day' ) . ' ' . get_sub_field( 'public_open_start_time' );
 					$public_open_end   = get_sub_field( 'public_open_day' ) . ' ' . get_sub_field( 'public_open_end_time' );
 					$public_open[]     = [
-						'public_open_start' => new DateTime( $public_open_start ),
-						'public_open_end'   => new DateTime( $public_open_end ),
+						'public_open_start' => $this->get_datetime_t( $public_open_start ),
+						'public_open_end'   => $this->get_datetime_t( $public_open_end ),
 					];
 				elseif ( get_sub_field( 'public_open_day' ) ) :
-						$public_open_tmp[] = new DateTime( get_sub_field( 'public_open_day' ) );
 				endif;
 			endwhile;
 		elseif ( get_field( 'publicStartDate' ) and get_field( 'publicEndDate' ) ) :
+						$public_open_tmp[] = $this->get_datetime_t( get_sub_field( 'public_open_day' ) );
 				$public_open_start = get_field( 'publicStartDate' );
 				$public_open_end   = get_field( 'publicEndDate' );
-				$public_open[] = [
-					'public_open_start' => new DateTime( $public_open_start ),
-					'public_open_end'   => new DateTime( $public_open_end ),
+				$public_open[]     = [
+					'public_open_start' => $this->get_datetime_t( $public_open_start ),
+					'public_open_end'   => $this->get_datetime_t( $public_open_end ),
 				];
 		endif;
 		if ( $public_open_tmp ) {
