@@ -3,8 +3,8 @@
 class School {
 	public $school_name;
 	public $municipality_name;
-	public $post = array();
 	public function __construct( $school_name ) {
+	public $post = [];
 
 			$posts = new WP_Query( array(
 				'meta_key'     => 'schoolName',
@@ -20,18 +20,21 @@ class School {
 					'year' => $year,
 					];
 			endwhile;
-			endif;
-
-			$this->set_school_name( $school_name );
+		endif;
+		$this->set_school_name( $school_name );
 	}
+
 	public function set_school_name( $school_name ) {
 		$this->school_name = $school_name;
 	}
+
 	public function get_school_name() {
 		return $this->school_name;
 	}
+
 	private function get_post_year( $id ) {
-			$start_date = new DateTime( get_field( 'startDate', $id ) );
+		$start_date = new DateTime( get_field( 'startDate', $id ) );
+
 		return $start_date->format( 'Y' );
 	}
 
