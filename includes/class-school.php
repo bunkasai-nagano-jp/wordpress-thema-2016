@@ -44,8 +44,8 @@ class School {
 		return $start_date->format( 'Y' );
 	}
 
-	private function get_category_parent_name( $id ) {
-		$category = get_the_category( $id );
+	private function get_category_parent_name( $post_id ) {
+		$category = get_the_category( $post_id );
 
 		return $category[0]->cat_name;
 	}
