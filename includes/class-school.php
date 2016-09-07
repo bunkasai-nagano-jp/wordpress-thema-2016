@@ -63,12 +63,17 @@ class School {
 	/**
 	 * 日本のタイムゾーンでDateTimeオブジェクトを作成する
 	 *
-	 * @param $string
+	 * タイムゾーンを'Asia/Tokyo'に指定した上でDateTimeオブジェクトを作成する。
+	 * タイムゾーンを指定せずに作成した場合、タイムゾーンがUTCになる。
+	 * その指定を省略するためのラッパー関数。
+	 *
+	 * @param string $string 日付/時刻 文字列
 	 *
 	 * @return DateTime
 	 */
 	private function get_datetime_t( $string ) {
 		$datetime = new DateTime( $string, new DateTimeZone( 'Asia/Tokyo' ) );
+
 		return $datetime;
 	}
 
