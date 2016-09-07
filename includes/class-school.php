@@ -131,7 +131,6 @@ class School {
 				asort( $public_open_tmp );
 				$public_open['public_open_start'] = array_shift( $public_open_tmp );
 				$public_open['public_open_end']   = array_pop( $public_open_tmp );
-				$public_open_tmp                  = [];
 			}
 			if ( $public_open ) {
 				return $public_open;
