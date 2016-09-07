@@ -3,22 +3,28 @@
 class School {
 	public $school_name;
 	public $municipality_name;
-	public function __construct( $school_name ) {
 	public $post = [];
 
-			$posts = new WP_Query( array(
-				'meta_key'     => 'schoolName',
-				'meta_value'   => esc_sql( $school_name ),
-				'meta_type'    => 'CHAR',
-				'meta_compare' => '=',
-			) );
-			if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
-					$year = $this->get_post_year( $posts->ID );
-					}
-					$this->post[] = [
-					'url'  => get_permalink(),
-					'year' => $year,
-					];
+	public function __construct( $school_name ) {
+		$posts = new WP_Query( [
+			'meta_key'     => 'schoolName',
+			'meta_value'   => esc_sql( $school_name ),
+			'meta_type'    => 'CHAR',
+			'meta_compare' => '=',
+		] );
+		if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
+				$year = $this->get_post_year( $posts->ID );
+				if ( ! $this->municipality_name ) {
+					$this->municipality_name = $this->get_category_parent_name( $posts->ID );
+				}
+				$this->post[] = [
+				'year'                => $year,
+				'name'                => get_field( 'name' ),
+				'date'                => $this->get_date(),
+				'public_open_unknown' => get_field( 'public_unknown' ),
+				'public_open'         => $this->get_public_open(),
+				'permalink'           => get_permalink(),
+				];
 			endwhile;
 		endif;
 		$this->set_school_name( $school_name );
