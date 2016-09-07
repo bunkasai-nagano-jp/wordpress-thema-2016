@@ -2,6 +2,7 @@
 
 class School {
 	public $school_name;
+	public $municipality_name;
 	public $post = array();
 	public function __construct( $school_name ) {
 
