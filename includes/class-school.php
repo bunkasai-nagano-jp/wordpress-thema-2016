@@ -100,28 +100,28 @@ class School {
 						'public_open_start' => $this->get_datetime_t( $public_open_start ),
 						'public_open_end'   => $this->get_datetime_t( $public_open_end ),
 					];
-				elseif ( get_sub_field( 'public_open_day' ) ) :
-				endif;
-			endwhile;
-		elseif ( get_field( 'publicStartDate' ) and get_field( 'publicEndDate' ) ) :
+					elseif ( get_sub_field( 'public_open_day' ) ) :
 						$public_open_tmp[] = $this->get_datetime_t( get_sub_field( 'public_open_day' ) );
+					endif;
+				endwhile;
+			elseif ( get_field( 'publicStartDate' ) and get_field( 'publicEndDate' ) ) :
 				$public_open_start = get_field( 'publicStartDate' );
 				$public_open_end   = get_field( 'publicEndDate' );
 				$public_open[]     = [
 					'public_open_start' => $this->get_datetime_t( $public_open_start ),
 					'public_open_end'   => $this->get_datetime_t( $public_open_end ),
 				];
-		endif;
-		if ( $public_open_tmp ) {
+			endif;
+			if ( $public_open_tmp ) {
 				asort( $public_open_tmp );
 				$public_open['public_open_start'] = array_shift( $public_open_tmp );
 				$public_open['public_open_end']   = array_pop( $public_open_tmp );
 				$public_open_tmp                  = [];
-		}
-		if ( $public_open ) {
-			return $public_open;
-		} else {
-			return false;
-		}
+			}
+			if ( $public_open ) {
+				return $public_open;
+			} else {
+				return false;
+			}
 	}
 }
