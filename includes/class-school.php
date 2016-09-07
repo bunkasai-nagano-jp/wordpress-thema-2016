@@ -8,7 +8,7 @@ class School {
 
 			$posts = new WP_Query( array(
 				'meta_key'     => 'schoolName',
-				'meta_value'   => esc_sql($school_name),
+				'meta_value'   => esc_sql( $school_name ),
 				'meta_type'    => 'CHAR',
 				'meta_compare' => '=',
 			) );
@@ -22,7 +22,7 @@ class School {
 			endwhile;
 			endif;
 
-		$this->set_school_name( $school_name );
+			$this->set_school_name( $school_name );
 	}
 	public function set_school_name( $school_name ) {
 		$this->school_name = $school_name;
