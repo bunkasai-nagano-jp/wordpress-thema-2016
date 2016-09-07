@@ -20,7 +20,7 @@ class School {
 				$this->post[] = [
 				'year'                => $year,
 				'name'                => get_field( 'name' ),
-				'date'                => $this->get_date(),
+				'date'                => $this->get_event_date(),
 				'public_open_unknown' => get_field( 'public_unknown' ),
 				'public_open'         => $this->get_public_open(),
 				'permalink'           => get_permalink(),
@@ -61,6 +61,29 @@ class School {
 		$datetime = new DateTime( $string, new DateTimeZone( 'Asia/Tokyo' ) );
 		return $datetime;
 	}
+
+	/**
+	 * 開催期間を取得する
+	 *
+	 * @return array|bool
+	 */
+	private function get_event_date() {
+		$date = [];
+		if ( get_field( 'startDate' ) or get_field( 'endDate' ) ) :
+			if ( get_field( 'startDate' ) ) {
+				$date[] = $this->get_datetime_t( get_field( 'startDate' ) );
+			}
+			if ( get_field( 'endDate' ) ) {
+				$date[] = $this->get_datetime_t( get_field( 'endDate' ) );
+			}
+
+			return $date;
+			else :
+				return false;
+			endif;
+	}
+
+	/**
 	 * 一般公開期間を取得する
 	 *
 	 * @return array|bool
