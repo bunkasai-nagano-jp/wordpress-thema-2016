@@ -11,28 +11,43 @@ class School {
 	 * @param string $school_name 学校名.
 	 */
 	public function __construct( $school_name ) {
+		try {
+			$posts = $this->fetch_posts( $school_name );
+			if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
+					$year = $this->get_post_year( $posts->ID );
+					if ( ! $this->municipality_name ) {
+						$this->municipality_name = $this->get_category_parent_name( $posts->ID );
+					}
+					if ( ! $this->school_name ) {
+						$this->set_school_name( get_field( 'schoolName' ) );
+					}
+					$this->post[] = [
+					'year'                => $year,
+					'name'                => get_field( 'name' ),
+					'date'                => $this->get_event_date(),
+					'public_open_unknown' => get_field( 'public_unknown' ),
+					'public_open'         => $this->get_public_open(),
+					'permalink'           => get_permalink(),
+					];
+			endwhile;
+			endif;
+		} catch ( Exception $e ) {
+			return;
+		}
+	}
+
+	private function fetch_posts( $school_name ) {
 		$posts = new WP_Query( [
 			'meta_key'     => 'schoolName',
 			'meta_value'   => $school_name,
 			'meta_type'    => 'CHAR',
 			'meta_compare' => '=',
 		] );
-		if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
-				$year = $this->get_post_year( $posts->ID );
-				if ( ! $this->municipality_name ) {
-					$this->municipality_name = $this->get_category_parent_name( $posts->ID );
-				}
-				$this->post[] = [
-				'year'                => $year,
-				'name'                => get_field( 'name' ),
-				'date'                => $this->get_event_date(),
-				'public_open_unknown' => get_field( 'public_unknown' ),
-				'public_open'         => $this->get_public_open(),
-				'permalink'           => get_permalink(),
-				];
-			endwhile;
-		endif;
-		$this->set_school_name( $school_name );
+		if ( ! $posts ) {
+			throw new Exception( '学校が存在しない' );
+		} else {
+			return $posts;
+		}
 	}
 
 	/**
