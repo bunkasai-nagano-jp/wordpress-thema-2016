@@ -30,6 +30,11 @@ class School {
 		$this->set_school_name( $school_name );
 	}
 
+	/**
+	 * 学校名を設定する関数
+	 *
+	 * @param string $school_name 学校名.
+	 */
 	public function set_school_name( $school_name ) {
 		$this->school_name = $school_name;
 	}
