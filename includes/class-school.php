@@ -39,6 +39,11 @@ class School {
 		$this->school_name = $school_name;
 	}
 
+	/**
+	 * 学校名を取得する関数
+	 *
+	 * @return string 学校名.
+	 */
 	public function get_school_name() {
 		return $this->school_name;
 	}
