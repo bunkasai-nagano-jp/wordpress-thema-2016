@@ -5,6 +5,11 @@ class School {
 	public $municipality_name;
 	public $post = [];
 
+	/**
+	 * School constructor.
+	 *
+	 * @param string $school_name 学校名.
+	 */
 	public function __construct( $school_name ) {
 		$posts = new WP_Query( [
 			'meta_key'     => 'schoolName',
