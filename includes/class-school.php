@@ -72,7 +72,7 @@ class School {
 	 * タイムゾーンを指定せずに作成した場合、タイムゾーンがUTCになる。
 	 * その指定を省略するためのラッパー関数。
 	 *
-	 * @param string $string 日付/時刻 文字列
+	 * @param string $string 日付/時刻 文字列.
 	 *
 	 * @return DateTime
 	 */
