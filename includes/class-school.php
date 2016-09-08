@@ -13,7 +13,7 @@ class School {
 	public function __construct( $school_name ) {
 		$posts = new WP_Query( [
 			'meta_key'     => 'schoolName',
-			'meta_value'   => esc_sql( $school_name ),
+			'meta_value'   => $school_name,
 			'meta_type'    => 'CHAR',
 			'meta_compare' => '=',
 		] );
