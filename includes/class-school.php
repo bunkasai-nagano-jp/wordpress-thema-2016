@@ -36,6 +36,12 @@ class School {
 		}
 	}
 
+	/**
+	 * @param $school_name
+	 *
+	 * @return WP_Query
+	 * @throws Exception
+	 */
 	private function fetch_posts( $school_name ) {
 		$posts = new WP_Query( [
 			'meta_key'     => 'schoolName',
