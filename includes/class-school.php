@@ -39,10 +39,12 @@ class School {
 	}
 
 	/**
-	 * @param $school_name
+	 * 学校名から投稿を取得する
+	 *
+	 * @param string $school_name 学校名.
 	 *
 	 * @return WP_Query
-	 * @throws Exception
+	 * @throws Exception School name is wrong.
 	 */
 	private function fetch_posts( $school_name ) {
 		$posts = new WP_Query( [
@@ -78,19 +80,28 @@ class School {
 
 	private function get_post_year( $id ) {
 		$start_date = $this->get_datetime_t( get_field( 'startDate', $id ) );
+	/**
+	 * 文化祭の開催年を取得する関数
+	 *
+	 * @param string $post_id 投稿ID.
+	 *
+	 * @return string
+	 */
 
 		return $start_date->format( 'Y' );
 	}
 
 	/**
-	 * 投稿の親カテゴリー名を取得する関数
+	 * 投稿の親カテゴリーを取得する関数
 	 *
 	 * 投稿IDからカテゴリーオブジェクトを取得する.
-	 * カテゴリーオブジェクトの先頭の要素(最上位のカテゴリー)のcat_nameを返す.
+	 * カテゴリーオブジェクトの先頭の要素(最上位のカテゴリー)のcat_nameを取得する.
+	 * カテゴリーオブジェクトの先頭の要素(最上位のカテゴリー)のcat_IDを取得し、リンクを取得する関数へ渡す.
+	 * カテゴリー名とリンクを配列に入れて返す.
 	 *
 	 * @param string $post_id 投稿ID.
 	 *
-	 * @return string カテゴリー名
+	 * @return array カテゴリー
 	 */
 	private function get_category_parent_name( $post_id ) {
 		$category = get_the_category( $post_id );
