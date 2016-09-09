@@ -78,8 +78,6 @@ class School {
 		return $this->school_name;
 	}
 
-	private function get_post_year( $id ) {
-		$start_date = $this->get_datetime_t( get_field( 'startDate', $id ) );
 	/**
 	 * 文化祭の開催年を取得する関数
 	 *
@@ -87,6 +85,8 @@ class School {
 	 *
 	 * @return string
 	 */
+	private function get_post_year( $post_id ) {
+		$start_date = $this->get_datetime_t( get_field( 'startDate', $post_id ) );
 
 		return $start_date->format( 'Y' );
 	}
