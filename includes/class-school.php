@@ -136,41 +136,37 @@ class School {
 	}
 
 	/**
-	 * 一般公開期間を取得する
+	 * 一般公開情報を取得する関数
+	 *
+	 * @param string $post_id 投稿ID.
 	 *
 	 * @return array|bool
 	 */
-	private function get_public_open() {
-		$public_open     = [];
-		$public_open_tmp = [];
-		if ( have_rows( 'public_open' ) ) :
-			while ( have_rows( 'public_open' ) ) : the_row();
+	private function get_event_public_open_date( $post_id = false ) {
+		$event_public_open_date = [];
+		if ( have_rows( 'public_open', $post_id ) ) :
+			while ( have_rows( 'public_open', $post_id ) ) : the_row();
 				if ( get_sub_field( 'public_open_day' ) and get_sub_field( 'public_open_start_time' ) and get_sub_field( 'public_open_end_time' ) ) :
-					$public_open_start = get_sub_field( 'public_open_day' ) . ' ' . get_sub_field( 'public_open_start_time' );
-					$public_open_end   = get_sub_field( 'public_open_day' ) . ' ' . get_sub_field( 'public_open_end_time' );
-					$public_open[]     = [
-						'public_open_start' => $this->get_datetime_t( $public_open_start ),
-						'public_open_end'   => $this->get_datetime_t( $public_open_end ),
+					$event_public_open_start  = get_sub_field( 'public_open_day' ) . ' ' . get_sub_field( 'public_open_start_time' );
+					$event_public_open_end    = get_sub_field( 'public_open_day' ) . ' ' . get_sub_field( 'public_open_end_time' );
+					$event_public_open_date[] = [
+						'event_public_open_start' => $this->get_datetime_t( $event_public_open_start ),
+						'event_public_open_end'   => $this->get_datetime_t( $event_public_open_end ),
 					];
 				elseif ( get_sub_field( 'public_open_day' ) ) :
-					$public_open_tmp[] = $this->get_datetime_t( get_sub_field( 'public_open_day' ) );
+					$event_public_open_date[] = $this->get_datetime_t( get_sub_field( 'public_open_day' ) );
 				endif;
 			endwhile;
-		elseif ( get_field( 'publicStartDate' ) and get_field( 'publicEndDate' ) ) :
-			$public_open_start = get_field( 'publicStartDate' );
-			$public_open_end   = get_field( 'publicEndDate' );
-			$public_open[]     = [
-				'public_open_start' => $this->get_datetime_t( $public_open_start ),
-				'public_open_end'   => $this->get_datetime_t( $public_open_end ),
+		elseif ( get_field( 'publicStartDate', $post_id ) and get_field( 'publicEndDate', $post_id ) ) :
+			$event_public_open_start  = get_field( 'publicStartDate', $post_id );
+			$event_public_open_end    = get_field( 'publicEndDate', $post_id );
+			$event_public_open_date[] = [
+				'event_public_open_start' => $this->get_datetime_t( $event_public_open_start ),
+				'event_public_open_end'   => $this->get_datetime_t( $event_public_open_end ),
 			];
 		endif;
-		if ( $public_open_tmp ) {
-			asort( $public_open_tmp );
-			$public_open['public_open_start'] = array_shift( $public_open_tmp );
-			$public_open['public_open_end']   = array_pop( $public_open_tmp );
-		}
-		if ( $public_open ) {
-			return $public_open;
+		if ( $event_public_open_date ) {
+			return $event_public_open_date;
 		} else {
 			return false;
 		}
