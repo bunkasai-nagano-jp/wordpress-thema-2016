@@ -4,10 +4,12 @@
  *
  * @param string $school_name 学校名.
  *
+ * @deprecated
+ *
  * @return bool
  */
 function is_other_year_post( $school_name ) {
-	$result = new WP_Query( array( 'meta_value' => $school_name ) );
+	$result = new WP_Query( [ 'meta_value' => $school_name ] );
 	$number = $result->found_posts;
 	if ( 1 === $number ) :
 		return false;
@@ -18,6 +20,10 @@ function is_other_year_post( $school_name ) {
 
 /**
  * 文化祭が終了しているか
+ *
+ * @return bool
+ *
+ * @deprecated
  */
 function is_ended() {
 	if ( ! get_field( 'endDate' ) ) {
@@ -33,7 +39,9 @@ function is_ended() {
 }
 
 /**
- * 文化祭までの残り日数を取得
+ * 文化祭までの残り日数を取得する関数
+ *
+ * @deprecated
  */
 function get_remaining_days() {
 	if ( get_field( 'startDate' ) and get_field( 'endDate' ) ) {
@@ -49,6 +57,10 @@ function get_remaining_days() {
 
 /**
  * 終了日を取得
+ *
+ * @deprecated
+ *
+ * @return string
  */
 function get_end_date() {
 	if ( ! get_field( 'endDate' ) ) {
@@ -62,9 +74,8 @@ function get_end_date() {
 
 /**
  * 文化祭が開催中かどうか
- * 開催中:true
- * 開催前:null
- * 終了:false
+ *
+ * @deprecated
  */
 function is_bunkasai_during_open() {
 	if ( get_field( 'startDate' ) ) {
@@ -94,4 +105,56 @@ function is_bunkasai_during_open() {
 			return null;
 		}
 	}
+}
+
+/**
+ * 全ての記事を取得する関数
+ *
+ * @return WP_Query
+ */
+function get_all_posts() {
+	$posts = new WP_Query( [
+		'post_type'      => 'post',
+		'posts_per_page' => - 1,
+	] );
+
+	return $posts;
+}
+
+/**
+ * 全ての学校の情報を取得する関数
+ *
+ * 学校名と所在地の入った連想配列を返す。
+ *
+ * @todo 処理の効率化。
+ *
+ * @return array
+ */
+function get_all_school_information() {
+	$posts                  = get_all_posts();
+	$all_school_information = [];
+	$loop_tmp               = [];
+	if ( $posts->have_posts() ) :
+		while ( $posts->have_posts() ) :
+			$posts->the_post();
+			$school_name = get_field( 'schoolName' );
+			if ( ! in_array( $school_name, $loop_tmp, true ) ) :
+				$category                 = get_the_category();
+				$all_school_information[] = [
+					'school_name'       => $school_name,
+					'municipality_name' => $category[0]->cat_name,
+				];
+				$loop_tmp[]               = $school_name;
+			endif;
+		endwhile;
+		// 列方向の配列を得る.
+		foreach ( $all_school_information as $key => $value ) {
+			$municipality_name[ $key ] = $value['municipality_name'];
+		}
+		// データを $municipality_name の昇順にソートする.
+		// $all_school_information を最後のパラメータとして渡し、同じキーでソートする.
+		array_multisort( $municipality_name, SORT_ASC, SORT_STRING, $all_school_information );
+	endif;
+
+	return $all_school_information;
 }

@@ -7,6 +7,8 @@ get_template_part( 'functions/pagination' );
 get_template_part( 'functions/google-map' );
 get_template_part( 'functions/relation-category-list' );
 
+get_template_part( 'includes/class-school');
+
 function get_school_page() {
 	get_template_part( 'school' );
 }
