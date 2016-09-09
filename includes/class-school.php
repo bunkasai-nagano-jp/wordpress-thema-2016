@@ -28,7 +28,7 @@ class School {
 					'year'                => $year,
 					'event_date'          => $this->get_event_date(),
 					'public_open_unknown' => get_field( 'public_unknown' ),
-					'public_open'         => $this->get_public_open(),
+					'public_open'         => $this->get_event_public_open_date(),
 					'permalink'           => get_permalink(),
 					];
 				endwhile;
