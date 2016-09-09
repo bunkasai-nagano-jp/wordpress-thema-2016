@@ -31,7 +31,7 @@ class School {
 					'public_open'         => $this->get_public_open(),
 					'permalink'           => get_permalink(),
 					];
-			endwhile;
+				endwhile;
 			endif;
 		} catch ( Exception $e ) {
 			return;
