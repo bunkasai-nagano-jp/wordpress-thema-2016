@@ -102,19 +102,11 @@ function is_bunkasai_during_open() {
  * @return WP_Query
  */
 function get_all_posts() {
-	$args  = array(
-		'meta_query' => array(
-			'meta' => array(
-				'key'  => 'schoolName',
-				'type' => 'CHAR',
-			),
-		),
-		'post_type'  => 'post',
-		'order'      => 'ASC',
-		'orderby'    => 'meta',
-		'posts_per_page' => -1,
-	);
-	$posts = new WP_Query( $args );
+	$posts = new WP_Query( [
+		'post_type'      => 'post',
+		'posts_per_page' => - 1,
+	] );
+
 	return $posts;
 }
 
