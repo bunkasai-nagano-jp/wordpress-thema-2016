@@ -21,9 +21,11 @@ class School {
 					if ( ! $this->school_name ) {
 						$this->set_school_name( get_field( 'schoolName' ) );
 					}
+					if ( ! $this->name ) {
+						$this->name = get_field( 'name' );
+					}
 					$this->event[] = [
 					'year'                => $year,
-					'name'                => get_field( 'name' ),
 					'event_date'          => $this->get_event_date(),
 					'public_open_unknown' => get_field( 'public_unknown' ),
 					'public_open'         => $this->get_public_open(),
