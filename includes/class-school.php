@@ -24,7 +24,7 @@ class School {
 					$this->post[] = [
 					'year'                => $year,
 					'name'                => get_field( 'name' ),
-					'date'                => $this->get_event_date(),
+					'event_date'          => $this->get_event_date(),
 					'public_open_unknown' => get_field( 'public_unknown' ),
 					'public_open'         => $this->get_public_open(),
 					'permalink'           => get_permalink(),
@@ -111,24 +111,25 @@ class School {
 	 * 開催期間を取得する関数
 	 *
 	 * 配列に開始日と終了日を追加して返す。
-	 * ループの中で使うことが前提。
+	 * 投稿IDを指定することも可能。
 	 *
 	 * @access private
-	 * @todo ループの外でも使えるようにする。
+	 *
+	 * @param string|bool $post_id 投稿ID.
 	 *
 	 * @return array|bool
 	 */
-	private function get_event_date() {
-		$date = [];
-		if ( get_field( 'startDate' ) or get_field( 'endDate' ) ) :
-			if ( get_field( 'startDate' ) ) {
-				$date[] = $this->get_datetime_t( get_field( 'startDate' ) );
+	private function get_event_date( $post_id = false ) {
+		$event_date = [];
+		if ( get_field( 'startDate', $post_id ) or get_field( 'endDate', $post_id ) ) :
+			if ( get_field( 'startDate', $post_id ) ) {
+				$event_date[] = $this->get_datetime_t( get_field( 'startDate', $post_id ) );
 			}
-			if ( get_field( 'endDate' ) ) {
-				$date[] = $this->get_datetime_t( get_field( 'endDate' ) );
+			if ( get_field( 'endDate', $post_id ) ) {
+				$event_date[] = $this->get_datetime_t( get_field( 'endDate', $post_id ) );
 			}
 
-			return $date;
+			return $event_date;
 		else :
 			return false;
 		endif;
