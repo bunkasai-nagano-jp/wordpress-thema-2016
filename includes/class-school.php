@@ -3,7 +3,7 @@
 class School {
 	public $school_name;
 	public $municipality_name;
-	public $post = [];
+	public $event = [];
 
 	/**
 	 * School constructor.
@@ -21,7 +21,7 @@ class School {
 					if ( ! $this->school_name ) {
 						$this->set_school_name( get_field( 'schoolName' ) );
 					}
-					$this->post[] = [
+					$this->event[] = [
 					'year'                => $year,
 					'name'                => get_field( 'name' ),
 					'event_date'          => $this->get_event_date(),
