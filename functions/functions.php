@@ -4,10 +4,12 @@
  *
  * @param string $school_name 学校名.
  *
+ * @deprecated
+ *
  * @return bool
  */
 function is_other_year_post( $school_name ) {
-	$result = new WP_Query( array( 'meta_value' => $school_name ) );
+	$result = new WP_Query( [ 'meta_value' => $school_name ] );
 	$number = $result->found_posts;
 	if ( 1 === $number ) :
 		return false;
@@ -18,6 +20,10 @@ function is_other_year_post( $school_name ) {
 
 /**
  * 文化祭が終了しているか
+ *
+ * @return bool
+ *
+ * @deprecated
  */
 function is_ended() {
 	if ( ! get_field( 'endDate' ) ) {
@@ -33,7 +39,9 @@ function is_ended() {
 }
 
 /**
- * 文化祭までの残り日数を取得
+ * 文化祭までの残り日数を取得する関数
+ *
+ * @deprecated
  */
 function get_remaining_days() {
 	if ( get_field( 'startDate' ) and get_field( 'endDate' ) ) {
@@ -49,6 +57,10 @@ function get_remaining_days() {
 
 /**
  * 終了日を取得
+ *
+ * @deprecated
+ *
+ * @return string
  */
 function get_end_date() {
 	if ( ! get_field( 'endDate' ) ) {
@@ -62,9 +74,8 @@ function get_end_date() {
 
 /**
  * 文化祭が開催中かどうか
- * 開催中:true
- * 開催前:null
- * 終了:false
+ *
+ * @deprecated
  */
 function is_bunkasai_during_open() {
 	if ( get_field( 'startDate' ) ) {
