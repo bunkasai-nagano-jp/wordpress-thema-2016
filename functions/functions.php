@@ -97,7 +97,9 @@ function is_bunkasai_during_open() {
 }
 
 /**
- * 全ての記事を取得する
+ * 全ての記事を取得する関数
+ *
+ * @return WP_Query
  */
 function get_all_posts() {
 	$args  = array(
