@@ -2,7 +2,7 @@
 
 class School {
 	public $school_name;
-	public $municipality_name;
+	public $category = [];
 	public $event = [];
 
 	/**
@@ -15,8 +15,8 @@ class School {
 			$posts = $this->fetch_posts( $school_name );
 			if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
 					$year = $this->get_post_year( $posts->ID );
-					if ( ! $this->municipality_name ) {
-						$this->municipality_name = $this->get_category_parent_name( $posts->ID );
+					if ( ! $this->category ) {
+						$this->category = $this->get_category( $posts->ID );
 					}
 					if ( ! $this->school_name ) {
 						$this->set_school_name( get_field( 'schoolName' ) );
@@ -103,10 +103,14 @@ class School {
 	 *
 	 * @return array カテゴリー
 	 */
-	private function get_category_parent_name( $post_id ) {
-		$category = get_the_category( $post_id );
+	private function get_category( $post_id ) {
+		$categories = get_the_category( $post_id );
+		$category   = [
+			'category_name' => $categories[0]->cat_name,
+			'category_link' => get_category_link( $categories[0]->cat_ID ),
+		];
 
-		return $category[0]->cat_name;
+		return $category;
 	}
 
 	/**
