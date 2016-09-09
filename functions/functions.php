@@ -117,20 +117,39 @@ function get_all_posts() {
 }
 
 /**
- * 全ての高校名を取得する
+ * 全ての学校の情報を取得する関数
+ *
+ * 学校名と所在地の入った連想配列を返す。
+ *
+ * @todo 処理の効率化。
+ *
+ * @return array
  */
-function get_all_school() {
-	$posts = get_all_posts();
-	$all_school_name = [];
-	$loop_tmp = [];
-	if ( $posts ->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
+function get_all_school_information() {
+	$posts                  = get_all_posts();
+	$all_school_information = [];
+	$loop_tmp               = [];
+	if ( $posts->have_posts() ) :
+		while ( $posts->have_posts() ) :
+			$posts->the_post();
 			$school_name = get_field( 'schoolName' );
 			if ( ! in_array( $school_name, $loop_tmp, true ) ) :
-				$all_school_name[] = $school_name;
-				$loop_tmp[] = get_field( 'schoolName' );
-		endif;
+				$category                 = get_the_category();
+				$all_school_information[] = [
+					'school_name'       => $school_name,
+					'municipality_name' => $category[0]->cat_name,
+				];
+				$loop_tmp[]               = $school_name;
+			endif;
 		endwhile;
-		ksort( $all_school_name );
+		// 列方向の配列を得る.
+		foreach ( $all_school_information as $key => $value ) {
+			$municipality_name[ $key ] = $value['municipality_name'];
+		}
+		// データを $municipality_name の昇順にソートする.
+		// $all_school_information を最後のパラメータとして渡し、同じキーでソートする.
+		array_multisort( $municipality_name, SORT_ASC, SORT_STRING, $all_school_information );
 	endif;
-	return $all_school_name;
+
+	return $all_school_information;
 }
