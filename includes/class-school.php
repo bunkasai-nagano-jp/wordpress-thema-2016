@@ -215,6 +215,30 @@ class School {
 			return false;
 		}
 	}
+
+	/**
+	 * 開催期間を表示する関数
+	 *
+	 * @param string $year 年度.
+	 *
+	 * @return bool|string
+	 */
+	public function the_event_date( $year ) {
+		if ( $this->get_event_specified_year( $year ) ) {
+			$event      = $this->get_event_specified_year( $year );
+			$event_date = $event['event_date'];
+			if ( 1 === count( $event_date ) ) { // 開催期間が１日の場合 (要素が1つ).
+				$date = array_shift( $event_date );
+				$text = $date->format( 'Y/m/d' );
+			} else {
+				$start_date = array_shift( $event_date ); // 配列の先頭の要素を取り出す.
+				$end_date   = array_pop( $event_date );   // 配列の最後の要素を取り出す.
+				$text       = $start_date->format( 'Y/m/d' ) . '&nbsp;~&nbsp;' . $end_date->format( 'Y/m/d' );
+			}
+
+			return esc_html( $text );
+		} else {
+			return false;
 		}
 	}
 }
