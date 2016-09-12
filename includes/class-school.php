@@ -29,7 +29,7 @@ class School {
 					'year'                => $year,
 					'event_date'          => $this->get_event_date(),
 					'public_open_unknown' => get_field( 'public_unknown' ),
-					'public_open'         => $this->get_event_public_open_date(),
+					'public_open'         => $this->set_event_public_open_date(),
 					'permalink'           => get_permalink(),
 					];
 				endwhile;
@@ -160,13 +160,13 @@ class School {
 	}
 
 	/**
-	 * 一般公開情報を取得する関数
+	 * 一般公開情報を設定する関数
 	 *
 	 * @param bool|string $post_id 投稿ID.
 	 *
 	 * @return array|bool
 	 */
-	private function get_event_public_open_date( $post_id = false ) {
+	private function set_event_public_open_date( $post_id = false ) {
 		$event_public_open_date = [];
 		if ( have_rows( 'public_open', $post_id ) ) :
 			while ( have_rows( 'public_open', $post_id ) ) : the_row();
