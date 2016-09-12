@@ -1,9 +1,30 @@
 <?php
 
 class School {
+
+	/**
+	 * 学校名
+	 *
+	 * @var string $school_name
+	 */
 	public $school_name;
+	/**
+	 * 文化祭名
+	 *
+	 * @var string $name
+	 */
 	public $name;
+	/**
+	 * カテゴリー
+	 *
+	 * @var array $category
+	 */
 	public $category = [];
+	/**
+	 * 年度別の文化祭情報
+	 *
+	 * @var array $event
+	 */
 	public $event = [];
 
 	/**
