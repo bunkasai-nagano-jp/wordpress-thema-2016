@@ -203,7 +203,7 @@ class School {
 	 *
 	 * @return mixed
 	 */
-	public function get_event_specified_year( $year ) {
+	private function get_event_specified_year( $year ) {
 		$event = [];
 		foreach ( $this->event as $key => $value ) {
 			$event[ $key ] = $value['year'];
