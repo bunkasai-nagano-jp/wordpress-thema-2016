@@ -194,4 +194,22 @@ class School {
 			return false;
 		}
 	}
+
+	/**
+	 * 年度を指定して文化祭情報を取得する関数
+	 *
+	 * @param string $year 年度.
+	 *
+	 * @return mixed
+	 */
+	public function get_event_specified_year( $year ) {
+		$event = [];
+		foreach ( $this->event as $key => $value ) {
+			$event[ $key ] = $value['year'];
+		}
+		$key = array_search( $year, $event, true );
+		if ( false !== $key ) {
+			return $this->event[ $key ];
+		}
+	}
 }
