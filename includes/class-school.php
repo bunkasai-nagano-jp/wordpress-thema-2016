@@ -274,4 +274,18 @@ class School {
 		}
 		return $text;
 	}
+
+	/**
+	 * パーマリンクを表示する関数
+	 *
+	 * @param string $year 年度.
+	 *
+	 * @return mixed
+	 */
+	public function the_permalink( $year ) {
+		if ( $this->get_event_specified_year( $year ) ) {
+			$post = $this->get_event_specified_year( $year );
+			return $post['permalink'];
+		}
+	}
 }
