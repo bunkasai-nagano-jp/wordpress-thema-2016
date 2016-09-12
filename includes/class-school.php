@@ -211,6 +211,10 @@ class School {
 		$key = array_search( $year, $event, true );
 		if ( false !== $key ) {
 			return $this->event[ $key ];
+		} else {
+			return false;
+		}
+	}
 		}
 	}
 }
