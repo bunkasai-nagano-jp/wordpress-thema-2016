@@ -161,7 +161,7 @@ class School {
 	/**
 	 * 一般公開情報を取得する関数
 	 *
-	 * @param string $post_id 投稿ID.
+	 * @param bool|string $post_id 投稿ID.
 	 *
 	 * @return array|bool
 	 */
