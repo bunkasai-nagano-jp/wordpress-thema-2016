@@ -188,6 +188,8 @@ class School {
 				'event_public_open_start' => $this->get_datetime_t( $event_public_open_start ),
 				'event_public_open_end'   => $this->get_datetime_t( $event_public_open_end ),
 			];
+		elseif ( get_field( 'publicStartDate', $post_id ) ) :
+			$event_public_open_date[] = $this->get_datetime_t( get_field( 'publicStartDate', $post_id ) );
 		endif;
 		if ( $event_public_open_date ) {
 			return $event_public_open_date;
