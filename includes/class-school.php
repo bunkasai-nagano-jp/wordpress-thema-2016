@@ -243,4 +243,35 @@ class School {
 			return false;
 		}
 	}
+
+	/**
+	 * 一般公開情報を取得する関数
+	 *
+	 * @param string $year 年度.
+	 *
+	 * @return array
+	 */
+	public function get_event_public_open_date( $year ) {
+		$text = [];
+		if ( $this->get_event_specified_year( $year ) ) {
+			$post = $this->get_event_specified_year( $year );
+			if ( true === $post['public_open_unknown'] ) {
+				$text[] = '不明';
+			} elseif ( ! $post['public_open'] ) {
+				$text[] = 'なし';
+			} elseif ( $post['public_open'] ) {
+				$event_public_open_date = $post['public_open'];
+				foreach ( $event_public_open_date as $value ) {
+					if ( array_key_exists( 'event_public_open_start', $value ) ) {
+						$event_public_open_start = $value['event_public_open_start'];
+						$event_public_open_end = $value['event_public_open_end'];
+						$text[] = $event_public_open_start->format( 'Y/m/d' ) . '&nbsp;~&nbsp;' . $event_public_open_end->format( 'Y/m/d' );
+					} else {
+						$text[] = $value->format( 'Y/m/d' );
+					}
+				}
+			}
+		}
+		return $text;
+	}
 }
