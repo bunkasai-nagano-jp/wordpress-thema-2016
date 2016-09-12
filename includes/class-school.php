@@ -2,6 +2,7 @@
 
 class School {
 	public $school_name;
+	public $name;
 	public $category = [];
 	public $event = [];
 
