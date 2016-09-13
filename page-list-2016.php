@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 <div class="col-md-12">
-	<div>
-		<div class="card">
-			<div class="card-block">
-				<h1 class="card-title"><?php the_title(); ?></h1>
-			</div>
+	<div class="card">
+		<div class="card-block">
+			<h1 class="card-title"><?php the_title(); ?></h1>
+		</div>
+		<div class="card-block">
 			<div class="table-responsive">
 				<table class="table table-sm table-hover table-striped table-fixed">
 					<thead class="thead-default">
