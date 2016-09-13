@@ -177,3 +177,22 @@ a:hover {
     }
   }
 }
+
+.table-fixed {
+  table-layout: fixed;
+}
+table {
+  tbody {
+    tr {
+      td {
+        p {
+          &:first-child {
+            margin: 0;
+          }
+          margin-top: .5rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
