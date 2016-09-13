@@ -41,7 +41,7 @@ function is_ended() {
 /**
  * 文化祭までの残り日数を取得する関数
  *
- * @deprecated
+ * @return DateTime|bool
  */
 function get_remaining_days() {
 	if ( get_field( 'startDate' ) and get_field( 'endDate' ) ) {
