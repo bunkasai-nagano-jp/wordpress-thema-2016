@@ -44,14 +44,14 @@ function is_ended() {
  * @return DateTime|bool
  */
 function get_remaining_days() {
-	if ( get_field( 'startDate' ) and get_field( 'endDate' ) ) {
-		$start_date = get_field( 'startDate' );
-		$today      = date( 'Y/m/d' );
-		$days       = abs( strtotime( $start_date ) - strtotime( $today ) ) / ( 60 * 60 * 24 );
+	if ( get_field( 'startDate' ) ) {
+		$start_date = School::get_datetime_t( get_field( 'startDate' ) );
+		$today      = School::get_datetime_t();
+		$interval   = $today->diff( $start_date );
 
-		return $days;
+		return $interval->format( '%a' );
 	} else {
-		return null;
+		return false;
 	}
 }
 
