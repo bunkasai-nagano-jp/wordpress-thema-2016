@@ -6,7 +6,7 @@
 				<h1 class="card-title"><?php the_title(); ?></h1>
 			</div>
 			<div class="table-responsive">
-				<table class="table table-hover table-striped">
+				<table class="table table-sm table-hover table-striped table-fixed">
 					<thead class="thead-default">
 					<tr>
 						<th>所在地</th>
