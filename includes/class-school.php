@@ -146,7 +146,7 @@ class School {
 	 *
 	 * @return DateTime
 	 */
-	private function get_datetime_t( $string ) {
+	static function get_datetime_t( $string = '') {
 		$datetime = new DateTime( $string, new DateTimeZone( 'Asia/Tokyo' ) );
 
 		return $datetime;
