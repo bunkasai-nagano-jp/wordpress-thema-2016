@@ -31,12 +31,8 @@
 								<td>
 									<a href="<?php echo esc_url( $school->the_permalink( $year ) ); ?>"><?php echo esc_html( $school->school_name ); ?></a>
 								</td>
-								<td>
-									<?php echo esc_html( $school->name ); ?>
-								</td>
-								<td>
-									<?php echo esc_html( $school->the_event_date( $year ) ); ?>
-								</td>
+								<td><?php echo esc_html( $school->name ); ?></td>
+								<td><?php echo esc_html( $school->the_event_date( $year ) ); ?></td>
 								<td>
 									<?php $event_public_open_date = $school->get_event_public_open_date( $year ); ?>
 									<?php foreach ( $event_public_open_date as $text ) : ?>
