@@ -307,6 +307,8 @@ class School {
 		if ( $this->get_event_specified_year( $year ) ) {
 			$post = $this->get_event_specified_year( $year );
 			return $post['permalink'];
+		} else {
+			return false;
 		}
 	}
 
