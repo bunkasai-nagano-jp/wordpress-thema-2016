@@ -1,5 +1,6 @@
 <?php
 	$school = new School( get_field( 'schoolName' ) );
+	$year = School::get_year();
 	if ( get_gmap_sv_url( 600, 350 ) ) : ?>
 		<img class="card-img-top img-fluid" src="<?php echo esc_url( get_gmap_sv_url( 600, 350 ) ); ?>" alt="streetview">
 	<?php endif; ?>
@@ -11,7 +12,7 @@
 	<p><?php the_field( 'name' ); ?></p>
 	<h2 class="card-title">開催期間</h2>
 	<p>
-		<?php echo esc_html( $school->the_event_date( School::get_year() ) ); ?>
+		<?php echo esc_html( $school->the_event_date( $year ) ); ?>
 	</p>
 	<h2 class="card-title">一般公開</h2>
 	<?php $event_public_open_date = $school->get_event_public_open_date( $year ); ?>
