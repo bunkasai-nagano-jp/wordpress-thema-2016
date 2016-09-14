@@ -309,4 +309,19 @@ class School {
 			return $post['permalink'];
 		}
 	}
+
+	/**
+	 * ループ内の文化祭の開催年を取得する
+	 *
+	 * @return bool|string
+	 */
+	static function get_year() {
+		if ( get_field( 'schoolName' ) ) {
+			$start_date = School::get_datetime_t( get_field( 'startDate' ) );
+
+			return $start_date->format( 'Y' );
+		} else {
+			return false;
+		}
+	}
 }
