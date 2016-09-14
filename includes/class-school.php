@@ -326,4 +326,24 @@ class School {
 			return false;
 		}
 	}
+
+	/**
+	 * DateTimeオブジェクトをフォーマットする関数
+	 *
+	 * @param DateTime $datetime DateTimeオブジェクト.
+	 * @param bool     $is_end 最後に出力する時刻か.
+	 *
+	 * @return string
+	 */
+	static function format_datetime( DateTime $datetime, $is_end = false ) {
+		if ( true === $is_end ) {
+			// ~ でつなぐ最後は年月日を出力しない.
+			return $datetime->format( 'H:i' );
+		} elseif ( '00:00' === $datetime->format( 'H:i' ) ) {
+			// 時・分が設定されていない.
+			return $datetime->format( 'Y/m/d' );
+		} else {
+			return $datetime->format( 'Y/m/d H:i' );
+		}
+	}
 }
