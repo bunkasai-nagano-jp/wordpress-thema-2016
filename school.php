@@ -14,25 +14,10 @@
 		<?php echo esc_html( $school->the_event_date( School::get_year() ) ); ?>
 	</p>
 	<h2 class="card-title">一般公開</h2>
-	<?php if ( get_field( 'public_unknown' ) ) : ?>
-		<p>不明</p>
-	<?php else : ?>
-		<?php if ( have_rows( 'public_open' ) ) :
-			while ( have_rows( 'public_open' ) ) : the_row();
-				if ( get_sub_field( 'public_open_day' ) and get_sub_field( 'public_open_start_time' ) and get_sub_field( 'public_open_end_time' ) ) : ?>
-					<p><?php the_sub_field( 'public_open_day' ); ?>&nbsp;<?php the_sub_field( 'public_open_start_time' ); ?>&nbsp;~&nbsp;<?php the_sub_field( 'public_open_end_time' ); ?></p>
-				<?php elseif ( get_sub_field( 'public_open_day' ) ) : ?>
-					<p><?php the_sub_field( 'public_open_day' ); ?></p>
-				<?php endif;
-			endwhile;
-		elseif ( get_field( 'publicStartDate' ) and get_field( 'publicEndDate' ) ) : ?>
-			<p><?php the_field( 'publicStartDate' ); ?>&nbsp;~&nbsp;<?php the_field( 'publicEndDate' ); ?></p>
-		<?php elseif ( get_field( 'publicStartDate' ) ) : ?>
-			<p><?php the_field( 'publicStartDate' ); ?></p>
-		<?php else : ?>
-			<p>なし</p>
-		<?php endif;
-	endif; ?>
+	<?php $event_public_open_date = $school->get_event_public_open_date( $year ); ?>
+	<?php foreach ( $event_public_open_date as $text ) : ?>
+		<p><?php echo esc_html( $text ); ?></p>
+	<?php endforeach; ?>
 	<?php if ( have_rows( 'bunkasai_site' ) ) : ?>
 		<h2 class="card-title">関連サイト</h2>
 		<div class="card-block">
