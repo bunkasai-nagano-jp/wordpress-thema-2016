@@ -6,7 +6,7 @@
 		</div>
 		<div class="card-block">
 			<div class="table-responsive">
-				<table class="table table-sm table-hover table-striped table-fixed">
+				<table class="table table-sm table-hover table-striped">
 					<thead class="thead-default">
 					<tr>
 						<th>所在地</th>

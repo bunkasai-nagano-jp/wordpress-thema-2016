@@ -178,9 +178,6 @@ a:hover {
   display: inline-block;
   margin-right: 5px;
 }
-.table-fixed {
-  table-layout: fixed;
-}
 table tbody tr td p {
   margin-top: .5rem;
   margin-bottom: 0;
