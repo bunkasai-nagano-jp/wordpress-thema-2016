@@ -6,4 +6,4 @@ node_modules
 /.idea/modules.xml
 /.idea/copyright
 /.idea/jsLibraryMappings.xml
-
+/.idea/webResources.xml
