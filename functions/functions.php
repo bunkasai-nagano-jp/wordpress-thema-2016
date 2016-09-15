@@ -1,22 +1,4 @@
 <?php
-/**
- * 他の年の記事があるかどうか
- *
- * @param string $school_name 学校名.
- *
- * @deprecated
- *
- * @return bool
- */
-function is_other_year_post( $school_name ) {
-	$result = new WP_Query( [ 'meta_value' => $school_name ] );
-	$number = $result->found_posts;
-	if ( 1 === $number ) :
-		return false;
-	else :
-		return true;
-	endif;
-}
 
 /**
  * 文化祭が終了しているか
