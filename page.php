@@ -21,11 +21,7 @@
 		  </div>
 		<?php endwhile; ?>
 		<?php else : ?>
-		  <div class="card">
-			<div class="card-block">
-			  <p class="card-text">記事がありません</p>
-			</div>
-		  </div>
+			<?php get_template_part( 'template/no-articles' ); ?>
 		<?php endif; ?>
 	  </div>
 	</article>

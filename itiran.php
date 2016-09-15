@@ -7,7 +7,7 @@
 	<?php endwhile;
 	else : ?>
 	<!-- no articles -->
-	<?php get_template_part( 'template/no_articles' ); ?>
+	<?php get_template_part( 'template/no-articles' ); ?>
 	<!-- /no articles -->
 	<?php endif; ?>
 </div>

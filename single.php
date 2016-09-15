@@ -26,6 +26,7 @@
 		<?php endwhile; ?>
 			<?php get_template_part( 'kanren' ); ?>
 		<?php else : ?>
+			<?php get_template_part( 'template/no-articles' ); ?>
 		<?php endif; ?>
 	</article>
 	</main>
