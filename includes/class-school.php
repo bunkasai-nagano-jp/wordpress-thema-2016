@@ -285,14 +285,20 @@ class School {
 				foreach ( $event_public_open_date as $value ) {
 					if ( array_key_exists( 'event_public_open_start', $value ) ) {
 						$event_public_open_start = $value['event_public_open_start'];
-						$event_public_open_end = $value['event_public_open_end'];
-						$text[] = $event_public_open_start->format( 'Y/m/d' ) . '&nbsp;~&nbsp;' . $event_public_open_end->format( 'Y/m/d' );
+						$event_public_open_end   = $value['event_public_open_end'];
+						if ( $event_public_open_start->format( 'Y/m/d' ) === $event_public_open_end->format( 'Y/m/d' ) ) {
+							$text[] = School::format_datetime( $event_public_open_start ) . ' ~ ' . School::format_datetime( $event_public_open_end, true );
+						} else {
+							$text[] = School::format_datetime( $event_public_open_start );
+							$text[] = School::format_datetime( $event_public_open_end );
+						}
 					} else {
-						$text[] = $value->format( 'Y/m/d' );
+						$text[] = School::format_datetime( $value );
 					}
 				}
 			}
 		}
+
 		return $text;
 	}
 
