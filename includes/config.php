@@ -82,9 +82,9 @@ add_editor_style( 'style.css' ); // メインのCSS.
 /**
  * <script>タグにdefer属性を付与する
  */
-function add_async_to_script( $tag ) {
+function add_defer_to_script( $tag ) {
 
 	return str_replace( "type='text/javascript'", 'defer', $tag );
 }
 
-add_filter( 'script_loader_tag', 'add_async_to_script' );
+add_filter( 'script_loader_tag', 'add_defer_to_script' );
