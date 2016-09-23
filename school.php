@@ -32,7 +32,7 @@
 	<?php endif; ?>
 	<?php get_template_part( 'template/twitter-embed' ); ?>
 	<h2 class="card-title">地図</h2>
-	<?php echo get_gmap_url(); ?>
+	<?php the_gmap(); ?>
 	<h3 class="card-title">学校情報</h3>
 	<table class="table table-striped table-bordered">
 		<tbody>
