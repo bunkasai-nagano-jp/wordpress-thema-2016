@@ -54,5 +54,3 @@ function get_gmap_sv_url( $width = 400, $height = 300 ) {
 		return $url;
 	}
 }
-
-	add_shortcode( 'getGSV', 'get_gmap_sv_url' );
