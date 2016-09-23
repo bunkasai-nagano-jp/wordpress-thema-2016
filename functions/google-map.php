@@ -1,21 +1,20 @@
 <?php
-// GoogleMap埋め込み
-	function get_gmap_url() {
-		$gmap           = [
-			'school_name' => get_field( 'schoolName' ),
-			'width'       => get_field( 'width' ),
-			'height'      => get_field( 'height' ),
-		];
-		$base           = 'https://www.google.com/maps/embed/v1/place?';
-		$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-		if ( $gmap ) {
-			$url         = $base . 'key=' . $google_api_key . '&q=' . urlencode( $gmap['school_name'] );
-			$width_attr  = 'width="' . $gmap['width'] . '"';
-			$height_attr = 'height="' . $gmap['height'] . '"';
-			$iframe      = '<iframe ' . $width_attr . ' ' . $height_attr . ' ' . ' frameborder="0" style="border:0" src="' . $url . '" allowfullscreen></iframe>';
 
-			return '<div class="gmap">' . $iframe . '</div>';
-		}
+/**
+ * GoogleMapの埋め込みURLを取得する関数.
+ **/
+function get_gmap_url() {
+	$school_name    = get_field( 'schoolName' );
+	$base           = 'https://www.google.com/maps/embed/v1/place?';
+	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
+	if ( $school_name ) {
+		$url = $base . 'key=' . $google_api_key . '&q=' . rawurlencode( $school_name );
+
+		return esc_url( $url );
+	} else {
+		return false;
+	}
+}
 	}
 
 // GoogleMapストリートビューのURLを取得する関数
