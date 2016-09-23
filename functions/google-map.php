@@ -42,8 +42,6 @@ function the_gmap() {
 function get_gmap_sv_url( $width = 400, $height = 300 ) {
 	$base           = 'https://maps.googleapis.com/maps/api/streetview?';
 	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-	$width          = $width;
-	$height         = $height;
 	$location       = get_field( 'streetviewLocation' );
 	$fov            = get_field( 'streetviewFov' );
 	$pitch          = get_field( 'streetviewPitch' );
