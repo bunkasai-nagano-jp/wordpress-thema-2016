@@ -18,7 +18,6 @@
 		}
 	}
 
-	add_shortcode( 'gmap', 'get_gmap_url' );
 // GoogleMapストリートビューのURLを取得する関数
 	function get_gmap_sv_url( $width = 400, $height = 300 ) {
 		$base           = 'https://maps.googleapis.com/maps/api/streetview?';
