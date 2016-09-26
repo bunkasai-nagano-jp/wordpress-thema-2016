@@ -18,7 +18,6 @@
 		foreach ( $all_category_id as $current_category_id ) :
 			if ( ( 1 === $tmp ) ) :
 				if ( is_single() ) : ?>
-						`
 						<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 							<a href="<?php echo esc_url( get_term_link( $current_category_id ) ); ?>" itemprop="url">
 								<span itemprop="title"><?php echo esc_html( get_cat_name( $current_category_id ) ); ?></span>
