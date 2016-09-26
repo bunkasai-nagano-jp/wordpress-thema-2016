@@ -1,6 +1,6 @@
 <!-- breadcrumb -->
 <ol class="breadcrumb">
-	<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	<li class="breadcrumb-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 		<a href="<?php echo esc_url( home_url() ); ?>" itemprop="url"><span itemprop="title">ホーム</span></a>
 	</li>
 	<?php $categories        = get_the_category();
@@ -18,18 +18,18 @@
 		foreach ( $all_category_id as $current_category_id ) :
 			if ( ( 1 === $tmp ) ) :
 				if ( is_single() ) : ?>
-						<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+						<li class="breadcrumb-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 							<a href="<?php echo esc_url( get_term_link( $current_category_id ) ); ?>" itemprop="url">
 								<span itemprop="title"><?php echo esc_html( get_cat_name( $current_category_id ) ); ?></span>
 							</a>
 						</li>
 					<?php else : ?>
-						<li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+						<li class="breadcrumb-item active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 							<span itemprop="title"><?php echo esc_html( get_cat_name( $current_category_id ) ); ?></span>
 						</li>
 					<?php endif; ?>
 				<?php else : ?>
-					<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+					<li class="breadcrumb-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 						<a href="<?php echo esc_url( get_term_link( $current_category_id ) ); ?>" itemprop="url"><span itemprop="title"><?php echo esc_html( get_cat_name( $current_category_id ) ); ?></span></a>
 					</li>
 				<?php endif;
