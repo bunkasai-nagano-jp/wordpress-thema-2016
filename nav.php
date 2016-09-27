@@ -41,7 +41,7 @@
 		  <input type="hidden" name="ie" value="UTF-8"/>
 		  <input class="form-control" type="text" name="q" size="31"/>
 		  <span class="input-group-btn">
-			<input class="btn btn-success-outline" type="submit" name="sa" value="Search"/>
+			<input class="btn btn-outline-success" type="submit" name="sa" value="Search"/>
 		  </span>
 		</form>
 	  </div>
