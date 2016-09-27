@@ -7,12 +7,12 @@
 				<div class="card">
 					<div class="card-block">
 						<h1 class="card-title"><?php the_title(); ?></h1>
-						<h6 class="card-subtitle text-muted">
-							<p class="card-date"><i class="fa fa-fw fa-calendar"></i> 公開 <?php the_date(); ?></p>
+						<div class="card-subtitle text-muted">
+							<h5 class="card-date"><i class="fa fa-fw fa-calendar"></i> 公開 <?php the_date(); ?></h5>
 							<?php if ( get_the_date() !== get_the_modified_date() ) : ?>
-								<p class="card-date"><i class="fa fa-fw fa-repeat"></i> 更新 <?php the_modified_date(); ?></p>
+								<h5 class="card-date"><i class="fa fa-fw fa-repeat"></i> 更新 <?php the_modified_date(); ?></h5>
 							<?php endif; ?>
-						</h6>
+						</div>
 					</div>
 					<?php the_content(); ?>
 					<?php wp_link_pages(); ?>
