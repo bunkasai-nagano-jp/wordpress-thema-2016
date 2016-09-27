@@ -107,7 +107,7 @@ class School {
 	 *
 	 * @return string
 	 */
-	private function get_post_year( $post_id ) {
+	public function get_post_year( $post_id ) {
 		$start_date = $this->get_datetime_t( get_field( 'startDate', $post_id ) );
 
 		return $start_date->format( 'Y' );
