@@ -17,7 +17,9 @@
 			<?php elseif ( is_bunkasai_during_open() === false ) : ?>
 				<p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;終了</p>
 			<?php elseif ( is_bunkasai_during_open() === null ) : ?>
-				<p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;開催まで<?php echo esc_html( get_remaining_days() ); ?>日</p>
+				<p class="card-text text-primary">
+					<i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;開催まで<?php echo esc_html( get_remaining_days() ); ?>日
+				</p>
 			<?php endif; ?>
 			<p class="card-text">
 				<span><i class="fa fa-fw fa-calendar"></i> 開催期間</span>
