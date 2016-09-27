@@ -10,8 +10,7 @@
 						<h6 class="card-subtitle text-muted">
 							<p class="card-date"><i class="fa fa-fw fa-calendar"></i> 公開 <?php the_date(); ?></p>
 							<?php if ( get_the_date() !== get_the_modified_date() ) : ?>
-								<p class="card-date"><i class="fa fa-fw fa-repeat"></i> 更新 <?php the_modified_date(); ?>
-								</p>
+								<p class="card-date"><i class="fa fa-fw fa-repeat"></i> 更新 <?php the_modified_date(); ?></p>
 							<?php endif; ?>
 						</h6>
 					</div>
