@@ -1,15 +1,8 @@
 @charset "UTF-8";
 
-//== Footer Height
-@footer-height: 40px;
-
 html {
   position: relative;
   min-height: 100%;
-}
-
-body {
-  padding-bottom: @footer-height;
 }
 
 a:hover {
@@ -40,7 +33,7 @@ h6, .h6 {
   font-size: .75rem;
 }
 
-.navbar {
+header.navbar {
   margin-bottom: 20px;
 }
 
@@ -187,29 +180,6 @@ h6, .h6 {
     left: 0;
     width: 100% !important;
     height: 100% !important;
-  }
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: @footer-height;
-  background-color: #f5f5f5;
-  border-top: 1px solid #e5e5e5;
-  .container-fluid {
-    width: auto;
-    padding: 0 15px;
-    margin: 0;
-    p, a {
-      margin:@footer-height/3 0;
-      line-height: @footer-height/3;
-    }
-    a {
-      color: rgba(0, 0, 0, 0.3);
-    }
   }
 }
 

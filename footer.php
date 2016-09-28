@@ -1,11 +1,11 @@
+</div>
+<!-- /container -->
 <!-- footer -->
-<footer class="footer">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-4">
-				<p>&copy;&nbsp;<?php bloginfo( 'name' ); ?>&nbsp;2015</p>
-			</div>
-			<div class="col-md-8">
+<footer class="navbar navbar-light bg-faded">
+	<div class="container">
+		<nav>
+			<div class="nav navbar-nav">
+				<a class="nav-item nav-link active" href="<?php echo esc_url( home_url() ); ?>/">&copy;&nbsp;<?php bloginfo( 'name' ); ?>&nbsp;2015</a>
 				<?php
 					$defaults = [
 						'menu'           => 'footer',
@@ -18,12 +18,10 @@
 					];
 					wp_nav_menu( $defaults ); ?>
 			</div>
-		</div>
+		</nav>
 	</div>
 </footer>
 <!-- /footer -->
-</div>
-<!-- /container -->
 <?php wp_footer(); ?>
 </body>
 </html>

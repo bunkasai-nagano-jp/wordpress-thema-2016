@@ -3,9 +3,6 @@ html {
   position: relative;
   min-height: 100%;
 }
-body {
-  padding-bottom: 40px;
-}
 a:hover {
   text-decoration: none;
 }
@@ -33,7 +30,7 @@ h6,
 .h6 {
   font-size: .75rem;
 }
-.navbar {
+header.navbar {
   margin-bottom: 20px;
 }
 .form-control {
@@ -197,29 +194,6 @@ h6,
   left: 0;
   width: 100% !important;
   height: 100% !important;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 40px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #e5e5e5;
-}
-.footer .container-fluid {
-  width: auto;
-  padding: 0 15px;
-  margin: 0;
-}
-.footer .container-fluid p,
-.footer .container-fluid a {
-  margin: 13.33333333px 0;
-  line-height: 13.33333333px;
-}
-.footer .container-fluid a {
-  color: rgba(0, 0, 0, 0.3);
 }
 .year a:first-child {
   display: inline-block;
