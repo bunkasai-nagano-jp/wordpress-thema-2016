@@ -75,11 +75,6 @@ if ( ! isset( $content_width ) ) {
 }
 
 /**
- * 管理画面にオリジナルのスタイルを適用
- */
-add_editor_style( 'style.css' ); // メインのCSS.
-
-/**
  * <script>タグにdefer属性を付与する
  */
 function add_defer_to_script( $tag ) {
