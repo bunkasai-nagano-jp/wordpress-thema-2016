@@ -3,15 +3,35 @@ html {
   position: relative;
   min-height: 100%;
 }
-body {
-  padding-bottom: 40px;
-}
 a:hover {
   text-decoration: none;
 }
-.navbar {
+h1,
+.h1 {
+  font-size: 2rem;
+}
+h2,
+.h2 {
+  font-size: 1.75rem;
+}
+h3,
+.h3 {
+  font-size: 1.5rem;
+}
+h4,
+.h4 {
+  font-size: 1.25rem;
+}
+h5,
+.h5 {
+  font-size: 1rem;
+}
+h6,
+.h6 {
+  font-size: .75rem;
+}
+header.navbar {
   margin-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
 }
 .form-control {
   height: 38px;
@@ -19,16 +39,13 @@ a:hover {
 .flex-container {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -ms-flex-align: baseline;
-      align-items: baseline;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+}
+.flex-container .card {
+  -ms-flex: 0 1 98%;
+      flex: 0 1 98%;
+  margin: 0 1% 30px;
 }
 .kanren-flex-container {
   display: -ms-flexbox;
@@ -67,30 +84,50 @@ a:hover {
 }
 @media (min-width: 768px) {
   .flex-container {
-    -ms-flex-pack: center;
-        justify-content: center;
-    -ms-flex-line-pack: center;
-        align-content: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: baseline;
+        align-items: baseline;
+  }
+  .flex-container::after {
+    content: "";
+    display: block;
+    width: 48%;
+  }
+  .flex-container .card {
+    -ms-flex: 0 1 48%;
+        flex: 0 1 48%;
   }
 }
 @media (min-width: 992px) {
   .flex-container {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -ms-flex-line-pack: distribute;
-        align-content: space-around;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: baseline;
+        align-items: baseline;
+  }
+  .flex-container::after {
+    content: "";
+    display: block;
+    width: 30%;
+  }
+  .flex-container .card {
+    -ms-flex: 0 1 30%;
+        flex: 0 1 30%;
   }
   .pagination {
     margin-bottom: 1.75rem;
   }
 }
 @media (max-width: 992px) {
-  .card:not(:last-child) {
-    margin-bottom: 1.5rem;
-  }
-  .card:last-child {
-    margin-bottom: 0;
-  }
   .kanren-flex-container {
     -ms-flex-direction: column;
         flex-direction: column;
@@ -104,16 +141,23 @@ a:hover {
 }
 @media (min-width: 1200px) {
   .flex-container {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -ms-flex-line-pack: distribute;
-        align-content: space-around;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
     -ms-flex-align: baseline;
-        -ms-grid-row-align: baseline;
         align-items: baseline;
   }
+  .flex-container::after {
+    content: "";
+    display: block;
+    width: 30%;
+  }
   .flex-container .card {
-    margin-bottom: 2rem;
+    -ms-flex: 0 1 30%;
+        flex: 0 1 30%;
   }
 }
 .line-height-fix {
@@ -139,6 +183,9 @@ a:hover {
   overflow: hidden;
   margin-bottom: 1rem;
 }
+.gmap iframe {
+  border: 0;
+}
 .gmap iframe,
 .gmap object,
 .gmap embed {
@@ -148,30 +195,14 @@ a:hover {
   width: 100% !important;
   height: 100% !important;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 40px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #e5e5e5;
-}
-.footer .container-fluid {
-  width: auto;
-  padding: 0 15px;
-  margin: 0;
-}
-.footer .container-fluid p,
-.footer .container-fluid a {
-  margin: 13.33333333px 0;
-  line-height: 13.33333333px;
-}
-.footer .container-fluid a {
-  color: rgba(0, 0, 0, 0.3);
-}
 .year a:first-child {
   display: inline-block;
   margin-right: 5px;
+}
+table tbody tr td p {
+  margin-top: .5rem;
+  margin-bottom: 0;
+}
+table tbody tr td p:first-child {
+  margin: 0;
 }

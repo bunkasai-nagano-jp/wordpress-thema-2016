@@ -1,43 +1,56 @@
 <?php
 
-// GoogleMap埋め込み
-function get_gmap_url () {
-	$gmap           = [
-		'school_name' => get_field( 'schoolName' ),
-		'width'       => get_field( 'width' ),
-		'height'      => get_field( 'height' ),
-	];
+/**
+ * GoogleMapの埋め込みURLを取得する関数.
+ **/
+function get_gmap_url() {
+	$school_name    = get_field( 'schoolName' );
 	$base           = 'https://www.google.com/maps/embed/v1/place?';
 	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-	if ( $gmap ) {
-		$url         = $base . 'key=' . $google_api_key . '&q=' . urlencode( $gmap['school_name'] );
-		$width_attr  = 'width="' . $gmap['width'] . '"';
-		$height_attr = 'height="' . $gmap['height'] . '"';
-		$iframe      = '<iframe ' . $width_attr . ' ' . $height_attr . ' ' . ' frameborder="0" style="border:0" src="' . $url . '" allowfullscreen></iframe>';
+	if ( $school_name ) {
+		$url = $base . 'key=' . $google_api_key . '&q=' . rawurlencode( $school_name );
 
-		return '<div class="gmap">' . $iframe . '</div>';
+		return esc_url( $url );
+	} else {
+		return false;
 	}
 }
 
-add_shortcode( 'gmap', 'get_gmap_url' );
+/**
+ * GoogleMapを表示する関数.
+ **/
+function the_gmap() {
+	if ( get_gmap_url() ) {
+		$url         = get_gmap_url();
+		$width_attr  = 'width="' . esc_attr( get_field( 'width' ) ) . '"';
+		$height_attr = 'height="' . esc_attr( get_field( 'height' ) ) . '"';
+		$iframe      = '<iframe ' . $width_attr . ' ' . $height_attr . ' ' . ' frameborder="0" style="border:0" src="' . $url . '" allowfullscreen></iframe>';
+		echo '<div class="gmap">' . $iframe . '</div>';
+	} else {
+		return false;
+	}
+}
 
-// GoogleMapストリートビューのURLを取得する関数
-function get_gmap_sv_url ( $width = 400, $height = 300 ) {
+/**
+ * GoogleMapストリートビューのURLを取得する関数
+ *
+ * @param int $width width.
+ * @param int $height height.
+ *
+ * @return bool|string
+ */
+function get_gmap_sv_url( $width = 400, $height = 300 ) {
 	$base           = 'https://maps.googleapis.com/maps/api/streetview?';
 	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-	$width          = $width;
-	$height         = $height;
 	$location       = get_field( 'streetviewLocation' );
 	$fov            = get_field( 'streetviewFov' );
 	$pitch          = get_field( 'streetviewPitch' );
 	$heading        = get_field( 'heading' );
-	if ( !$location ) {
+	if ( ! $location ) {
 		return false;
 	} else {
-		$url = $base . 'size=' . $width . 'x' . $height . '&location=' . $location . '&fov=' . $fov . "&pitch=" . $pitch . '&heading=' . $heading . '&key=' . $google_api_key;
+		$url = $base . 'size=' . $width . 'x' . $height . '&location=' . $location . '&fov=' . $fov . '&pitch=' . $pitch . '&heading=' . $heading . '&key=' . $google_api_key;
 
-		return $url;
+		return esc_url( $url );
 	}
 }
-
-add_shortcode( 'getGSV', 'get_gmap_sv_url' );

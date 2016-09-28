@@ -19,7 +19,6 @@
           <option name="SPACE_BEFORE_UNARY_NOT" value="true" />
           <option name="SPACE_BEFORE_CLOSURE_LEFT_PARENTHESIS" value="false" />
           <option name="FORCE_SHORT_DECLARATION_ARRAY_STYLE" value="true" />
-          <option name="PREFER_TEMPLATE_INDENTS" value="true" />
         </PHPCodeStyleSettings>
         <XML>
           <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
@@ -70,10 +69,7 @@
           <option name="FOR_BRACE_FORCE" value="3" />
           <option name="WRAP_ON_TYPING" value="0" />
           <indentOptions>
-            <option name="INDENT_SIZE" value="2" />
-            <option name="CONTINUATION_INDENT_SIZE" value="2" />
-            <option name="TAB_SIZE" value="2" />
-            <option name="SMART_TABS" value="true" />
+            <option name="USE_TAB_CHARACTER" value="true" />
           </indentOptions>
         </codeStyleSettings>
       </value>

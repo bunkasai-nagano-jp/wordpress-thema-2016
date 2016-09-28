@@ -1,13 +1,19 @@
 <?php
-// titleタグのサポート
+/**
+ * TITLEタグのサポート
+ */
 add_theme_support( 'title-tag' );
 
-// head内のlink要素を停止
+/**
+ * HEAD要素内のlink要素を停止
+ */
 remove_action( 'wp-head', 'rsd_link' );
 remove_action( 'wp-head', 'feed_links', 2 );
 remove_action( 'wp-head', 'rsd_links_extra', 3 );
 
-// カスタムメニューの登録
+/**
+ * カスタムメニューの登録
+ */
 register_nav_menus(
 	array(
 		'navbar' => __( 'Navbar', 'wp-thema' ),
@@ -15,8 +21,10 @@ register_nav_menus(
 	)
 );
 
-// セルフピンバック禁止
-function no_self_pingst ( &$links ) {
+/**
+ * セルフピンバック禁止
+ */
+function no_self_pingst( &$links ) {
 	$home = home_url();
 	foreach ( $links as $l => $link ) {
 		if ( 0 === strpos( $link, $home ) ) {
@@ -27,8 +35,10 @@ function no_self_pingst ( &$links ) {
 
 add_action( 'pre_ping', 'no_self_pingst' );
 
-// ウィジェット追加
-function my_widgets_init () {
+/**
+ * ウィジェット追加
+ */
+function my_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => __( 'Primary Sidebar', 'stinger5' ),
@@ -43,8 +53,10 @@ function my_widgets_init () {
 
 add_action( 'widgets_init', 'my_widgets_init' );
 
-// cssとjsのバージョンを削除する
-function vc_remove_wp_ver_css_js ( $src ) {
+/**
+ * CSSとJSのバージョンを削除する
+ */
+function vc_remove_wp_ver_css_js( $src ) {
 	if ( strpos( $src, 'ver=' ) ) {
 		$src = remove_query_arg( 'ver', $src );
 	}
@@ -55,18 +67,19 @@ function vc_remove_wp_ver_css_js ( $src ) {
 add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
-// 画像サイズを定義
-if ( !isset( $content_width ) ) {
+/**
+ * 画像サイズを定義
+ */
+if ( ! isset( $content_width ) ) {
 	$content_width = 580;
 }
 
-// 管理画面にオリジナルのスタイルを適用
-add_editor_style( "style.css" ); // メインのCSS
-
-// <script>タグにdefer属性を付与する
-function add_async_to_script ( $tag ) {
+/**
+ * <script>タグにdefer属性を付与する
+ */
+function add_defer_to_script( $tag ) {
 
 	return str_replace( "type='text/javascript'", 'defer', $tag );
 }
 
-add_filter( 'script_loader_tag', 'add_async_to_script' );
+add_filter( 'script_loader_tag', 'add_defer_to_script' );
