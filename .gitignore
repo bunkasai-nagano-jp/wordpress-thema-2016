@@ -7,3 +7,6 @@ node_modules
 /.idea/copyright
 /.idea/jsLibraryMappings.xml
 /.idea/webResources.xml
+/.idea/php.xml
+/.idea/remote-mappings.xml
+/.idea/runConfigurations/
