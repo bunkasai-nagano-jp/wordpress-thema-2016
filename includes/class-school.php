@@ -54,7 +54,7 @@ class School {
 					'permalink'           => get_permalink(),
 					];
 				endwhile;
-				wp_reset_postdata();
+				$posts->reset_postdata();
 			endif;
 		} catch ( Exception $e ) {
 			return;
