@@ -1,5 +1,5 @@
 <?php
-$posts = relation_post();
+$posts = get_relation_post();
 if ( $posts ) :  ?>
 	<h2><i class="fa fa-th-list"></i>&nbsp;関連記事</h2>
 	<!-- .kanren-flex-container -->

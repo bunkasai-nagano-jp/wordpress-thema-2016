@@ -140,3 +140,28 @@ function get_all_school_information() {
 
 	return $all_school_information;
 }
+
+function get_relation_post() {
+	$category    = get_the_category();
+	$category_id = $category[0]->cat_ID;
+	$post_id     = get_the_ID();
+	$start_date  = get_field( 'startDate' );
+	$year        = date( 'Y', strtotime( $start_date ) );
+
+	$args  = array(
+		'meta_query'     => array(
+			array(
+				'key'     => 'startDate',
+				'value'   => array( $year . '/01/01', $year . '/12/31' ),
+				'compare' => 'BETWEEN',
+				'type'    => 'DATE',
+			),
+		),
+		'cat'            => $category_id,
+		'posts_per_page' => 2,
+		'post__not_in'   => array( $post_id ),
+	);
+	$posts = query_posts( $args );
+
+	return $posts;
+}
