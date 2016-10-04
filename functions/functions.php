@@ -141,27 +141,29 @@ function get_all_school_information() {
 	return $all_school_information;
 }
 
+/**
+ * 関連記事を取得する関数
+ *
+ * Kanren.php で関連記事を表示するための関数.
+ *
+ * @return WP_Query
+ */
 function get_relation_post() {
 	$category    = get_the_category();
 	$category_id = $category[0]->cat_ID;
-	$post_id     = get_the_ID();
-	$start_date  = get_field( 'startDate' );
-	$year        = date( 'Y', strtotime( $start_date ) );
-
-	$args  = array(
-		'meta_query'     => array(
-			array(
+	$year        = School::get_year();
+	$posts       = new WP_Query( [
+		'meta_query'     => [
+			[
 				'key'     => 'startDate',
-				'value'   => array( $year . '/01/01', $year . '/12/31' ),
-				'compare' => 'BETWEEN',
-				'type'    => 'DATE',
-			),
-		),
+				'value'   => $year,
+				'compare' => 'LIKE',
+			],
+		],
 		'cat'            => $category_id,
 		'posts_per_page' => 2,
-		'post__not_in'   => array( $post_id ),
-	);
-	$posts = query_posts( $args );
+		'post__not_in'   => [ get_the_ID() ],
+	] );
 
 	return $posts;
 }

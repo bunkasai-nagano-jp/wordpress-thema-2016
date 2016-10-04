@@ -1,7 +1,7 @@
 <?php
 	$school = new School( get_field( 'schoolName' ) );
-	$year   = School::get_year();
-	if ( get_gmap_sv_url( 600, 350 ) ) : ?>
+	$year   = $school->get_year();
+if ( get_gmap_sv_url( 600, 350 ) ) : ?>
 		<img class="card-img-top img-fluid" src="<?php echo esc_url( get_gmap_sv_url( 600, 350 ) ); ?>" alt="streetview">
 	<?php endif; ?>
 <div class="card-block">
