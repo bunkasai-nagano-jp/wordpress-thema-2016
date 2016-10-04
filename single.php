@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			<?php endwhile; ?>
-				<?php get_template_part( 'kanren' ); ?>
+				<?php get_template_part( 'template/kanren' ); ?>
 			<?php else : ?>
 				<?php get_template_part( 'template/no-articles' ); ?>
 			<?php endif; ?>
