@@ -1,9 +1,7 @@
-<?php
-	$school = new School( get_field( 'schoolName' ) );
-	$year   = $school->get_post_year( get_the_ID() );
-?>
 <div class="card">
 	<?php
+		$school  = new School( get_field( 'schoolName' ) );
+		$year    = $school->get_year();
 		$img_url = get_gmap_sv_url( 385, 200 );
 	if ( $img_url ) : ?>
 			<div class="card-img-top">
