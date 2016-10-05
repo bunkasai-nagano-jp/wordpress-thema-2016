@@ -48,8 +48,7 @@ function register_theme_style() {
  * Font Awesome
  */
 function register_fa_style() {
-	$ver = '4.6.3';
-	wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/' . $ver . '/css/font-awesome.min.css', [], false, 'all' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', [], false, 'all' );
 }
 
 	add_action( 'wp_enqueue_scripts', 'register_fa_style' );
