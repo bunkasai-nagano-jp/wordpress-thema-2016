@@ -2,12 +2,12 @@
 <div class="col-md-8">
 	<main>
 		<article>
-			<?php get_template_part( 'breadcrumb' ); ?>
+			<?php get_template_part( 'template-parts/breadcrumb' ); ?>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="card">
 					<div class="card-block">
 						<h1 class="card-title"><?php the_title(); ?></h1>
-						<?php get_template_part( 'template/date' ); ?>
+						<?php get_template_part( 'template-parts/date' ); ?>
 					</div>
 					<?php the_content(); ?>
 					<?php wp_link_pages(); ?>
@@ -19,9 +19,9 @@
 					</div>
 				</div>
 			<?php endwhile; ?>
-				<?php get_template_part( 'template/kanren' ); ?>
+				<?php get_template_part( 'template-parts/kanren' ); ?>
 			<?php else : ?>
-				<?php get_template_part( 'template/no-articles' ); ?>
+				<?php get_template_part( 'template-parts/no-articles' ); ?>
 			<?php endif; ?>
 		</article>
 	</main>

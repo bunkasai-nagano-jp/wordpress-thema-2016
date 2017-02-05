@@ -10,7 +10,7 @@ get_template_part( 'functions/relation-category-list' );
 get_template_part( 'includes/class-school');
 
 function get_school_page() {
-	get_template_part( 'template/school' );
+	get_template_part( 'template-parts/school' );
 }
 
 add_shortcode( 'school', 'get_school_page' );
