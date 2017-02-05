@@ -1,12 +1,2 @@
 node_modules
-/.idea/vcs.xml
-/.idea/wp-thema.iml
-/.idea/workspace.xml
-/.idea/dictionaries/
-/.idea/modules.xml
-/.idea/copyright
-/.idea/jsLibraryMappings.xml
-/.idea/webResources.xml
-/.idea/php.xml
-/.idea/remote-mappings.xml
-/.idea/runConfigurations/
+.idea
