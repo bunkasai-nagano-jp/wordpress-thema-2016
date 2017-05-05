@@ -7,7 +7,7 @@
 					<div class="card">
 						<div class="card-block">
 							<h1 class="card-title"><?php the_title(); ?></h1>
-							<?php get_template_part( 'template/date' ); ?>
+							<?php get_template_part( 'template-parts/date' ); ?>
 						</div>
 						<div class="card-block">
 							<?php the_content(); ?>
@@ -16,7 +16,7 @@
 					</div>
 				<?php endwhile; ?>
 				<?php else : ?>
-					<?php get_template_part( 'template/no-articles' ); ?>
+					<?php get_template_part( 'template-parts/no-articles' ); ?>
 				<?php endif; ?>
 			</div>
 		</article>

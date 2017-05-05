@@ -6,7 +6,7 @@ if ( $relation_post->have_posts() ) :  ?>
 		<div class="kanren-flex-container">
 			<?php while ( $relation_post->have_posts() ) : $relation_post->the_post(); ?>
 				<!-- card -->
-				<?php get_template_part( 'template/card' ); ?>
+				<?php get_template_part( 'template-parts/card' ); ?>
 				<!-- /card -->
 			<?php endwhile;
 		wp_reset_postdata();

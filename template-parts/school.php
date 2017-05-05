@@ -28,7 +28,7 @@ if ( get_gmap_sv_url( 600, 350 ) ) : ?>
 			endwhile; ?>
 		</div>
 	<?php endif; ?>
-	<?php get_template_part( 'template/twitter-embed' ); ?>
+	<?php get_template_part( 'template-parts/twitter-embed' ); ?>
 	<h2 class="card-title">地図</h2>
 	<?php the_gmap(); ?>
 	<h3 class="card-title">学校情報</h3>
