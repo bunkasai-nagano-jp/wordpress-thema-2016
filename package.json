@@ -6,9 +6,6 @@
     "type": "git",
     "url": "https://github.com/bunkasai-nagano-jp/wordpress-theme-2016"
   },
-  "dependencies": {
-    "font-awesome": "^4.7.0"
-  },
   "devDependencies": {
     "autoprefixer": "^6.5.4",
     "cssnano": "^3.9.1",
@@ -19,8 +16,5 @@
     "gulp-rename": "^1.2.2",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.2"
-  },
-  "scripts": {
-    "gulp": "gulp"
   }
 }
