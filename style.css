@@ -7,7 +7,7 @@ Author: smasato
 Author URI: https://bunkasai.nagano.jp
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 2017.0506
+Version: 2017.0509
 */
 html {
   position: relative;
@@ -154,7 +154,7 @@ h6,
 header.navbar {
   margin-bottom: 20px;
 }
-gmap {
+.gmap {
   position: relative;
   padding-bottom: 75%;
   padding-top: 30px;
@@ -162,12 +162,12 @@ gmap {
   overflow: hidden;
   margin-bottom: 1rem;
 }
-gmap iframe {
+.gmap iframe {
   border: 0;
 }
-gmap iframe,
-gmap object,
-gmap embed {
+.gmap iframe,
+.gmap object,
+.gmap embed {
   position: absolute;
   top: 0;
   left: 0;
