@@ -30,5 +30,11 @@
 </footer>
 <!-- /footer -->
 <?php wp_footer(); ?>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3116606223638769",
+        enable_page_level_ads: true
+    });
+</script>
 </body>
 </html>
