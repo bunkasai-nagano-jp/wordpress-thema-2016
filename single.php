@@ -10,10 +10,6 @@
 						<?php get_template_part( 'template-parts/date' ); ?>
 					</div>
 					<?php the_content(); ?>
-					<?php wp_link_pages(); ?>
-					<?php global $displaying_post_id;
-						$displaying_post_id = get_the_ID();
-					?>
 					<div class="card-footer">
 						<span><i class="fa fa-fw fa-tags"></i> <?php the_category( ', ' ) ?> <?php the_tags( '', ', ' ); ?></span>
 					</div>

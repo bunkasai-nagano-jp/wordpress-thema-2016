@@ -1,5 +1,3 @@
 <div>
-  <?php global $displaying_post_id;
-  relation_category_list( $displaying_post_id );
-  ?>
+  <?php relation_category_list( get_the_ID() ); ?>
 </div>
