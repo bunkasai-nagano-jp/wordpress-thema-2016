@@ -1,13 +1,13 @@
 <div class="card">
 	<?php
-		$school  = new School( get_field( 'schoolName' ) );
-		$year    = $school->get_year();
-		$img_url = get_gmap_sv_url( 385, 200 );
+	$school  = new School( get_field( 'schoolName', get_the_ID() ) );
+	$year    = $school->get_year();
+	$img_url = $school->get_streetview_url( 385, 200 );
 	if ( $img_url ) : ?>
-			<div class="card-img-top">
-				<img src="<?php echo esc_html( $img_url ); ?>" alt="streetview" class="img-fluid">
-			</div>
-		<?php endif; ?>
+		<div class="card-img-top">
+			<img src="<?php echo esc_html( $img_url ); ?>" alt="streetview" class="img-fluid">
+		</div>
+	<?php endif; ?>
 	<div class="card-block">
 		<a href="<?php the_permalink(); ?>">
 			<h4 class="card-title"><?php the_field( 'name' ); ?></h4>

@@ -353,4 +353,30 @@ class School {
 			return $datetime->format( 'Y/m/d H:i' );
 		}
 	}
+
+	/**
+	 * Google Map StreetViewのURLを取得する関数
+	 *
+	 * @param int $width width.
+	 * @param int $height height.
+	 * @param int $post_id post_id.
+	 *
+	 * @return mixed
+	 */
+	public function get_streetview_url( $width = 400, $height = 300, $post_id = '' ) {
+		if ( empty( $post_id ) ) {
+			$post_id = get_the_ID();
+		}
+		$location = get_field( 'streetviewLocation', $post_id );
+		$fov      = get_field( 'streetviewFov', $post_id );
+		$pitch    = get_field( 'streetviewPitch', $post_id );
+		$heading  = get_field( 'heading', $post_id );
+		if ( ! $location ) {
+			return false;
+		} else {
+			$url = 'https://maps.googleapis.com/maps/api/streetview?size=%sx%s&location=%s&fov=%s&pitch=%s&heading=%s&key=AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
+
+			return sprintf( $url, $width, $height, $location, $fov, $pitch, $heading );
+		}
+	}
 }

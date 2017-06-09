@@ -30,27 +30,3 @@ function the_gmap() {
 		return false;
 	}
 }
-
-/**
- * GoogleMapストリートビューのURLを取得する関数
- *
- * @param int $width width.
- * @param int $height height.
- *
- * @return bool|string
- */
-function get_gmap_sv_url( $width = 400, $height = 300 ) {
-	$base           = 'https://maps.googleapis.com/maps/api/streetview?';
-	$google_api_key = 'AIzaSyBfgN4KnKmCL5-Wv3hS-LbQPtsxi_xXdRE';
-	$location       = get_field( 'streetviewLocation' );
-	$fov            = get_field( 'streetviewFov' );
-	$pitch          = get_field( 'streetviewPitch' );
-	$heading        = get_field( 'heading' );
-	if ( ! $location ) {
-		return false;
-	} else {
-		$url = $base . 'size=' . $width . 'x' . $height . '&location=' . $location . '&fov=' . $fov . '&pitch=' . $pitch . '&heading=' . $heading . '&key=' . $google_api_key;
-
-		return esc_url( $url );
-	}
-}
