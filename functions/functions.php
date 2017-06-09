@@ -129,6 +129,7 @@ function get_all_school_information() {
 				$loop_tmp[]               = $school_name;
 			endif;
 		endwhile;
+		wp_reset_postdata();
 		// 列方向の配列を得る.
 		foreach ( $all_school_information as $key => $value ) {
 			$municipality_name[ $key ] = $value['municipality_name'];
