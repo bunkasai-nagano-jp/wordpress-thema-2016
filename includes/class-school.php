@@ -53,7 +53,7 @@ class School {
 					'public_open'         => $this->set_event_public_open_date(),
 					'permalink'           => get_permalink(),
 					];
-				endwhile;
+			endwhile;
 				wp_reset_postdata();
 			endif;
 		} catch ( Exception $e ) {
@@ -313,6 +313,7 @@ class School {
 	public function the_permalink( $year ) {
 		if ( $this->get_event_specified_year( $year ) ) {
 			$post = $this->get_event_specified_year( $year );
+
 			return $post['permalink'];
 		} else {
 			return false;

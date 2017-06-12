@@ -10,9 +10,9 @@
 	<?php endif; ?>
 	<div class="card-block">
 		<a href="<?php the_permalink(); ?>">
-			<h4 class="card-title"><?php the_field( 'name' ); ?></h4>
+			<h4 class="card-title"><?php the_field( 'name', get_the_ID() ); ?></h4>
 		</a>
-		<h6 class="card-subtitle text-muted"><?php the_field( 'class' ); ?> <?php the_field( 'schoolName' ); ?></h6>
+		<h6 class="card-subtitle text-muted"><?php the_field( 'class' ); ?><?php the_field( 'schoolName', get_the_ID() ); ?></h6>
 		<div class="card-block">
 			<?php if ( is_bunkasai_during_open() ) : ?>
 				<p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i>&nbsp;開催中</p>
