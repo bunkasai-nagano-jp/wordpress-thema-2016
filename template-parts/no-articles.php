@@ -1,5 +1,3 @@
-<div class="card">
-  <div class="card-block">
-    <p class="card-text">記事がありません</p>
-  </div>
+<div class="alert alert-info" role="alert">
+	記事がありません
 </div>

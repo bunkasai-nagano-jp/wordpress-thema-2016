@@ -3,7 +3,7 @@
 		<?php get_template_part( 'template-parts/breadcrumb' ); ?>
 		<h1><?php single_cat_title(); ?>の文化祭</h1>
 		<!-- .flex-container -->
-		<div class="flex-container">
+		<div class="d-flex flex-wrap justify-content-around align-items-stretch p-2">
 			<?php
 			$category    = get_the_category();
 			$category_id = $category[0]->cat_ID;

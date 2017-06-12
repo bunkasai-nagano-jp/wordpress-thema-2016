@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-3">
 	<?php
 	$school  = new School( get_field( 'schoolName', get_the_ID() ) );
 	$year    = $school->get_year();
