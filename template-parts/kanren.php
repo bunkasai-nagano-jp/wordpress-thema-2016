@@ -15,12 +15,11 @@ $relation_posts = new WP_Query( [
 	'post__not_in'   => [ $post->ID ],
 ] ); ?>
 <h2><i class="fa fa-th-list"></i>&nbsp;関連記事</h2>
-<!-- .kanren-flex-container -->
-<div class="kanren-flex-container">
+<div class="d-flex flex-wrap justify-content-around align-items-stretch p-2">
 	<?php if ( $relation_posts->have_posts() ) :
 		$relation_posts->the_post(); ?>
 		<!-- card -->
-		<div class="card">
+		<div class="card mb-3">
 			<?php
 			$school  = new School( get_field( 'schoolName', $relation_posts->post->ID ) );
 			$year    = $school->get_year();
@@ -70,4 +69,3 @@ $relation_posts = new WP_Query( [
 		<?php get_template_part( 'template-parts/no-articles' ); ?>
 	<?php endif; ?>
 </div>
-<!-- /.kanren-flex-container -->
