@@ -7,119 +7,8 @@ Author: smasato
 Author URI: https://bunkasai.nagano.jp
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 2017.0530
+Version: 2017.0612
 */
-.flex-container {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-}
-.flex-container .card {
-  -ms-flex: 0 1 98%;
-  flex: 0 1 98%;
-  margin: 0 1% 30px;
-}
-.kanren-flex-container {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-.kanren-flex-container .card {
-  margin: .5rem;
-  -ms-flex: 1;
-  flex: 1;
-}
-@media (max-width: 768px) {
-  .kanren-flex-container {
-    -ms-flex-align: center;
-    align-items: center;
-  }
-}
-@media (min-width: 768px) {
-  .flex-container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-  }
-  .flex-container::after {
-    content: "";
-    display: block;
-    width: 48%;
-  }
-  .flex-container .card {
-    -ms-flex: 0 1 48%;
-    flex: 0 1 48%;
-  }
-}
-@media (min-width: 992px) {
-  .flex-container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-  }
-  .flex-container::after {
-    content: "";
-    display: block;
-    width: 30%;
-  }
-  .flex-container .card {
-    -ms-flex: 0 1 30%;
-    flex: 0 1 30%;
-  }
-  .pagination {
-    margin-bottom: 1.75rem;
-  }
-}
-@media (max-width: 992px) {
-  .kanren-flex-container {
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-  .kanren-flex-container .card {
-    margin: .5rem;
-  }
-}
-@media (min-width: 1200px) {
-  .flex-container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-  }
-  .flex-container::after {
-    content: "";
-    display: block;
-    width: 30%;
-  }
-  .flex-container .card {
-    -ms-flex: 0 1 30%;
-    flex: 0 1 30%;
-  }
-}
 header.navbar {
   margin-bottom: 20px;
 }
@@ -161,9 +50,6 @@ table tbody tr td p:first-child {
   margin-top: 0;
   margin-bottom: 0;
 }
-.form-control {
-  height: 38px;
-}
 @media (min-width: 544px) {
   .img-fluid {
     width: 100%;
@@ -176,9 +62,6 @@ table tbody tr td p:first-child {
   .card .card-block:not(.text-xs-right) {
     padding: 1rem 1rem 0;
   }
-}
-.line-height-fix {
-  line-height: 1;
 }
 .list-card-date {
   margin-top: 0;
