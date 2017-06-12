@@ -1,9 +1,10 @@
 <?php
-	$school = new School( get_field( 'schoolName' ) );
-	$year   = $school->get_year();
-if ( get_gmap_sv_url( 600, 350 ) ) : ?>
-		<img class="card-img-top img-fluid" src="<?php echo esc_url( get_gmap_sv_url( 600, 350 ) ); ?>" alt="streetview">
-	<?php endif; ?>
+$school  = new School( get_field( 'schoolName' ) );
+$year    = $school->get_year();
+$img_url = $school->get_streetview_url( 600, 350, get_the_ID() );
+if ( ! empty( $img_url ) ) : ?>
+	<img class="card-img-top img-fluid" src="<?php echo $img_url; ?>" alt="streetview">
+<?php endif; ?>
 <div class="card-block">
 	<?php if ( is_ended() ) : ?>
 		<p class="card-text text-muted">この文化祭は終了しました</p>

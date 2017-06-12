@@ -129,6 +129,7 @@ function get_all_school_information() {
 				$loop_tmp[]               = $school_name;
 			endif;
 		endwhile;
+		wp_reset_postdata();
 		// 列方向の配列を得る.
 		foreach ( $all_school_information as $key => $value ) {
 			$municipality_name[ $key ] = $value['municipality_name'];
@@ -139,31 +140,4 @@ function get_all_school_information() {
 	endif;
 
 	return $all_school_information;
-}
-
-/**
- * 関連記事を取得する関数
- *
- * Kanren.php で関連記事を表示するための関数.
- *
- * @return WP_Query
- */
-function get_relation_post() {
-	$category    = get_the_category();
-	$category_id = $category[0]->cat_ID;
-	$year        = School::get_year();
-	$posts       = new WP_Query( [
-		'meta_query'     => [
-			[
-				'key'     => 'startDate',
-				'value'   => $year,
-				'compare' => 'LIKE',
-			],
-		],
-		'cat'            => $category_id,
-		'posts_per_page' => 2,
-		'post__not_in'   => [ get_the_ID() ],
-	] );
-
-	return $posts;
 }

@@ -50,7 +50,7 @@ add_action( 'wp_enqueue_scripts', 'register_theme_style' );
  * Font Awesome
  */
 function register_fa_style() {
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/vendor/font-awesome/css/font-awesome.css', [], false, 'all' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', [], false, 'all' );
 }
 
 add_action( 'wp_enqueue_scripts', 'register_fa_style' );

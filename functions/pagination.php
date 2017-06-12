@@ -1,21 +1,21 @@
 <?php
-	function pagination( $pages = '', $range = 4 ) {
-		$showitems = ( $range * 2 ) + 1;
-		global $paged;
-		if ( !$paged ) :
-			$paged = 1;
+function pagination( $pages = '', $range = 4 ) {
+	$showitems = ( $range * 2 ) + 1;
+	global $paged;
+	if ( ! $paged ) :
+		$paged = 1;
 		endif;
-		if ( $pages == '' ) :
-			global $wp_query;
-			$pages = $wp_query->max_num_pages;
-			if ( !$pages ) :
-				$pages = 1;
+	if ( $pages == '' ) :
+		global $wp_query;
+		$pages = $wp_query->max_num_pages;
+		if ( ! $pages ) :
+			$pages = 1;
 			endif;
 		endif;
-		if ( 1 != $pages ) : ?>
+	if ( 1 != $pages ) : ?>
 			<div class="row">
-				<div class="col-md-12 text-xs-center line-height-fix">
-					<ul class="pagination">
+				<div class="col-md-12">
+					<ul class="pagination d-flex justify-content-center">
 						<?php if ( $paged == 1 ) : ?>
 							<li class="page-item disabled">
 								<a class="page-link" href="" aria-label="Previous">
@@ -32,7 +32,7 @@
 							</li>
 						<?php endif; ?>
 						<?php for ( $i = 1; $i <= $pages; $i ++ ) { ?>
-							<?php if ( 1 != $pages && ( !( $i >= $paged + $range + 1 or $i <= $paged - $range - 1 ) or $pages <= $showitems ) ) : ?>
+							<?php if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 or $i <= $paged - $range - 1 ) or $pages <= $showitems ) ) : ?>
 								<?php if ( $paged == $i ) : ?>
 									<li class="page-item active">
 											<a class="page-link" href="#"><?php echo $i; ?>
@@ -65,4 +65,4 @@
 				</div>
 			</div>
 		<?php endif;
-	}
+}
