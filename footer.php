@@ -1,24 +1,32 @@
+<div class="row">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3116606223638769"
+         data-ad-slot="9674263336"
+         data-ad-format="auto"></ins>
+</div>
 </div>
 <!-- /container -->
 <!-- footer -->
-		<nav class="navbar navbar-inverse bg-inverse">
-			<div class="container">
-				<nav class="nav">
-					<a class="nav-link active" href="<?php echo esc_url( home_url() ); ?>/">&copy;&nbsp;<?php bloginfo( 'name' ); ?>&nbsp;2015</a>
-					<?php
-					$defaults = [
-						'menu'           => 'footer',
-						'container'      => false,
-						'echo'           => true,
-						'depth'          => 0,
-						'walker'         => new NavbarLinkList,
-						'theme_location' => 'footer',
-						'items_wrap'     => '%3$s',
-					];
-					wp_nav_menu( $defaults ); ?>
-				</nav>
-			</div>
-		</nav>
+<nav class="navbar navbar-inverse bg-inverse">
+    <div class="container">
+        <nav class="nav">
+            <a class="nav-link active" href="<?php echo esc_url(home_url()); ?>/">&copy;&nbsp;<?php bloginfo('name'); ?>
+                &nbsp;2015</a>
+            <?php
+            $defaults = [
+                'menu' => 'footer',
+                'container' => false,
+                'echo' => true,
+                'depth' => 0,
+                'walker' => new NavbarLinkList,
+                'theme_location' => 'footer',
+                'items_wrap' => '%3$s',
+            ];
+            wp_nav_menu($defaults); ?>
+        </nav>
+    </div>
+</nav>
 <!-- /footer -->
 <?php wp_footer(); ?>
 <script>
