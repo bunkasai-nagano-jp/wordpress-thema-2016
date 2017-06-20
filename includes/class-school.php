@@ -2,6 +2,7 @@
 
 class School {
 
+
 	/**
 	 * 学校名
 	 *
@@ -36,23 +37,23 @@ class School {
 		try {
 			$posts = $this->fetch_posts( $school_name );
 			if ( $posts->have_posts() ) : while ( $posts->have_posts() ) :$posts->the_post();
-					$year = $this->get_post_year( $posts->ID );
-					if ( ! $this->category ) {
-						$this->category = $this->get_category( $posts->ID );
-					}
-					if ( ! $this->school_name ) {
-						$this->set_school_name( get_field( 'schoolName' ) );
-					}
-					if ( ! $this->name ) {
-						$this->name = get_field( 'name' );
-					}
-					$this->event[] = [
+				$year = $this->get_post_year( $posts->ID );
+				if ( ! $this->category ) {
+					$this->category = $this->get_category( $posts->ID );
+				}
+				if ( ! $this->school_name ) {
+					$this->set_school_name( get_field( 'schoolName' ) );
+				}
+				if ( ! $this->name ) {
+					$this->name = get_field( 'name' );
+				}
+				$this->event[] = [
 					'year'                => $year,
 					'event_date'          => $this->get_event_date(),
 					'public_open_unknown' => get_field( 'public_unknown' ),
 					'public_open'         => $this->set_event_public_open_date(),
 					'permalink'           => get_permalink(),
-					];
+				];
 			endwhile;
 				wp_reset_postdata();
 			endif;
@@ -339,7 +340,7 @@ class School {
 	 * DateTimeオブジェクトをフォーマットする関数
 	 *
 	 * @param DateTime $datetime DateTimeオブジェクト.
-	 * @param bool     $is_end 最後に出力する時刻か.
+	 * @param bool $is_end 最後に出力する時刻か.
 	 *
 	 * @return string
 	 */
