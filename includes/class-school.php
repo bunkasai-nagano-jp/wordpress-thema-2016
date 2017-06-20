@@ -382,6 +382,11 @@ class School {
 		}
 	}
 
+	/**
+	 * @param string $post_id
+	 *
+	 * @return bool|null
+	 */
 	public function is_bunkasai_during_open( $post_id = '' ) {
 		$start_date = get_field( 'startDate', $post_id );
 		$today      = date( 'Y/m/d' );
@@ -407,6 +412,23 @@ class School {
 		} elseif ( $today < $start_date ) {
 			// 開始日よりも前 残り日数を計算する.
 			return null;
+		}
+	}
+
+	/**
+	 * 文化祭までの残り日数を取得する関数
+	 *
+	 * @return DateTime|bool
+	 */
+	function get_remaining_days( $post_id = '' ) {
+		if ( get_field( 'startDate', $post_id ) ) {
+			$start_date = School::get_datetime_t( get_field( 'startDate', $post_id ) );
+			$today      = School::get_datetime_t();
+			$interval   = $today->diff( $start_date );
+
+			return $interval->format( '%a' );
+		} else {
+			return false;
 		}
 	}
 }

@@ -41,7 +41,7 @@ $relation_posts = new WP_Query( [
 						<p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;終了
 						</p>
 					<?php elseif ( $school->is_bunkasai_during_open( $relation_posts->post->ID ) === null ) : ?>
-						<p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;開催まで<?php echo esc_html( get_remaining_days() ); ?>
+						<p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;開催まで<?php echo esc_html( $school->get_remaining_days( $relation_posts->post->ID ) ); ?>
 							日</p>
 					<?php endif; ?>
 					<p class="card-text"><i class="fa fa-fw fa-calendar"></i>&nbsp;開催期間</p>
