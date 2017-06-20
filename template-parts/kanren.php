@@ -30,21 +30,19 @@ $relation_posts = new WP_Query( [
 				</div>
 			<?php endif; ?>
 			<div class="card-block">
-				<a href="<?php the_permalink(); ?>">
+				<a href="<?php the_permalink( $relation_posts->post->ID ); ?>">
 					<h4 class="card-title"><?php the_field( 'name', $relation_posts->post->ID ); ?></h4>
 				</a>
-				<h6 class="card-subtitle text-muted"><?php the_field( 'class' ); ?><?php the_field( 'schoolName', $relation_posts->post->ID ); ?></h6>
+				<h6 class="card-subtitle text-muted"><?php the_field( 'class', $relation_posts->post->ID ); ?><?php the_field( 'schoolName', $relation_posts->post->ID ); ?></h6>
 				<div class="card-block">
-					<?php if ( is_bunkasai_during_open() ) : ?>
+					<?php if ( $school->is_bunkasai_during_open( $relation_posts->post->ID ) ) : ?>
 						<p class="card-text text-info"><i class="fa fa-fw fa-flag" aria-hidden="true"></i>&nbsp;開催中</p>
-					<?php elseif ( is_bunkasai_during_open() === false ) : ?>
+					<?php elseif ( $school->is_bunkasai_during_open( $relation_posts->post->ID ) === false ) : ?>
 						<p class="card-text text-muted"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;終了
 						</p>
-					<?php elseif ( is_bunkasai_during_open() === null ) : ?>
-						<p class="card-text text-primary">
-							<i class="fa fa-fw fa-clock-o"
-							   aria-hidden="true"></i>&nbsp;開催まで<?php echo esc_html( get_remaining_days() ); ?>日
-						</p>
+					<?php elseif ( $school->is_bunkasai_during_open( $relation_posts->post->ID ) === null ) : ?>
+						<p class="card-text text-primary"><i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>&nbsp;開催まで<?php echo esc_html( get_remaining_days() ); ?>
+							日</p>
 					<?php endif; ?>
 					<p class="card-text"><i class="fa fa-fw fa-calendar"></i>&nbsp;開催期間</p>
 					<p class="card-text"><?php echo esc_html( $school->the_event_date( $year ) ); ?></p>

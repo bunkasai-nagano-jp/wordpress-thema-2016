@@ -60,14 +60,14 @@ function get_end_date() {
  * @deprecated
  */
 function is_bunkasai_during_open() {
-	if ( get_field( 'startDate' ) ) {
-		$start_date = get_field( 'startDate' );
+	if ( get_field( 'startDate', get_the_ID() ) ) {
+		$start_date = get_field( 'startDate', get_the_ID() );
 		$today      = date( 'Y/m/d' );
-		if ( ! get_field( 'endDate' ) ) {
+		if ( ! get_field( 'endDate', get_the_ID() ) ) {
 			// 開催期間が1日の文化祭を想定する.
-			$end_date = get_field( 'startDate' );
+			$end_date = get_field( 'startDate', get_the_ID() );
 		} else {
-			$end_date = get_field( 'endDate' );
+			$end_date = get_field( 'endDate', get_the_ID() );
 		}
 		if ( $today === $start_date ) {
 			// 開始日当日.

@@ -380,4 +380,32 @@ class School {
 			return sprintf( $url, $width, $height, $location, $fov, $pitch, $heading );
 		}
 	}
+
+	public function is_bunkasai_during_open( $post_id = '' ) {
+		$start_date = get_field( 'startDate', $post_id );
+		$today      = date( 'Y/m/d' );
+		if ( ! get_field( 'endDate', $post_id ) ) {
+			// 開催期間が1日の文化祭を想定する.
+			$end_date = get_field( 'startDate', $post_id );
+		} else {
+			$end_date = get_field( 'endDate', $post_id );
+		}
+		if ( $today === $start_date ) {
+			// 開始日当日.
+			return true;
+		} elseif ( $today === $end_date ) {
+			// 終了日当日.
+			return true;
+		} elseif ( $today > $end_date ) {
+			// 終了日よりも後.
+			return false;
+		} elseif ( $today > $start_date and $today < $end_date ) {
+			// 開催期間中.
+			// 開始日よりも後 終了日よりも前.
+			return true;
+		} elseif ( $today < $start_date ) {
+			// 開始日よりも前 残り日数を計算する.
+			return null;
+		}
+	}
 }
