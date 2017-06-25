@@ -2,14 +2,19 @@
 <div class="col-md-12">
 	<h1><?php the_title(); ?></h1>
 	<div class="row">
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-3116606223638769"
-		     data-ad-slot="2149923735"
-		     data-ad-format="auto"></ins>
-		<script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+		<div class="col-md-12">
+			<div class="m-3">
+				<!-- list header -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-3116606223638769"
+				     data-ad-slot="2149923735"
+				     data-ad-format="auto"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
 	</div>
 	<div class="table-responsive">
 		<table class="table table-sm table-hover table-striped">
@@ -52,14 +57,19 @@
 		</table>
 	</div>
 	<div class="row">
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-3116606223638769"
-		     data-ad-slot="2149923735"
-		     data-ad-format="auto"></ins>
-		<script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+		<div class="col-md-12">
+			<div class="m-3">
+				<!-- list footer -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-3116606223638769"
+				     data-ad-slot="5586337333"
+				     data-ad-format="auto"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
 	</div>
 </div>
 <?php get_footer(); ?>
