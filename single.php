@@ -1,14 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
 	<div class="col-md-8">
-		<ins class="adsbygoogle"
-		     style="display:block"
-		     data-ad-client="ca-pub-3116606223638769"
-		     data-ad-slot="7294376534"
-		     data-ad-format="link"></ins>
-		<script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
 		<main>
 			<article>
 				<?php get_template_part( 'template-parts/breadcrumb' ); ?>
