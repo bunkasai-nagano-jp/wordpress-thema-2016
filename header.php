@@ -6,11 +6,11 @@
 <!-- container -->
 <div class="container">
     <div class="row">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3116606223638769"
-             data-ad-slot="2150996536"
-             data-ad-format="auto"></ins>
+	    <ins class="adsbygoogle"
+	         style="display:block"
+	         data-ad-client="ca-pub-3116606223638769"
+	         data-ad-slot="7294376534"
+	         data-ad-format="link"></ins>
 	    <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
 	    </script>
