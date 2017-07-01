@@ -1,5 +1,5 @@
 <h2><i class="fa fa-th-list"></i>&nbsp;関連記事</h2>
-<div class="d-flex flex-wrap justify-content-around align-items-stretch p-2">
+<div class="">
 	<ins class="adsbygoogle"
 	     style="display:block"
 	     data-ad-format="autorelaxed"
