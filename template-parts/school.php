@@ -32,6 +32,15 @@ if (!empty($img_url)) : ?>
     <?php get_template_part('template-parts/twitter-embed'); ?>
     <h2 class="card-title">地図</h2>
     <?php the_gmap(); ?>
+	<ins class="adsbygoogle"
+	     style="display:block; text-align:center;"
+	     data-ad-format="fluid"
+	     data-ad-layout="in-article"
+	     data-ad-client="ca-pub-3116606223638769"
+	     data-ad-slot="9748204935"></ins>
+	<script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
     <h3>学校情報</h3>
     <table class="table table-striped table-bordered pb-0">
         <tbody>
